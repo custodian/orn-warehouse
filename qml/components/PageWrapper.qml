@@ -100,7 +100,7 @@ Page {
             MenuItem {
                 text: qsTr("Check updates")
                 onClicked: {
-                    configuration.getupdates();
+                    updateDialog.getupdates();
                 }
             }
             MenuItem {
@@ -112,7 +112,8 @@ Page {
             MenuItem {
                 text: qsTr("Exit")
                 onClicked: {
-                    windowHelper.disableSwype(false);
+                    //TODO:
+                    //windowHelper.disableSwype(false);
                     Qt.quit();
                 }
             }

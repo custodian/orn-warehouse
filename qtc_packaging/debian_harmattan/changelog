@@ -1,4 +1,6 @@
 warehouse (0.0.1) unstable; urgency=low
-  * Initial Release.
+  * Initial Release
+  * Application tab
+  * Update dialog
 
  -- Basil Semuonov <basil.semuonov@gmail.com>  Mon, 07 Oct 2013 21:13:37 +0400

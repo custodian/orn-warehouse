@@ -2,7 +2,6 @@ import QtQuick 1.1
 import com.nokia.meego 1.0
 
 import "js/api.js" as Api
-
 import "components"
 
 PageStackWindow {
@@ -144,6 +143,11 @@ PageStackWindow {
                 }
             }
         }
+    }
+
+    UpdateDialog {
+        id: updateDialog
+        z: 30
     }
 
     function popToTop(tab) {
