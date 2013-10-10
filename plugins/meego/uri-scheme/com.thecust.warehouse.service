@@ -1,0 +1,4 @@
+#meego
+[D-BUS Service]
+Name=com.thecust.warehouse
+Exec=/usr/bin/invoker --splash=/opt/warehouse/qml/images/warehouse_splashscreen_854_h.png --single-instance --type=d /opt/warehouse/bin/warehouse

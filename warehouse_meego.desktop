@@ -1,0 +1,17 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Terminal=false
+Name=Warehouse
+Exec=xdg-open openrepos://client/start
+Icon=/usr/share/icons/hicolor/80x80/apps/warehouse80.png
+X-Window-Icon=
+X-HildonDesk-ShowInToolbar=true
+X-Osso-Type=application/x-executable
+#contentaction+dbus
+MimeType=x-maemo-urischeme/openrepos;
+X-Maemo-Service=com.thecust.warehouse
+X-Maemo-Object-Path=/com/thecust/warehouse
+X-Maemo-Method=com.thecust.warehouse.loadURI
+

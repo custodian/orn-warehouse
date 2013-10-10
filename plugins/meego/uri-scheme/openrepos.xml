@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<actions>
+    <highlight regexp="openrepos://(.*)/?" name="warehouse"/>
+</actions>

@@ -1,0 +1,16 @@
+release
+debug
+moc*
+obj
+builddir
+debian
+*.user
+*.o
+*.qm
+Makefile*
+warehouse_resource.rc
+*_armel.changes
+*_armel.deb
+*Debug
+*Release
+warehouse
