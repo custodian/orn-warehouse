@@ -79,34 +79,6 @@ PageWrapper {
                 width: parent.width
                 height: 50
             }
-
-            /*Text {
-                anchors.horizontalCenter: parent.horizontalCenter
-                text: qsTr("Foursquare privacy policy")
-                color: mytheme.colors.textColorSign
-                font.underline: true
-                font.pixelSize: mytheme.font.sizeDefault
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: {
-                        Qt.openUrlExternally("https://foursquare.com/legal/terms")
-                    }
-                }
-            }
-
-            Text {
-                anchors.horizontalCenter: parent.horizontalCenter
-                text: qsTr("Nelisquare privacy policy")
-                color: mytheme.colors.textColorSign
-                font.underline: true
-                font.pixelSize: mytheme.font.sizeDefault
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: {
-                        Qt.openUrlExternally("http://thecust.net/nelisquare/privacy.txt")
-                    }
-                }
-            }*/
         }
 
         visible: newuser

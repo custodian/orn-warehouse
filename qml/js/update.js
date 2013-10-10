@@ -26,7 +26,7 @@ function getUpdateInfo(platform, updatetype, callback) {
                 changelog = data[2].split(" = ")[1].replace(/(\r\n|\n|\r|\"|\')/gm,"");
                 changelog = changelog.replace(/  - /g,'<br> - ');
             }
-            var url = UPDATE_BASE + platform + "/nelisquare";
+            var url = UPDATE_BASE + platform + "/warehouse";
             if (updatetype == "beta") {
                 url += "-beta.deb";
             } else if (updatetype == "alpha") {

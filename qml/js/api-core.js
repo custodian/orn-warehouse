@@ -16,7 +16,7 @@ api.VERSION = "v1";
 api.URL = "https://openrepos.net/api/";
 //api.URL = "http://dev.openrepos.net/api/";
 
-//api.DEBUG_URL = "http://thecust.net/debug-nelisquare.php?content="
+//api.DEBUG_URL = "http://thecust.net/debug-warehouse.php?content="
 
 function setLocale(locale) {
     api.locale = locale;
