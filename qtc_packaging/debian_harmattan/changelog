@@ -1,3 +1,8 @@
+warehouse (0.0.2) unstable; urgency=low
+  * Application page mockup
+
+ -- Basil Semuonov <basil.semuonov@gmail.com>  Fri, 11 Oct 2013 17:20:00 +0400
+
 warehouse (0.0.1) unstable; urgency=low
   * Initial Release
   * Application tab

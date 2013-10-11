@@ -10,6 +10,10 @@ Rectangle {
     property variant application: {}
     property bool highlight: false
 
+    color: mouseArea.pressed || highlight ? mytheme.colors.backgroundSand : mytheme.colors.backgroundMain
+    width: parent.width
+    height: 10 + Math.max(statusArea.height,appImage.height)
+
     onApplicationChanged: {
         var url = "../images/default_package.png"
         if (application.icon !== undefined) {
@@ -18,11 +22,7 @@ Rectangle {
             }
         }
         appImage.photoUrl = url;
-    }
-
-    color: mouseArea.pressed || highlight ? mytheme.colors.backgroundSand : mytheme.colors.backgroundMain
-    width: parent.width
-    height: 10 + Math.max(statusArea.height,appImage.height)
+    }    
 
     MaskedImage {
         id: appImage

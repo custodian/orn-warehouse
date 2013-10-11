@@ -6,7 +6,7 @@ import "../js/api.js" as Api
 
 PageWrapper {
     id: appList
-    signal application(string id)
+    signal application(variant app)
     signal update()
 
     property alias appsModel: appsModel
@@ -20,8 +20,8 @@ PageWrapper {
 
     function load() {
         var page = appList;
-        page.application.connect(function(id) {
-            stack.push(Qt.resolvedUrl("Application.qml"),{"appID":id});
+        page.application.connect(function(app) {
+            stack.push(Qt.resolvedUrl("Application.qml"),{"application":app});
         });
         page.update.connect(function(){
             Api.apps.loadRecent(page);
@@ -103,10 +103,11 @@ PageWrapper {
         id: appDelegate
 
         ApplicationBox {
+            id: appbox
             application: model.application
 
             onAreaClicked: {
-                appList.application( model.appid );
+                appList.application( model.application );
             }
         }
     }

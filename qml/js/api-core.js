@@ -34,9 +34,18 @@ function apiCall(page, type, url, params) {
     return data;
 };
 
-api.request = function(call, onSuccess, onError) {
+api.onErrorDefault = function(call, error, status) {
+    call.page.show_error(error);
+};
+
+api.request = function(call, onSuccess, onErrorCustom) {
     api.log(call.type + " " + call.url);//.replace(/oauth\_token\=([A-Z0-9]+).*\&v\=.*/gm,""));
     var url = api.URL + api.VERSION + "/" + call.url;
+
+    var onError = api.onErrorDefault;
+    if (onErrorCustom !== undefined) {
+        onError = onErrorCustom;
+    }
 
     var doc = new XMLHttpRequest();
     doc.onreadystatechange = function() {

@@ -11,16 +11,27 @@ var apps = new ApiObject();
 
 apps.loadRecent = function(page) {
     var call = apiCall(page, "GET", "apps");
-    api.request(call, apps.onLoadRecent, apps.onLoadRecentError);
+    page.waiting_show();
+    api.request(call, apps.onLoadRecent);
 }
-
 apps.onLoadRecent = function(call, response) {
     call.page.appsModel.clear();
     response.forEach(function(application) {
         //console.log("LASTAPP: " + JSON.stringify(application));
         call.page.appsModel.append({"application":application});
     });
+    call.page.waiting_hide();
 };
-apps.onLoadRecentError = function(call, error, code) {
-    console.log("Error: " + error + " Code: " + code);
+
+apps.loadApplication = function(page, appid) {
+    var call = apiCall(page, "GET", "apps/" + appid);
+    page.waiting_show();
+    api.request(call,apps.onLoadApplication);
 };
+
+apps.onLoadApplication = function(call, response) {
+    var page = call.page;
+    page.waiting_hide();
+    page.application = response;
+    apps.log(JSON.stringify(response));
+}
