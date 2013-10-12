@@ -7,9 +7,9 @@ import "../js/api.js" as Api
 PageWrapper {
     id: catList
     signal update()
+    signal browse(string catid, string catname)
 
     property variant categories: []
-
 
     width: parent.width
     height: parent.height
@@ -22,6 +22,13 @@ PageWrapper {
         var page = catList;
         page.update.connect(function(){
             Api.categories.loadCategories(page);
+        });
+        page.browse.connect(function(catid, catname){
+            stack.push(Qt.resolvedUrl("ApplicationBrowse.qml"),
+                       {
+                            "options": {"type": "category", "id": catid},
+                            "headerText": qsTr("Category: %1").arg(catname),
+                       });
         });
         page.update();
     }
@@ -66,6 +73,9 @@ PageWrapper {
             width: parent.width
             NextBox {
                 text: "%1 (%2)".arg(modelData.name).arg(modelData.apps_count)
+                onAreaClicked: {
+                    catList.browse(modelData.tid, modelData.name);
+                }
             }
             Column {
                 anchors {
@@ -78,6 +88,9 @@ PageWrapper {
                     width: parent.width
                     delegate: NextBox {
                         text: "%1 (%2)".arg(modelData.name).arg(modelData.apps_count)
+                        onAreaClicked: {
+                            catList.browse(modelData.tid, modelData.name);
+                        }
                     }
                 }
             }

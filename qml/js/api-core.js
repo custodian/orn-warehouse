@@ -29,7 +29,7 @@ function apiCall(page, type, url, params) {
         "url": url
     };
     if (params !== undefined) {
-        data.params = JSON.stringify(params)
+        data.params = params;
     };
     return data;
 };
@@ -70,10 +70,21 @@ api.request = function(call, onSuccess, onErrorCustom) {
         }
     }
 
+    if (call.type === "GET") {
+        if (call.params !== undefined) {
+            url += "?";
+            for (var param in call.params) {
+                url += encodeURIComponent(param) + "=" + encodeURIComponent(call.params[param]) + "&";
+            }
+        }
+
+    }
     doc.open(call.type, url);
-    //call.params;
     doc.setRequestHeader("Accept-Language",api.locale);
-//    doc.setRequestHeader("Accept-Language",api.locale);
+    //doc.setRequestHeader("Accept-Language",api.locale); //SECURITY DATA
+    if (call.type === "POST") {
+        doc.send(JSON.stringify(call.params));
+    }
     doc.send();
 }
 

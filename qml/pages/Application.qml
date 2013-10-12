@@ -7,6 +7,7 @@ import "../js/api.js" as Api
 PageWrapper {
     id: appDetails
     signal update()
+    signal browse(string userid, string username)
 
     property variant application: {}
 
@@ -22,6 +23,13 @@ PageWrapper {
         page.update.connect(function(){
             Api.apps.loadApplication(page, application.appid);
         })
+        page.browse.connect(function(userid, username){
+            stack.push(Qt.resolvedUrl("ApplicationBrowse.qml"),
+               {
+                    "options": {"type": "user", "id": userid},
+                    "headerText": qsTr("Apps by: %1").arg(username),
+               });
+        });
         page.update();
     }
 
@@ -101,6 +109,9 @@ PageWrapper {
             }
             NextBox {
                 text: qsTr("More apps by %1").arg(application.user.name);
+                onAreaClicked: {
+                    appDetails.browse(application.user.uid, application.user.name);
+                }
             }
 
             SectionHeader {

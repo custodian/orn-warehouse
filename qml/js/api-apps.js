@@ -34,3 +34,30 @@ apps.onLoadApplication = function(call, response) {
     page.waiting_hide();
     page.application = response;
 }
+
+apps.browseApps = function(page) {
+    page.waiting_show();
+    var type = page.options.type;
+    var template = "";
+    switch(type) {
+    case "category":
+        template = "categories/%1/apps";
+        break;
+    case "user":
+        template = "users/%1/apps";
+        break;
+    }
+    var url = template.arg(page.options.id);
+    var params = {"page": page.page};
+    var call = apiCall(page, "GET", url, params);
+    api.request(call, apps.onBrowseApps);
+};
+
+apps.onBrowseApps = function(call, response) {
+    call.page.appsModel.clear();
+    response.forEach(function(application) {
+        //console.log("LASTAPP: " + JSON.stringify(application));
+        call.page.appsModel.append({"application":application});
+    });
+    call.page.waiting_hide();
+}

@@ -33,7 +33,7 @@ Rectangle {
             top: parent.top
             topMargin: 4
         }
-        masked: true
+        masked: false//true
     }
 
     Column {

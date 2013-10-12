@@ -16,6 +16,7 @@ Item {
         id: fullview
         width: 360
         height: 640
+        smooth: true
         anchors {
             top: parent.top
             topMargin: 10
@@ -23,7 +24,6 @@ Item {
             leftMargin: 20
         }
         fillMode: Image.PreserveAspectCrop
-        //sourceUncached: undefined
     }
 
     Column {
@@ -40,7 +40,7 @@ Item {
             delegate: Rectangle {
                 width: 56
                 height: 100
-                border.width: 4
+                border.width: 6
                 border.color: __selected == index ? "blue" : "gray"
                 color: "transparent"
                     CacheImage {
