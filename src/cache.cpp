@@ -88,6 +88,8 @@ QString Cache::md5(QString data)
 
 QString Cache::makeCachedURL(QString url)
 {
+    QUrl uri(url);
+    url = uri.toString(QUrl::RemoveQuery);
     QString ext = url.right(url.size() - url.lastIndexOf("."));
     ext = ext.left(ext.indexOf("/"));
     return m_path + "/" + md5(url) + ext;

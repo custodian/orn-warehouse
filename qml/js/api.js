@@ -26,9 +26,10 @@ Qt.include("qmlprivate.js")
 
 Qt.include("api-core.js")
 Qt.include("api-apps.js")
+Qt.include("api-categories.js")
 /*
 Qt.include("api-users.js")
-Qt.include("api-categories.js")
+
 Qt.include("api-comments.js")
 Qt.include("api-search.js")
 

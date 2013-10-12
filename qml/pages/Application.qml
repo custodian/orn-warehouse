@@ -52,6 +52,7 @@ PageWrapper {
 
             ApplicationBox {
                 application: appDetails.application
+                categorystyle: "full"
             }
 
             Button {
@@ -76,66 +77,30 @@ PageWrapper {
                 horizontalAlignment: Text.AlignHCente
                 wrapMode: Text.WordWrap
 
-                text: application.body
+                text: application.body !== undefined ? application.body : ""
             }
 
             SectionHeader {
-                text: qsTr("Description")
+                text: qsTr("Comments & reviews")
             }
-            Text {
-                anchors {
-                    left: parent.left
-                    leftMargin: 10
-                    right: parent.right
-                    rightMargin: 10
-                }
-
-                font.pixelSize: mytheme.font.sizeHelp
-                horizontalAlignment: Text.AlignHCente
-                wrapMode: Text.WordWrap
-
-                text: qsTr("Comments (%1) >").arg(application.comments_count);
+            NextBox {
+                text: qsTr("Comments (%1)").arg(application.comments_count);
             }
 
             SectionHeader {
                 text: qsTr("Screenshots")
                 visible: application.screenshots!== undefined
             }
-            Row {
-                height: 240
-                spacing: 10
-                Repeater {
-                    width: parent.width
-                    model: application.screenshots
-                    delegate: MaskedImage {
-                        masked: false
-                        photoWidth: 120
-                        photoHeight: 240
-                        photoUrl: modelData.url
-
-                        Component.onCompleted: {
-                            console.log("test: " + JSON.stringify(modelData))
-                        }
-                    }
-                }
+            ScreenshotBox {
+                screenshots: application.screenshots
                 visible: application.screenshots!== undefined
             }
+
             SectionHeader {
                 text: qsTr("Publisher")
             }
-            Text {
-                anchors {
-                    left: parent.left
-                    leftMargin: 10
-                    right: parent.right
-                    rightMargin: 10
-                }
-
-                font.pixelSize: mytheme.font.sizeHelp
-                horizontalAlignment: Text.AlignHCente
-                wrapMode: Text.WordWrap
-
-                text: qsTr("More apps from this publisher >")
+            NextBox {
+                text: qsTr("More apps by %1").arg(application.user.name);
             }
 
             SectionHeader {

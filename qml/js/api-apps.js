@@ -33,5 +33,4 @@ apps.onLoadApplication = function(call, response) {
     var page = call.page;
     page.waiting_hide();
     page.application = response;
-    apps.log(JSON.stringify(response));
 }

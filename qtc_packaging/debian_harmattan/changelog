@@ -1,5 +1,11 @@
+warehouse (0.0.3) unstable; urgency=low
+  * Categories
+
+ -- Basil Semuonov <basil.semuonov@gmail.com>  Sat, 12 Oct 2013 16:12:23 +0400
+
 warehouse (0.0.2) unstable; urgency=low
   * Application page mockup
+  * Screenshots preview
 
  -- Basil Semuonov <basil.semuonov@gmail.com>  Fri, 11 Oct 2013 17:20:00 +0400
 

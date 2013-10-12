@@ -90,6 +90,13 @@ PageStackWindow {
         }
     }
 
+    QtObject {
+        id: categotyParser
+        function parse(category, style) {
+            return Api.categories.parse(category, style);
+        }
+    }
+
     ThemeLoader {
         id: mytheme
 

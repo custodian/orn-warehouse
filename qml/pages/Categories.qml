@@ -5,8 +5,10 @@ import "../components"
 import "../js/api.js" as Api
 
 PageWrapper {
-    id: appList
+    id: catList
     signal update()
+
+    property variant categories: []
 
 
     width: parent.width
@@ -17,10 +19,10 @@ PageWrapper {
     //headerIcon: "../icons/icon-header-checkinhistory.png"
 
     function load() {
-        var page = appList;
-        /*page.update.connect(function(){
-            Api.apps.loadRecent(page);
-        })*/
+        var page = catList;
+        page.update.connect(function(){
+            Api.categories.loadCategories(page);
+        });
         page.update();
     }
 
@@ -29,31 +31,56 @@ PageWrapper {
         onClicked: { }
     }
 
-    ListView {
-        //model: appsModel
+    Flickable{
+        id: flickableArea
         anchors.top: pagetop
         width: parent.width
         height: parent.height - y
-        delegate: catDelegate
-        //highlightFollowsCurrentItem: true
+        contentWidth: parent.width
+
         clip: true
-        cacheBuffer: 400
+        flickableDirection: Flickable.VerticalFlick
+        boundsBehavior: Flickable.StopAtBounds
+        pressDelay: 100
 
-        //header:
-    }
+        Column {
+            width: parent.width
+            spacing: 5
 
-    Text {
-        anchors.centerIn: parent
-        font.pixelSize: mytheme.font.sizeSigns
-        text: "This is not implemented yet, come back later!"
-        width: parent.width
-        horizontalAlignment: Text.AlignHCente
-        wrapMode: Text.WordWrap
+            onHeightChanged: {
+                flickableArea.contentHeight = height + y;
+            }
+
+            Repeater {
+                width: parent.width
+                model: catList.categories
+                delegate: catMainDelegate
+            }
+        }
     }
 
     Component {
-        id: catDelegate
+        id: catMainDelegate
 
-        Item{}
+        Column {
+            width: parent.width
+            NextBox {
+                text: "%1 (%2)".arg(modelData.name).arg(modelData.apps_count)
+            }
+            Column {
+                anchors {
+                    left: parent.left
+                    leftMargin: 50
+                    right: parent.right
+                }
+                Repeater {
+                    model: modelData.childrens
+                    width: parent.width
+                    delegate: NextBox {
+                        text: "%1 (%2)".arg(modelData.name).arg(modelData.apps_count)
+                    }
+                }
+            }
+        }
     }
 }

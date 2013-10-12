@@ -28,6 +28,9 @@ PageWrapper {
         })
         page.update();
     }
+    function updateView() {
+        update();
+    }
 
     ListModel {
         id: appsModel

@@ -9,6 +9,7 @@ Rectangle {
 
     property variant application: {}
     property bool highlight: false
+    property string categorystyle: "small" //full
 
     color: mouseArea.pressed || highlight ? mytheme.colors.backgroundSand : mytheme.colors.backgroundMain
     width: parent.width
@@ -60,9 +61,9 @@ Rectangle {
 
         Text {
             color: mytheme.colors.textColorShout
-            font.pixelSize: mytheme.font.sizeNote
+            font.pixelSize: mytheme.font.sizeHelp
             width: parent.width
-            text: "unknown category"
+            text: categotyParser.parse(application.category, appItem.categorystyle)
             wrapMode: Text.Wrap
 
             Text {
@@ -77,9 +78,8 @@ Rectangle {
             }
         }
 
-        ScoreBox {
-            id: scorebox
-            //score: application.score
+        RatingBox {
+            rating: application.rating
         }
     }
 
