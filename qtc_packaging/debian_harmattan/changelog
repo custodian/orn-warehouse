@@ -1,3 +1,8 @@
+warehouse (0.0.4) unstable; urgency=low
+  * Application installation
+
+ -- Basil Semuonov <basil.semuonov@gmail.com>  Sun, 13 Oct 2013 21:09:52 +0400
+
 warehouse (0.0.3) unstable; urgency=low
   * Categories page
   * Application browsing

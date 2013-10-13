@@ -8,6 +8,8 @@ PageWrapper {
     id: appDetails
     signal update()
     signal browse(string userid, string username)
+    signal install(string packagename)
+    signal uninstall(string packagename)
 
     property variant application: {}
 
@@ -30,7 +32,17 @@ PageWrapper {
                     "headerText": qsTr("Apps by: %1").arg(username),
                });
         });
+        page.install.connect(function(packagename) {
+
+        });
         page.update();
+    }
+
+    function apploaded() {
+        if (application.packages.harmattan !== undefined) {
+            manageBox.repository = application.user.name;
+            manageBox.apppackage = application.packages.harmattan;
+        }
     }
 
     MouseArea {
@@ -63,13 +75,10 @@ PageWrapper {
                 categorystyle: "full"
             }
 
-            Button {
-                anchors.horizontalCenter: parent.horizontalCenter
-                text: qsTr("Install")
-                onClicked: {
-                    show_error("You cannot install apps yet!");
-                }
+            AppManageBox {
+                id: manageBox
             }
+
             SectionHeader {
                 text: qsTr("Description")
             }

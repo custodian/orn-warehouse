@@ -34,10 +34,12 @@ INCLUDEPATH += $PWD/src
 
 HEADERS += \
     src/apptranslator.h \
+    src/packagemanager.h \
     src/cache.h
 
 SOURCES += src/main.cpp \
     src/apptranslator.cpp \
+    src/packagemanager.cpp \
     src/cache.cpp
 
 !simulator {
@@ -81,6 +83,12 @@ maemo5 {
 qmlresources.target = .
 qmli18n.target = i18n
 DEPLOYMENTFOLDERS += qmlresources qmli18n
+
+!simulator {
+    openreposkey.source = $$PWD/openrepos.key
+    openreposkey.target = .
+    DEPLOYMENTFOLDERS += openreposkey
+}
 
 #deploy targets
 qtcAddDeployment()

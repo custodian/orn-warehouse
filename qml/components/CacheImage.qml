@@ -20,7 +20,7 @@ Image {
         loader.visible = (root.status != Image.Ready)
         if (root.status == Image.Error) {
             //Error loading
-            cache.removeUrl(__sourceUncached);
+            imageCache.removeUrl(__sourceUncached);
             cacheLoad();
         }
     }
@@ -29,7 +29,7 @@ Image {
         //console.log("New url arrived: " + sourceUncached + " Old was: " + __sourceUncached);
         //Remove old queue (if any)
         if (__sourceUncached !== "") {
-            cache.dequeueObject(__sourceUncached,root.toString());
+            imageCache.dequeueObject(__sourceUncached,root.toString());
             Api.objs.remove(root);
         }
         //setup new url
@@ -43,7 +43,7 @@ Image {
                 && __sourceUncached.indexOf("http") !== -1 ) {
             //if valid url - queue cache
             Api.objs.save(root).cacheCallback = cacheCallback;
-            cache.queueObject(__sourceUncached,root.toString());
+            imageCache.queueObject(__sourceUncached,root.toString());
         } else {
             //just reset source
             source = __sourceUncached;
@@ -54,7 +54,7 @@ Image {
         //remove queue (if any)
         if (__sourceUncached !== "") {
             //console.log("Dequeue cache for: " + __sourceUncached);
-            cache.dequeueObject(__sourceUncached,root.toString());
+            imageCache.dequeueObject(__sourceUncached,root.toString());
             Api.objs.remove(root);
         }
     }

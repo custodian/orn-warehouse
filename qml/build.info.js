@@ -1,3 +1,3 @@
-var build = '201310121735';
-var version = "0.0.3";
-var changelog = " - Categories page  - Application browsing ";
+var build = '201310132201';
+var version = "0.0.4";
+var changelog = " - Application installation ";

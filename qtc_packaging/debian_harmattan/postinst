@@ -1,0 +1,15 @@
+#!/bin/sh
+
+OPENREPOS_KEY='/opt/warehouse/openrepos.key'
+
+echo "Installing OpenRepos.key"
+
+if [ -f $OPENREPOS_KEY ]; then
+       cat $OPENREPOS_KEY | apt-key add -
+fi
+
+echo "Changing attributes on /etc/apt/sources.list.d"
+chmod a+rw /etc/apt/sources.list.d
+
+# Make sure the installation is always considered successful
+exit 0

@@ -1,14 +1,14 @@
 Source: warehouse
 Section: user/other
 Priority: optional
-Maintainer: unknown <>
+Maintainer: Basil Semuonov <basil.semuonov@gmail.com>
 Build-Depends: debhelper (>= 5), libqt4-dev
 Standards-Version: 3.7.3
-Homepage: <insert the upstream URL, if relevant>
+Homepage: https://openrepos.net/content/basil/warehouse
 
 Package: warehouse
-Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Architecture: armel
+Depends: ${shlibs:Depends}, ${misc:Depends}, libqt4-declarative
 Description: Native client for OpenRepos
   Browse and install applications, enable repositories.
   This application is not ready for active usage

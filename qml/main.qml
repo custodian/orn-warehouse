@@ -25,8 +25,9 @@ PageStackWindow {
 
     Page {
         id: mainPage
-
+        orientationLock: PageOrientation.LockPortrait
         tools: stack.currentPage !== null ? stack.currentPage.tools : null
+
         onToolsChanged: {
             if (pageStack) {
                 pageStack.toolBar.tools = tools;
@@ -243,8 +244,12 @@ PageStackWindow {
         }
     }
 
-    /*Connections {
-       target: cache
+    Connections {
+       target: imageCache
        onCacheUpdated: appWindow.onCacheUpdated(callback, status, url)
-    }*/
+    }
+    Connections {
+        target: appTranslator
+        onLanguageChanged: appWindow.onLanguageChanged(language)
+    }
 }

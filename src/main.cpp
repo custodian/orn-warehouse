@@ -11,6 +11,7 @@
 
 #include "apptranslator.h"
 #include "cache.h"
+#include "packagemanager.h"
 
 #if defined(Q_OS_HARMATTAN)
 #include <MDeclarativeCache>
@@ -31,7 +32,8 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     QApplication *app = createApplication(argc, argv);
 
     AppTranslator *appTranslator = new AppTranslator(app);
-    Cache *cache = new Cache("warehouse");
+    Cache *imageCache = new Cache("warehouse",app);
+    PackageManager *pkgManager = new PackageManager(app);
 
     //TODO: Enable before stable release, after remastering settings
     //Also check if app hangs on new install without database
@@ -59,14 +61,15 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     viewer.viewport()->setAttribute(Qt::WA_OpaquePaintEvent);
     viewer.viewport()->setAttribute(Qt::WA_NoSystemBackground);
 
-    viewer.rootContext()->setContextProperty("translator", appTranslator);
-    viewer.rootContext()->setContextProperty("cache", cache);
+    viewer.rootContext()->setContextProperty("appTranslator", appTranslator);
+    viewer.rootContext()->setContextProperty("imageCache", imageCache);
+    viewer.rootContext()->setContextProperty("pkgManager", pkgManager);
 
     viewer.setMainQmlFile(QLatin1String("qml/main.qml"));
     QObject *rootObject = qobject_cast<QObject*>(viewer.rootObject());
-    //Q_UNUSED(rootObject)
-    rootObject->connect(cache,SIGNAL(cacheUpdated(QVariant,QVariant,QVariant)),SLOT(onCacheUpdated(QVariant,QVariant,QVariant)));
-    rootObject->connect(appTranslator,SIGNAL(languageChanged(QVariant)),SLOT(onLanguageChanged(QVariant)));
+    Q_UNUSED(rootObject)
+    //rootObject->connect(cache,SIGNAL(cacheUpdated(QVariant,QVariant,QVariant)),SLOT(onCacheUpdated(QVariant,QVariant,QVariant)));
+    //rootObject->connect(appTranslator,SIGNAL(languageChanged(QVariant)),SLOT(onLanguageChanged(QVariant)));
 
 #if defined(Q_OS_HARMATTAN) || defined(Q_OS_MAEMO)
     DBusService dbus(app,&viewer);
@@ -84,6 +87,8 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 #if defined(Q_OS_MAEMO)
     splash.finish(&viewer);
 #endif
+    pkgManager->updateRepositoryList();
+    pkgManager->getPackageInfo("warehouse");
 
     return app->exec();
 }
