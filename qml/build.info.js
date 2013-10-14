@@ -1,3 +1,3 @@
-var build = '201310142140';
-var version = "0.0.5";
-var changelog = " - Search tab ";
+var build = '201310142237';
+var version = "0.0.6";
+var changelog = " - Page buttons for search tab  - Minor ui fixes ";

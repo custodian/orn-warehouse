@@ -10,6 +10,9 @@ PageWrapper {
     signal search(string keys)
     signal update()
 
+    property int page: 0
+    property int pageSize: 10
+    property string __keys: ""
     property alias appsModel: appsModel
 
     width: parent.width
@@ -22,10 +25,17 @@ PageWrapper {
     function load() {
         var page = searchResult;
         page.update.connect(function(){
+            page.page = 0;
+            page.__keys = "";
             appsModel.clear();
         });
         page.search.connect(function(keys){
-            Api.search.apps(page, keys);
+            if (keys == "") {
+                keys = __keys;
+            } else {
+                __keys = keys;
+            }
+            Api.search.apps(page, keys, page.page);
         })
         page.application.connect(function(app) {
             stack.push(Qt.resolvedUrl("Application.qml"),{"application":app});
@@ -57,13 +67,11 @@ PageWrapper {
         clip: true
         cacheBuffer: 400
 
-        header: Item {
-            height: headerColumn.height + 15
+        header: Rectangle {
+            height: headerColumn.height + 20
             width: parent.width
-            Rectangle {
-                anchors.fill: parent
-                color: mytheme.colors.backgroundSplash
-            }
+            color: mytheme.colors.backgroundSplash
+
             Column {
                 id: headerColumn
                 width: parent.width
@@ -72,6 +80,7 @@ PageWrapper {
                     topMargin: 10
                 }
                 spacing: 4
+
                 SearchBox {
                     id: searchBox
                     placeHolderText: "Enter keywords"
@@ -80,6 +89,34 @@ PageWrapper {
                     }
                     onTrashClicked: {
                         searchResult.update();
+                    }
+                }
+            }
+        }
+
+        footer: Item {
+            width: parent.width
+            height: pagerRow.height + 30
+            ButtonRow {
+                id: pagerRow
+                anchors.centerIn: parent
+                exclusive: false
+                Button {
+                    //anchors.horizontalCenter: parent.horizontalCenter
+                    text: qsTr("Prev page")
+                    visible: searchResult.page > 0
+                    onClicked: {
+                        searchResult.page--;
+                        searchResult.search("");
+                    }
+                }
+                Button {
+                    //anchors.horizontalCenter: parent.horizontalCenter
+                    text: qsTr("Next page")
+                    visible: appsModel.count == searchResult.pageSize
+                    onClicked: {
+                        searchResult.page++;
+                        searchResult.search("");
                     }
                 }
             }

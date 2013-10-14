@@ -9,8 +9,8 @@ api.log("loading api-search...");
 var search = new ApiObject();
 //notifications.debuglevel = 1;
 
-search.apps = function(page, query) {
-    var call = apiCall(page, "GET", "search/apps", {"keys":query});
+search.apps = function(page, query, pageno) {
+    var call = apiCall(page, "GET", "search/apps", {"keys":query, "page": pageno});
     page.waiting_show();
     api.request(call, search.onAppsSearch);
 }

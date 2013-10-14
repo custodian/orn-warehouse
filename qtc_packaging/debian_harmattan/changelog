@@ -1,3 +1,14 @@
+warehouse (0.0.7) unstable; urgency=low
+  * <Add change description here>
+
+ -- Basil Semuonov <basil.semuonov@gmail.com>  Mon, 14 Oct 2013 22:38:37 +0400
+
+warehouse (0.0.6) unstable; urgency=low
+  * Page buttons for search tab
+  * Minor ui fixes
+
+ -- Basil Semuonov <basil.semuonov@gmail.com>  Mon, 14 Oct 2013 21:46:51 +0400
+
 warehouse (0.0.5) unstable; urgency=low
   * Search tab
 

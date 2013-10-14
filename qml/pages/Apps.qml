@@ -51,13 +51,11 @@ PageWrapper {
         clip: true
         cacheBuffer: 400
 
-        header: Item {
+        header: Rectangle {
             height: headerColumn.height + 15
             width: parent.width
-            Rectangle {
-                anchors.fill: parent
-                color: mytheme.colors.backgroundSplash
-            }
+            color: mytheme.colors.backgroundSplash
+
             Column {
                 id: headerColumn
                 width: parent.width

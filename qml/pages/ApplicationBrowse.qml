@@ -79,27 +79,30 @@ PageWrapper {
             }
         }
 
-        footer: ButtonRow {
-            anchors.horizontalCenter: parent.horizontalCenter
-            exclusive: false
-            height: 50
-            //width: parent.width
-            Button {
-                //anchors.horizontalCenter: parent.horizontalCenter
-                text: qsTr("Prev page")
-                visible: appList.page > 0
-                onClicked: {
-                    appList.page--;
-                    update();
+        footer: Item {
+            width: parent.width
+            height: pagerRow.height + 30
+
+            ButtonRow {
+                anchors.centerIn: parent
+                exclusive: false
+                Button {
+                    //anchors.horizontalCenter: parent.horizontalCenter
+                    text: qsTr("Prev page")
+                    visible: appList.page > 0
+                    onClicked: {
+                        appList.page--;
+                        update();
+                    }
                 }
-            }
-            Button {
-                //anchors.horizontalCenter: parent.horizontalCenter
-                text: qsTr("Next page")
-                visible: appsModel.count == appList.pageSize
-                onClicked: {
-                    appList.page++;
-                    update();
+                Button {
+                    //anchors.horizontalCenter: parent.horizontalCenter
+                    text: qsTr("Next page")
+                    visible: appsModel.count == appList.pageSize
+                    onClicked: {
+                        appList.page++;
+                        update();
+                    }
                 }
             }
         }
