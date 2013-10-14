@@ -4,7 +4,7 @@
 
 .pragma library
 
-api.log("loading api-notifications...");
+api.log("loading api-apps...");
 
 var apps = new ApiObject();
 //notifications.debuglevel = 1;

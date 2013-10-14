@@ -112,20 +112,28 @@ QVariant PackageManager::getPackageInfo(QString packagename) {
 }
 
 void PackageManager::install(QString packagename) {
+#if defined(Q_OS_HARMATTAN)
     QDBusMessage msg = QDBusMessage::createMethodCall(PKG_SERVICE,PKG_PATH,PKG_IFACE,"install");
     QVariantList args;
     args.push_back(packagename);
     args.push_back("");
     msg.setArguments(args);
     m_bus.asyncCall(msg);
+#else
+    Q_UNUSED(packagename);
+#endif
 }
 
 void PackageManager::uninstall(QString packagename) {
+#if defined(Q_OS_HARMATTAN)
     QDBusMessage msg = QDBusMessage::createMethodCall(PKG_SERVICE,PKG_PATH,PKG_IFACE,"uninstall");
     QVariantList args;
     args.push_back(packagename);
     msg.setArguments(args);
     m_bus.asyncCall(msg);
+#else
+    Q_UNUSED(packagename);
+#endif
 }
 
 void PackageManager::enableRepository(QString name)

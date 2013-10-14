@@ -12,6 +12,7 @@ Page {
 
     property string color
     property alias pagetop: pageHeader.bottom
+    property alias busy: pageHeader.busy
 
     tools : commonTools
     property QtObject pageMenu: defaultMenu
