@@ -21,17 +21,13 @@
 #define PKG_PATH    "/com/nokia/package_manager"
 #define PKG_IFACE   "com.nokia.package_manager"
 
-void ActionTask::run() {
-       pkgManager->processAction(payload);
-}
-
 PackageManager::PackageManager(QObject *parent) :
     QObject(parent)
 #ifndef Q_WS_SIMULATOR
   , m_bus("warehouse")
 #endif
 {
-    m_component = NULL;
+    m_worker.setCallObject(this);
 #if defined(Q_OS_HARMATTAN)
     m_repospath = "/etc/apt/sources.list.d";
 
@@ -58,10 +54,6 @@ PackageManager::PackageManager(QObject *parent) :
 #endif
 }
 
-void PackageManager::setComponent(QObject *component) {
-    m_component = component;
-}
-
 void PackageManager::onPkgOperationStarted(QString operation, QString name, QString version) {
     //qDebug() << "Operation started" << operation << name << version;
     emit operationStarted(QVariant(operation),QVariant(name),QVariant(version));
@@ -85,16 +77,34 @@ void PackageManager::onPkgPackageListUpdate(bool result) {
 }
 
 void PackageManager::queueAction(QVariant msg) {
-    QThreadPool::globalInstance()->start(new ActionTask(this,msg));
+    m_worker.queueAction(msg);
 }
 
-void PackageManager::processAction(QVariant _msg) {
-    QVariantMap msg = _msg.toMap();
-    qDebug() << "In process action";
-    QMetaObject::invokeMethod(m_component, "msgCallbackFunction",
-            //Q_RETURN_ARG(QVariant, returnedValue),
-            Q_ARG(QVariant, msg));
-    //emit actionDone(msg);
+void PackageManager::processAction(QVariant message) {
+    QVariantMap msg = message.toMap();
+    QString function = msg["name"].toString();
+    QVariant params = msg["params"];
+    //qDebug() << "Process:" << function << "Args:" << params;
+    if (function == "fetchRepositoryInfo") {
+        fetchRepositoryInfo();
+    } else if(function == "updateRepositoryList") {
+        updateRepositoryList();
+    } else if(function == "enableRepository") {
+        enableRepository(params.toString());
+    } else if(function == "disableRepository") {
+        disableRepository(params.toString());
+    } else if(function == "isRepositoryEnabled") {
+        msg["result"] = isRepositoryEnabled(params.toString());
+    } else if(function == "getPackageInfo") {
+        msg["result"] = getPackageInfo(params.toString());
+    } else if(function == "install") {
+        install(params.toString());
+    } else if(function == "uninstall") {
+        uninstall(params.toString());
+    } else if(function == "") {
+        //install(params.toString());
+    }
+    emit actionDone(msg);
 }
 
 QString PackageManager::getListFileName(QString name) {
@@ -110,7 +120,11 @@ void PackageManager::fetchRepositoryInfo() {
     args.push_back("");
     args.push_back("");
     msg.setArguments(args);
-    m_bus.asyncCall(msg);
+    m_bus.call(msg);
+#else
+    emit operationStarted("Refresh", "", "");
+    IWaiter::sleep(2);
+    emit operationCompleted("Refresh","","","",false);
 #endif
 }
 
@@ -129,8 +143,15 @@ QVariant PackageManager::getPackageInfo(QString packagename) {
         return QVariant(false);
     }
 #else
-    Q_UNUSED(packagename);
-    return QVariant(false);
+    QVariantMap result;
+    result["Type"] = "NotInstalled";
+    result["Version"] = "1.0.1";
+    if (m_packages.contains(packagename)) {
+        result = m_packages[packagename];
+    } else {
+        m_packages[packagename] = result;
+    }
+    return result;
 #endif
 }
 
@@ -144,9 +165,23 @@ void PackageManager::install(QString packagename) {
     args.push_back(packagename);
     args.push_back("");
     msg.setArguments(args);
-    m_bus.asyncCall(msg);
+    m_bus.call(msg);
 #else
-    Q_UNUSED(packagename);
+
+    if (m_packages.contains(packagename)) {
+        QVariantMap &package = m_packages[packagename];
+        for (int i=0;i<100;i++) {
+            emit downloadProgress("Download", packagename, package["Version"], i,100);
+            IWaiter::msleep(10);
+        }
+        emit operationStarted("Install", packagename, package["Version"]);
+        for (int i=0;i<100;i++) {
+            emit operationProgress("Install", packagename, package["Version"], i);
+            IWaiter::msleep(10);
+        }
+        emit operationCompleted("Install",packagename,package["Version"],"",false);
+        package["Type"] = "Installed";
+    }
 #endif
 }
 
@@ -156,9 +191,18 @@ void PackageManager::uninstall(QString packagename) {
     QVariantList args;
     args.push_back(packagename);
     msg.setArguments(args);
-    m_bus.asyncCall(msg);
+    m_bus.call(msg);
 #else
-    Q_UNUSED(packagename);
+    if (m_packages.contains(packagename)) {
+        QVariantMap &package = m_packages[packagename];
+        emit operationStarted("Uninstall", packagename, package["Version"]);
+        for (int i=0;i<100;i++) {
+            emit operationProgress("Uninstall", packagename, package["Version"], i);
+            IWaiter::msleep(10);
+        }
+        emit operationCompleted("Uninstall",packagename,package["Version"],"",false);
+        package["Type"] = "NotInstalled";
+    }
 #endif
 }
 
@@ -177,7 +221,6 @@ void PackageManager::enableRepository(QString name)
 void PackageManager::disableRepository(QString name)
 {
     QString filepath = getListFileName(name);
-    qDebug() << "removing" << filepath;
     QFile::remove(filepath);
     //update list
     updateRepositoryList();

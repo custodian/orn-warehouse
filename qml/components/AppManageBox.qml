@@ -5,40 +5,80 @@ import "."
 
 Column {
     property string repository: ""
-    property bool repository_enabled: false
+    property bool isRepositoryEnabled: false
     property variant appstatus: {}
     property variant apppackage: {}
 
-    property bool opInProgress: false
+    property bool opInProgress: pkgManagerProxy.opInProgress
+    property bool isInstalledFromLocalFile: appstatus.Repository === "local-file"
+    property bool isInstalledFromOvi: appstatus.Origin === "com.nokia.maemo/ovi"
+    property bool isInstalledNotFromOpenRepos: isInstalledFromOvi || isInstalledFromLocalFile
+    property bool isInstalled: appstatus.Type === "Installed"
+    property bool isNotInstalled: appstatus.Type === "NotInstalled"
+    property bool isStateUnknown: appstatus.Type === undefined
 
     width: parent.width
 
     onApppackageChanged: {
         updateAppStatus();
-        //console.log("HARMATTAN PACKAGE: " + JSON.stringify(apppackage));
     }
     onRepositoryChanged: {
-        repository_enabled = pkgManager.isRepositoryEnabled(repository);
-    }
-
-    Component.onCompleted: {
-        pkgManagerProxy.reemitOperation(processOperation);
+        pkgManagerProxy.isRepositoryEnabled(repository,
+            function(result) {
+                isRepositoryEnabled = result;
+            });
     }
 
     function updateAppStatus() {
-        var result = pkgManager.getPackageInfo(apppackage.name);
-        if (result !== false) {
-            appstatus = result;
+        if (apppackage.name !== undefined) {
+            pkgManagerProxy.getPackageInfo( apppackage.name,
+                function(result) {
+                    if (result !== false) {
+                        appstatus = result;
+                    }
+                });
         }
     }
-
+    Text {
+        anchors.horizontalCenter: parent.horizontalCenter
+        color: mytheme.colors.textColorShout
+        font.pixelSize: mytheme.font.sizeHelp
+        text: qsTr("Version: %1").arg(appstatus.Version)
+        wrapMode: Text.Wrap
+        visible: !isStateUnknown && !opInProgress
+    }
+    Text {
+        anchors.horizontalCenter: parent.horizontalCenter
+        color: mytheme.colors.textColorShout
+        font.pixelSize: mytheme.font.sizeHelp
+        text: qsTr("Download size: %1 Kb").arg(appstatus.Size/1000)
+        wrapMode: Text.Wrap
+        visible: isNotInstalled && !opInProgress
+    }
+    Text {
+        anchors.horizontalCenter: parent.horizontalCenter
+        color: mytheme.colors.textColorShout
+        font.pixelSize: mytheme.font.sizeHelp
+        text: qsTr("Installed from OVI-Store")
+        wrapMode: Text.Wrap
+        visible: isInstalledFromOvi && !opInProgress
+    }
+    Text {
+        anchors.horizontalCenter: parent.horizontalCenter
+        color: mytheme.colors.textColorShout
+        font.pixelSize: mytheme.font.sizeHelp
+        text: qsTr("Installed from Local File")
+        wrapMode: Text.Wrap
+        visible: isInstalledFromLocalFile && !opInProgress
+    }
     Button {
         anchors.horizontalCenter: parent.horizontalCenter
         text: qsTr("Fetch repository info")
         onClicked: {
-            pkgManager.fetchRepositoryInfo();
+            opInProgress = true;
+            pkgManagerProxy.fetchRepositoryInfo();
         }
-        visible: repository_enabled && appstatus.Type === undefined && !opInProgress
+        visible: isRepositoryEnabled && isStateUnknown && !opInProgress
     }
     Button {
         anchors.horizontalCenter: parent.horizontalCenter
@@ -46,103 +86,47 @@ Column {
         onClicked: {
             //enable repository
             if (repository != "") {
-                pkgManager.enableRepository(repository);
-                pkgManager.fetchRepositoryInfo();
-                repository_enabled = pkgManager.isRepositoryEnabled(repository);
+                pkgManagerProxy.enableRepository(repository);
+                pkgManagerProxy.fetchRepositoryInfo();
+                pkgManagerProxy.isRepositoryEnabled(repository, function(result) {
+                    isRepositoryEnabled = result;
+                });
                 updateAppStatus();
             } else {
                 appDetails.show_error("Unknown repository!");
             }
         }
-        visible: repository!=="" && !repository_enabled && !opInProgress
+        visible: repository!=="" && !isRepositoryEnabled && !opInProgress
     }
     Button {
         anchors.horizontalCenter: parent.horizontalCenter
         text: qsTr("Install")
         onClicked: {
-            //install
-            pkgManager.install(apppackage.name);
+            pkgManagerProxy.install(apppackage.name, updateAppStatus);
         }
-        visible: appstatus.Type === "NotInstalled" && !opInProgress
+        visible: isNotInstalled && !opInProgress
+    }
+    Button {
+        anchors.horizontalCenter: parent.horizontalCenter
+        text: qsTr("Re-Install")
+        onClicked: {
+            pkgManagerProxy.enableRepository(repository);
+            pkgManagerProxy.uninstall(apppackage.name);
+            pkgManagerProxy.install(apppackage.name, updateAppStatus);
+        }
+        visible: isInstalled && isInstalledNotFromOpenRepos && !opInProgress
     }
     Button {
         anchors.horizontalCenter: parent.horizontalCenter
         text: qsTr("Uninstall")
         onClicked: {
-            //uninstall
-            pkgManager.uninstall(apppackage.name);
+            pkgManagerProxy.uninstall(apppackage.name, updateAppStatus);
         }
-        visible: appstatus.Type === "Installed" && !opInProgress
+        visible: isInstalled && !opInProgress
+    }
+    PkgManagerStatus {
+        id: pkgStatus
     }
 
-    Column {
-        width: parent.width
-        spacing: 5
-        Text {
-            anchors.horizontalCenter: parent.horizontalCenter
-            color: mytheme.colors.textColorShout
-            font.pixelSize: mytheme.font.sizeHelp
-            text: qsTr("Current operation")
-        }
-        Text {
-            id: operationText
-            anchors.horizontalCenter: parent.horizontalCenter
-            color: mytheme.colors.textColorShout
-            font.pixelSize: mytheme.font.sizeHelp
-            visible: operationText.text.length > 0
-        }
-        Text {
-            id: operationTextApp
-            anchors.horizontalCenter: parent.horizontalCenter
-            color: mytheme.colors.textColorShout
-            font.pixelSize: mytheme.font.sizeHelp
-            visible: operationTextApp.text.length > 0
-        }
-        ProgressBar {
-            id: progressBar
-            anchors.horizontalCenter: parent.horizontalCenter
-            width: parent.width/3*2
-            minimumValue: 0
-            maximumValue: 100
-            value: 50
-        }
-        visible: opInProgress
-    }
-
-    function processOperation(operation){
-        progressBar.indeterminate = false;
-        progressBar.value = operation.progress;
-        if (operation.status === "Completed") {
-            opInProgress = false;
-            updateAppStatus();
-        } else {
-            opInProgress = true;
-        }
-        switch(operation.operation) {
-        case 'InstallFile':
-        case 'Install':
-            operationText.text = qsTr("Installing application");
-            operationTextApp.text = "%1 (%2)".arg(operation.name).arg(operation.version);
-            break;
-        case 'Uninstall':
-            operationText.text = qsTr("Unintalling application");
-            operationTextApp.text = "%1 (%2)".arg(operation.name).arg(operation.version);
-            break;
-        case 'Download':
-            operationText.text = qsTr("Downloading application");
-            operationTextApp.text = "%1 (%2)".arg(operation.name).arg(operation.version);
-            break;
-        case 'Refresh':
-            operationText.text = qsTr("Fetching repositories");
-            operationTextApp.text = "";
-            progressBar.indeterminate = true;
-            break;
-        }
-    }
-
-    Connections {
-        target: pkgManagerProxy
-        onProcessedOperation: processOperation(operation)
-    }
 }
 

@@ -12,6 +12,7 @@
 #include "apptranslator.h"
 #include "cache.h"
 #include "packagemanager.h"
+#include "qmlthreadworker.h"
 
 #if defined(Q_OS_HARMATTAN)
 #include <MDeclarativeCache>
@@ -34,6 +35,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     AppTranslator *appTranslator = new AppTranslator(app);
     Cache *imageCache = new Cache("warehouse",app);
     PackageManager *pkgManager = new PackageManager(app);
+    pkgManager->updateRepositoryList();
 
     //TODO: Enable before stable release, after remastering settings
     //Also check if app hangs on new install without database
@@ -67,7 +69,6 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
     viewer.setMainQmlFile(QLatin1String("qml/main.qml"));
     QObject *rootObject = qobject_cast<QObject*>(viewer.rootObject());
-    pkgManager->setComponent(rootObject);
     Q_UNUSED(rootObject)
     //rootObject->connect(cache,SIGNAL(cacheUpdated(QVariant,QVariant,QVariant)),SLOT(onCacheUpdated(QVariant,QVariant,QVariant)));
     //rootObject->connect(appTranslator,SIGNAL(languageChanged(QVariant)),SLOT(onLanguageChanged(QVariant)));
@@ -88,8 +89,6 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 #if defined(Q_OS_MAEMO)
     splash.finish(&viewer);
 #endif
-    pkgManager->updateRepositoryList();
-    pkgManager->getPackageInfo("warehouse");
 
     return app->exec();
 }

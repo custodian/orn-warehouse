@@ -21,8 +21,8 @@ PageWrapper {
     function load() {
         var page = appList;
         page.update.connect(function(){
-            pkgManager.updateRepositoryList();
-        })
+            pkgManagerProxy.updateRepositoryList();
+        });
         page.update();
     }
     function updateView() {
@@ -63,9 +63,6 @@ PageWrapper {
             }
 
             SectionHeader {
-                text: qsTr("Current operations")
-            }
-            SectionHeader {
                 text: qsTr("Some weird stuff")
             }
             Button {
@@ -77,16 +74,19 @@ PageWrapper {
                     repositoryScript.sendMessage({"name":"knobtviker","state":true});
                 }
             }
+            SectionHeader {
+                text: qsTr("Current operations")
+            }
             Button {
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: "Fetch repository info"
-                enabled: !manageBox.opInProgress
+                enabled: !pkgStatus.opInProgress
                 onClicked: {
-                    pkgManager.fetchRepositoryInfo();
+                    pkgManagerProxy.fetchRepositoryInfo();
                 }
             }
-            AppManageBox {
-                id: manageBox
+            PkgManagerStatus {
+                id: pkgStatus
             }
 
             SectionHeader {
@@ -131,21 +131,8 @@ PageWrapper {
 
                 width: 150
                 text: qsTr("Disable")
-                onClicked: repositoryScript.sendMessage({"name":modelData.name,"state":false});
+                onClicked: pkgManagerProxy.disableRepository(modelData.name);
             }
         }
     }
-
-    /*WorkerScript {
-        id: repositoryScript
-        source: "../js/repositoryscript.js"
-
-        onMessage: {
-            if (messageObject.state) {
-                pkgManager.enableRepository(messageObject.name);
-            } else {
-                pkgManager.disableRepository(messageObject.name);
-            }
-        }
-    }*/
 }

@@ -35,11 +35,13 @@ INCLUDEPATH += $PWD/src
 HEADERS += \
     src/apptranslator.h \
     src/packagemanager.h \
+    src/qmlthreadworker.h \
     src/cache.h
 
 SOURCES += src/main.cpp \
     src/apptranslator.cpp \
     src/packagemanager.cpp \
+    src/qmlthreadworker.cpp \
     src/cache.cpp
 
 !simulator {

@@ -1,7 +1,8 @@
 warehouse (0.0.7) unstable; urgency=low
   * Minor ui fix
+  * Actions queue
 
- -- Basil Semuonov <basil.semuonov@gmail.com>  Mon, 14 Oct 2013 22:38:37 +0400
+ -- Basil Semuonov <basil.semuonov@gmail.com>  Mon, 17 Oct 2013 22:38:37 +0400
 
 warehouse (0.0.6) unstable; urgency=low
   * Page buttons for search tab

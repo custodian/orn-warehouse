@@ -1,43 +1,66 @@
 import Qt 4.7
-import "../js/api.js" as Api
+import "../js/threadworker.js" as WorkerJS
 
 Item {
-    id: pkgManagerProxy
+    id: proxy
     signal processedOperation(variant operation)
 
     property variant lastoperation: undefined
     property int actionNumber: 0
+    property bool opInProgress: queuedActions !== 0
+    property int queuedActions: 0
 
-    function queueAction(callback) {
-        var actionitem = "action-%1-%2".arg(actionNumber++).arg(data);
-        var actionitemobj = Api.objs.save(actionitem);
+    function execute(name, params, callback) {
+        var actionitem = "action-"+(actionNumber++);
+        var actionitemobj = WorkerJS.objs.save(actionitem);
         actionitemobj.callback = callback;
         var msg = {
+            "name": name,
+            "params": params,
             "item": actionitem,
         };
+        queuedActions++;
         pkgManager.queueAction(msg);
     }
 
-    function processAction(msg) {
-        var actionitemobj = Api.objs.get(msg.item);
-        actionitemobj.callback();
-        Api.objs.remove(msg.item);
-    }
-
-    //Direct syncronious function
-    function enableRepository() {
-
-    }
-
-    function reemitOperation(callback) {
-        if (lastoperation !== undefined) {
-            callback(lastoperation);
+    function actionDone(msg) {
+        var actionitemobj = WorkerJS.objs.get(msg.item);
+        if (actionitemobj.callback !== undefined) {
+            actionitemobj.callback(msg.result);
         }
-        queueAction(function(){mycallBack("mvahaha")});
+        queuedActions--;
+        WorkerJS.objs.remove(msg.item);
     }
 
-    function mycallBack(arg) {
-        console.log("callback: " + arg);
+    function fetchRepositoryInfo(callback) {
+        proxy.execute("fetchRepositoryInfo", "", callback);
+    }
+
+    function updateRepositoryList(callback) {
+        proxy.execute("updateRepositoryList", "", callback);
+    }
+
+    function enableRepository(name, callback) {
+        proxy.execute("enableRepository",name, callback);
+    }
+    function disableRepository(name, callback) {
+        proxy.execute("disableRepository",name, callback);
+    }
+
+    function isRepositoryEnabled(repository, callback) {
+        proxy.execute("isRepositoryEnabled", repository, callback);
+    }
+
+    function getPackageInfo(packagename, callback) {
+        proxy.execute("getPackageInfo", packagename, callback);
+    }
+
+    function install(packagename, callback) {
+        proxy.execute("install", packagename, callback);
+    }
+
+    function uninstall(packagename, callback) {
+        proxy.execute("uninstall",packagename, callback);
     }
 
     //##### Callback-signal functions #####
@@ -69,16 +92,20 @@ Item {
         operationProgress('Download', name, version, curBytes/totalBytes*100);
     }
 
+    function reemitOperation(callback) {
+        if (lastoperation !== undefined) {
+            callback(lastoperation);
+        }
+    }
+
     Connections {
         target: pkgManager
+        onActionDone: actionDone(msg);
+
         onOperationStarted: operationStarted(operation,name,version)
         onOperationProgress: operationProgress(operation, name, version, progress);
         onOperationCompleted: operationCompleted(operation, name, version, message, error);
         onDownloadProgress: downloadProgress(operation, name, version, curBytes, totalBytes);
-
-        //onActionDone: actionDone(msg);
-        /*
-        onPackageListUpdate(QVariant result);
-        */
+        //onPackageListUpdate(QVariant result);
     }
 }

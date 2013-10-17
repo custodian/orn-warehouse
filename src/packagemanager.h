@@ -3,35 +3,34 @@
 
 #include <QMap>
 #include <QVariantMap>
-#include <QThreadPool>
-#include <QRunnable>
 #include <QtDBus/QDBusAbstractAdaptor>
+#include "qmlthreadworker.h"
+
 #ifndef Q_WS_SIMULATOR
 #include <QtDBus/QDBusConnection>
-#endif
+#else
+#include <QThread>
 
-class PackageManager;
-class ActionTask: public QRunnable
+class IWaiter: public QThread
 {
 public:
-    ActionTask(PackageManager *mgr,
-               QVariant _payload){
-        pkgManager = mgr;
-        payload = _payload;
+    static void sleep(unsigned long secs) {
+        QThread::sleep(secs);
     }
-    PackageManager *pkgManager;
-    QVariant payload;
-
-    void run();
+    static void msleep(unsigned long msecs) {
+        QThread::msleep(msecs);
+    }
+    static void usleep(unsigned long usecs) {
+        QThread::usleep(usecs);
+    }
 };
+#endif
 
 class PackageManager : public QObject
 {
     Q_OBJECT
 public:
     explicit PackageManager(QObject *parent);
-
-    void setComponent(QObject *component);
 
 public slots:
     void queueAction(QVariant msg);
@@ -41,9 +40,8 @@ public slots:
     void enableRepository(QString name);
     void disableRepository(QString name);
 
-    QVariant isRepositoryEnabled(QString name);
-
     void fetchRepositoryInfo();
+    QVariant isRepositoryEnabled(QString name);
     QVariant getPackageInfo(QString packagename);
 
     void install(QString packagename);
@@ -57,7 +55,6 @@ public slots:
     void onPkgPackageListUpdate(bool result);
 
 signals:
-
     void actionDone(QVariant msg);
 
     void repositoryListChanged(QVariant repos);
@@ -76,8 +73,12 @@ private:
     QString m_repospath;
     QObject * m_component;
     QVariantList m_repositories;
+
+    QmlThreadWorker m_worker;
 #ifndef Q_WS_SIMULATOR
     QDBusConnection m_bus;
+#else
+    QMap<QString, QVariantMap> m_packages;
 #endif
 };
 

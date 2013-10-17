@@ -7,9 +7,8 @@ import "../js/api.js" as Api
 PageWrapper {
     id: appDetails
     signal update()
+//    signal comments(vartian app)
     signal browse(string userid, string username)
-    signal install(string packagename)
-    signal uninstall(string packagename)
 
     property variant application: {}
 
@@ -31,9 +30,6 @@ PageWrapper {
                     "options": {"type": "user", "id": userid},
                     "headerText": qsTr("Apps by: %1").arg(username),
                });
-        });
-        page.install.connect(function(packagename) {
-
         });
         page.update();
     }

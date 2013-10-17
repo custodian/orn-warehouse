@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QVariant>
 #include <QRunnable>
+#include <QThreadPool>
 
 class QmlThreadWorker;
 class WorkerTask: public QRunnable
@@ -11,7 +12,7 @@ class WorkerTask: public QRunnable
 public:
     WorkerTask(QmlThreadWorker *worker,
                QVariant payload){
-        m_worker = mgr;
+        m_worker = worker;
         m_payload = payload;
     }
     QmlThreadWorker *m_worker;
@@ -23,16 +24,20 @@ public:
 class QmlThreadWorker: public QObject
 {
     Q_OBJECT
+    friend class WorkerTask;
 public:
     explicit QmlThreadWorker(QObject *parent = 0);
-
-    Q_INVOKABLE void setComponent(QObject *component);
+    void setCallObject(QObject *object);
 
 public slots:
     void queueAction(QVariant msg);
 
+protected:
+    void processAction(QVariant msg);
+
 private:
-    QObject * m_component;
+    QThreadPool m_pool;
+    QObject * m_object;
 };
 
 #endif // QMLTHREADWORKER_H
