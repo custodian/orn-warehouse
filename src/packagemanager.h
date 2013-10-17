@@ -3,10 +3,27 @@
 
 #include <QMap>
 #include <QVariantMap>
+#include <QThreadPool>
+#include <QRunnable>
 #include <QtDBus/QDBusAbstractAdaptor>
 #ifndef Q_WS_SIMULATOR
 #include <QtDBus/QDBusConnection>
 #endif
+
+class PackageManager;
+class ActionTask: public QRunnable
+{
+public:
+    ActionTask(PackageManager *mgr,
+               QVariant _payload){
+        pkgManager = mgr;
+        payload = _payload;
+    }
+    PackageManager *pkgManager;
+    QVariant payload;
+
+    void run();
+};
 
 class PackageManager : public QObject
 {
@@ -14,7 +31,12 @@ class PackageManager : public QObject
 public:
     explicit PackageManager(QObject *parent);
 
+    void setComponent(QObject *component);
+
 public slots:
+    void queueAction(QVariant msg);
+    void processAction(QVariant msg);
+
     void updateRepositoryList();
     void enableRepository(QString name);
     void disableRepository(QString name);
@@ -35,6 +57,9 @@ public slots:
     void onPkgPackageListUpdate(bool result);
 
 signals:
+
+    void actionDone(QVariant msg);
+
     void repositoryListChanged(QVariant repos);
 
     void operationStarted(QVariant operation, QVariant name, QVariant version);
@@ -49,6 +74,7 @@ private:
 
 private:
     QString m_repospath;
+    QObject * m_component;
     QVariantList m_repositories;
 #ifndef Q_WS_SIMULATOR
     QDBusConnection m_bus;

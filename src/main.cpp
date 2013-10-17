@@ -67,6 +67,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
     viewer.setMainQmlFile(QLatin1String("qml/main.qml"));
     QObject *rootObject = qobject_cast<QObject*>(viewer.rootObject());
+    pkgManager->setComponent(rootObject);
     Q_UNUSED(rootObject)
     //rootObject->connect(cache,SIGNAL(cacheUpdated(QVariant,QVariant,QVariant)),SLOT(onCacheUpdated(QVariant,QVariant,QVariant)));
     //rootObject->connect(appTranslator,SIGNAL(languageChanged(QVariant)),SLOT(onLanguageChanged(QVariant)));

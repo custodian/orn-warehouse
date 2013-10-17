@@ -6,6 +6,7 @@
 #include <QtDBus/QDBusPendingCall>
 #include <QtDBus/QDBusArgument>
 #include <QtDBus/QDBusReply>
+#include <QThreadPool>
 #include <QDebug>
 
 #include <QDir>
@@ -20,12 +21,17 @@
 #define PKG_PATH    "/com/nokia/package_manager"
 #define PKG_IFACE   "com.nokia.package_manager"
 
+void ActionTask::run() {
+       pkgManager->processAction(payload);
+}
+
 PackageManager::PackageManager(QObject *parent) :
     QObject(parent)
 #ifndef Q_WS_SIMULATOR
   , m_bus("warehouse")
 #endif
 {
+    m_component = NULL;
 #if defined(Q_OS_HARMATTAN)
     m_repospath = "/etc/apt/sources.list.d";
 
@@ -52,6 +58,10 @@ PackageManager::PackageManager(QObject *parent) :
 #endif
 }
 
+void PackageManager::setComponent(QObject *component) {
+    m_component = component;
+}
+
 void PackageManager::onPkgOperationStarted(QString operation, QString name, QString version) {
     //qDebug() << "Operation started" << operation << name << version;
     emit operationStarted(QVariant(operation),QVariant(name),QVariant(version));
@@ -72,6 +82,19 @@ void PackageManager::onPkgDownloadProgress(QString operation, QString name, QStr
 void PackageManager::onPkgPackageListUpdate(bool result) {
     //qDebug() << "Package list update:" << result;
     emit packageListUpdate(QVariant(result));
+}
+
+void PackageManager::queueAction(QVariant msg) {
+    QThreadPool::globalInstance()->start(new ActionTask(this,msg));
+}
+
+void PackageManager::processAction(QVariant _msg) {
+    QVariantMap msg = _msg.toMap();
+    qDebug() << "In process action";
+    QMetaObject::invokeMethod(m_component, "msgCallbackFunction",
+            //Q_RETURN_ARG(QVariant, returnedValue),
+            Q_ARG(QVariant, msg));
+    //emit actionDone(msg);
 }
 
 QString PackageManager::getListFileName(QString name) {
@@ -110,6 +133,9 @@ QVariant PackageManager::getPackageInfo(QString packagename) {
     return QVariant(false);
 #endif
 }
+
+//installed list
+//QList<QVariantMap>
 
 void PackageManager::install(QString packagename) {
 #if defined(Q_OS_HARMATTAN)

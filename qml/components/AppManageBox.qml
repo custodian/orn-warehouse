@@ -21,6 +21,10 @@ Column {
         repository_enabled = pkgManager.isRepositoryEnabled(repository);
     }
 
+    Component.onCompleted: {
+        pkgManagerProxy.reemitOperation(processOperation);
+    }
+
     function updateAppStatus() {
         var result = pkgManager.getPackageInfo(apppackage.name);
         if (result !== false) {
@@ -104,22 +108,29 @@ Column {
         }
         visible: opInProgress
     }
-    function processOperation(operation, name, version, progress) {
+
+    function processOperation(operation){
         progressBar.indeterminate = false;
-        progressBar.value = progress;
-        switch(operation) {
+        progressBar.value = operation.progress;
+        if (operation.status === "Completed") {
+            opInProgress = false;
+            updateAppStatus();
+        } else {
+            opInProgress = true;
+        }
+        switch(operation.operation) {
         case 'InstallFile':
         case 'Install':
             operationText.text = qsTr("Installing application");
-            operationTextApp.text = "%1 (%2)".arg(name).arg(version);
+            operationTextApp.text = "%1 (%2)".arg(operation.name).arg(operation.version);
             break;
         case 'Uninstall':
             operationText.text = qsTr("Unintalling application");
-            operationTextApp.text = "%1 (%2)".arg(name).arg(version);
+            operationTextApp.text = "%1 (%2)".arg(operation.name).arg(operation.version);
             break;
         case 'Download':
             operationText.text = qsTr("Downloading application");
-            operationTextApp.text = "%1 (%2)".arg(name).arg(version);
+            operationTextApp.text = "%1 (%2)".arg(operation.name).arg(operation.version);
             break;
         case 'Refresh':
             operationText.text = qsTr("Fetching repositories");
@@ -129,34 +140,9 @@ Column {
         }
     }
 
-    function operationProgress(operation, name, version, progress) {
-        //console.log("OPERATION PROGRESS: %1 %2 %3 %4".arg(operation).arg(name).arg(version).arg(progress));
-        processOperation(operation, name, version, progress);
-    }
-    function operationStarted(operation,name,version){
-        //console.log("OPERATION STARTED: %1 %2 %3".arg(operation).arg(name).arg(version));
-        processOperation(operation,name,version,0)
-        opInProgress = true;
-    }
-    function operationCompleted(operation,name,version,message,error) {
-        //console.log("OPERATION COMPLETED: %1 %2 %3 %4 %5".arg(operation).arg(name).arg(version).arg(message).arg(error));
-        opInProgress = false;
-        updateAppStatus();
-    }
-    function downloadProgress(operation, name, version, curBytes, totalBytes){
-        //console.log("DOWNLOAD PROGRESS: %1 %2 %3 %4 %5".arg(operation).arg(name).arg(version).arg(curBytes).arg(totalBytes));
-        operationProgress('Download', name, version, curBytes/totalBytes*100);
-    }
-
     Connections {
-        target: pkgManager
-        onOperationStarted: operationStarted(operation,name,version)
-        onOperationProgress: operationProgress(operation, name, version, progress);
-        onOperationCompleted: operationCompleted(operation, name, version, message, error);
-        onDownloadProgress: downloadProgress(operation, name, version, curBytes, totalBytes);
-        /*
-        onPackageListUpdate(QVariant result);
-        */
+        target: pkgManagerProxy
+        onProcessedOperation: processOperation(operation)
     }
 }
 

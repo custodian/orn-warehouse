@@ -243,6 +243,17 @@ PageStackWindow {
             console.log("Cache callback error: " + err + " type: " + typeof(callbackObject) + " value: " + JSON.stringify(callbackObject) );
         }
     }
+    PkgManagerProxy{
+        id: pkgManagerProxy
+    }
+    function msgCallbackFunction(msg) {
+        console.log("In msgCallbackFunction");
+        try {
+        pkgManagerProxy.processAction(msg);
+        } catch (err) {
+            console.log("execute error:" + err);
+        }
+    }
 
     Connections {
        target: imageCache

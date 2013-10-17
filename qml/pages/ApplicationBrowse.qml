@@ -12,7 +12,6 @@ PageWrapper {
     property variant options: {}
     property int page: 0
     property int pageSize: 20
-    property bool more: false
     property alias appsModel: appsModel
 
     width: parent.width
@@ -84,6 +83,7 @@ PageWrapper {
             height: pagerRow.height + 30
 
             ButtonRow {
+                id: pagerRow
                 anchors.centerIn: parent
                 exclusive: false
                 Button {
@@ -98,7 +98,7 @@ PageWrapper {
                 Button {
                     //anchors.horizontalCenter: parent.horizontalCenter
                     text: qsTr("Next page")
-                    visible: appsModel.count == appList.pageSize
+                    visible: appsModel.count == appList.pageSize && options.type != "user" //FIX: remove when api will be changed
                     onClicked: {
                         appList.page++;
                         update();

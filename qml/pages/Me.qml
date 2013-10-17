@@ -136,9 +136,9 @@ PageWrapper {
         }
     }
 
-    WorkerScript {
+    /*WorkerScript {
         id: repositoryScript
-        source: "../js/repositoryScript.js"
+        source: "../js/repositoryscript.js"
 
         onMessage: {
             if (messageObject.state) {
@@ -147,5 +147,5 @@ PageWrapper {
                 pkgManager.disableRepository(messageObject.name);
             }
         }
-    }
+    }*/
 }
