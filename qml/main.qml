@@ -20,7 +20,7 @@ PageStackWindow {
     }
 
     onWindowActiveChanged: {
-        console.log("active: " + windowActive);
+        //console.log("active: " + windowActive);
     }
 
     Page {

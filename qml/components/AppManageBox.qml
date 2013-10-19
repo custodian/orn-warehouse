@@ -75,8 +75,7 @@ Column {
         anchors.horizontalCenter: parent.horizontalCenter
         text: qsTr("Fetch repository info")
         onClicked: {
-            opInProgress = true;
-            pkgManagerProxy.fetchRepositoryInfo();
+            pkgManagerProxy.fetchRepositoryInfo(repository);
         }
         visible: isRepositoryEnabled && isStateUnknown && !opInProgress
     }
@@ -87,11 +86,12 @@ Column {
             //enable repository
             if (repository != "") {
                 pkgManagerProxy.enableRepository(repository);
-                pkgManagerProxy.fetchRepositoryInfo();
                 pkgManagerProxy.isRepositoryEnabled(repository, function(result) {
                     isRepositoryEnabled = result;
                 });
-                updateAppStatus();
+                pkgManagerProxy.fetchRepositoryInfo(repository, function(result){
+                    updateAppStatus();
+                });
             } else {
                 appDetails.show_error("Unknown repository!");
             }
@@ -112,7 +112,10 @@ Column {
         onClicked: {
             pkgManagerProxy.enableRepository(repository);
             pkgManagerProxy.uninstall(apppackage.name);
-            pkgManagerProxy.install(apppackage.name, updateAppStatus);
+            pkgManagerProxy.fetchRepositoryInfo(repository);
+            pkgManagerProxy.install(apppackage.name, function(result){
+                updateAppStatus();
+            });
         }
         visible: isInstalled && isInstalledNotFromOpenRepos && !opInProgress
     }

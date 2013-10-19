@@ -69,9 +69,9 @@ PageWrapper {
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: "Enable test repos"
                 onClicked: {
-                    repositoryScript.sendMessage({"name":"basil","state":true});
-                    repositoryScript.sendMessage({"name":"appsformeego","state":true});
-                    repositoryScript.sendMessage({"name":"knobtviker","state":true});
+                    pkgManagerProxy.enableRepository("basil");
+                    pkgManagerProxy.enableRepository("appsformeego");
+                    pkgManagerProxy.enableRepository("knobtviker");
                 }
             }
             SectionHeader {
@@ -106,12 +106,12 @@ PageWrapper {
 
         Item {
             width: reposColumn.width
-            height: disableButton.height + 20
+            height: disableButton.height + 10
             Text {
                 id: repoName
                 anchors{
                     left: parent.left
-                    right: disableButton.left
+                    right: refreshButton.left
                     margins: mytheme.paddingMedium
                     verticalCenter: parent.verticalCenter
                 }
@@ -123,13 +123,26 @@ PageWrapper {
                 text: modelData.name
             }
             Button {
+                id: refreshButton
+                anchors {
+                    right: disableButton.left
+                    rightMargin: 5
+                    verticalCenter: parent.verticalCenter
+                }
+                width: 120
+                text: qsTr("Refresh")
+                enabled: !pkgManagerProxy.opInProgress
+                onClicked: pkgManagerProxy.fetchRepositoryInfo(modelData.name);
+            }
+
+            Button {
                 id: disableButton
                 anchors {
                     right: parent.right
                     verticalCenter: parent.verticalCenter
                 }
 
-                width: 150
+                width: 120
                 text: qsTr("Disable")
                 onClicked: pkgManagerProxy.disableRepository(modelData.name);
             }

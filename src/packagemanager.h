@@ -40,7 +40,7 @@ public slots:
     void enableRepository(QString name);
     void disableRepository(QString name);
 
-    void fetchRepositoryInfo();
+    void fetchRepositoryInfo(QString domain);
     QVariant isRepositoryEnabled(QString name);
     QVariant getPackageInfo(QString packagename);
 

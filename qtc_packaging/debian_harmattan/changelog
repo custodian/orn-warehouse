@@ -1,6 +1,7 @@
 warehouse (0.0.7) unstable; urgency=low
   * Minor ui fix
   * Actions queue
+  * Basic comments
 
  -- Basil Semuonov <basil.semuonov@gmail.com>  Mon, 17 Oct 2013 22:38:37 +0400
 

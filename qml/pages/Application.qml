@@ -7,7 +7,7 @@ import "../js/api.js" as Api
 PageWrapper {
     id: appDetails
     signal update()
-//    signal comments(vartian app)
+    signal comments(variant app)
     signal browse(string userid, string username)
 
     property variant application: {}
@@ -30,6 +30,9 @@ PageWrapper {
                     "options": {"type": "user", "id": userid},
                     "headerText": qsTr("Apps by: %1").arg(username),
                });
+        });
+        page.comments.connect(function(app) {
+            stack.push(Qt.resolvedUrl("CommentsRate.qml"), {"application": app});
         });
         page.update();
     }
@@ -98,6 +101,18 @@ PageWrapper {
             }
             NextBox {
                 text: qsTr("Comments (%1)").arg(application.comments_count);
+
+                RatingBox {
+                    anchors {
+                        right: parent.right
+                        rightMargin: 100
+                        verticalCenter: parent.verticalCenter
+                    }
+                    rating: application.rating
+                }
+                onAreaClicked: {
+                    appDetails.comments(application);
+                }
             }
 
             SectionHeader {

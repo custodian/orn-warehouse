@@ -86,7 +86,7 @@ void PackageManager::processAction(QVariant message) {
     QVariant params = msg["params"];
     //qDebug() << "Process:" << function << "Args:" << params;
     if (function == "fetchRepositoryInfo") {
-        fetchRepositoryInfo();
+        fetchRepositoryInfo(params.toString());
     } else if(function == "updateRepositoryList") {
         updateRepositoryList();
     } else if(function == "enableRepository") {
@@ -113,11 +113,11 @@ QString PackageManager::getListFileName(QString name) {
     return info.absoluteFilePath();
 }
 
-void PackageManager::fetchRepositoryInfo() {
+void PackageManager::fetchRepositoryInfo(QString domain) {
 #if defined(Q_OS_HARMATTAN)
     QDBusMessage msg = QDBusMessage::createMethodCall(PKG_SERVICE,PKG_PATH,PKG_IFACE,"refresh_package_cache");
     QVariantList args;
-    args.push_back("");
+    args.push_back(domain);
     args.push_back("");
     msg.setArguments(args);
     m_bus.call(msg);

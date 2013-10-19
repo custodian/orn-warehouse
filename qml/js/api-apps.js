@@ -62,3 +62,18 @@ apps.onBrowseApps = function(call, response) {
     });
     call.page.waiting_hide();
 }
+
+apps.loadComments = function(page, appid) {
+    page.waiting_show();
+    var call = apiCall(page,"GET", "apps/" + appid + "/comments");
+    api.request(call, apps.onLoadComments);
+};
+
+apps.onLoadComments = function(call, response) {
+    var page = call.page;
+    page.waiting_hide();
+    page.commentsModel.clear();
+    response.forEach(function(comment){
+         page.commentsModel.append(comment);
+    });
+}

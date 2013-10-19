@@ -32,8 +32,13 @@ Item {
         WorkerJS.objs.remove(msg.item);
     }
 
-    function fetchRepositoryInfo(callback) {
-        proxy.execute("fetchRepositoryInfo", "", callback);
+    function fetchRepositoryInfo(name, callback) {
+        if (name === undefined) {
+            name = "";
+        } else {
+            name = "openrepos-"+name;
+        }
+        proxy.execute("fetchRepositoryInfo", name, callback);
     }
 
     function updateRepositoryList(callback) {
