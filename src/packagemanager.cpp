@@ -71,9 +71,9 @@ void PackageManager::onPkgDownloadProgress(QString operation, QString name, QStr
     //qDebug() << "Download progress" << operation << name << version << "Downloaded" << curBytes << "of" << totalBytes;
     emit downloadProgress(QVariant(operation), QVariant(name), QVariant(version), QVariant(curBytes), QVariant(totalBytes));
 }
-void PackageManager::onPkgPackageListUpdate(bool result) {
-    //qDebug() << "Package list update:" << result;
-    emit packageListUpdate(QVariant(result));
+void PackageManager::onPkgPackageListUpdate(bool updates) {
+    qDebug() << "Package list update:" << updates;
+    emit packageListUpdate(QVariant(updates));
 }
 
 void PackageManager::queueAction(QVariant msg) {

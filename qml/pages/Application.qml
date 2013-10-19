@@ -81,7 +81,7 @@ PageWrapper {
             SectionHeader {
                 text: qsTr("Description")
             }
-            Text {
+            TextCollapsible {
                 anchors {
                     left: parent.left
                     leftMargin: 10
@@ -93,7 +93,7 @@ PageWrapper {
                 horizontalAlignment: Text.AlignHCente
                 wrapMode: Text.WordWrap
 
-                text: application.body !== undefined ? application.body : ""
+                text: application.body !== undefined ? application.body + "<br>" : ""
             }
 
             SectionHeader {

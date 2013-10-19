@@ -96,6 +96,9 @@ Item {
         //console.log("DOWNLOAD PROGRESS: %1 %2 %3 %4 %5".arg(operation).arg(name).arg(version).arg(curBytes).arg(totalBytes));
         operationProgress('Download', name, version, curBytes/totalBytes*100);
     }
+    function packageListUpdated(updates) {
+        //console.log("PACKAGE LIST UPDATED: " + updates);
+    }
 
     function reemitOperation(callback) {
         if (lastoperation !== undefined) {
@@ -111,6 +114,6 @@ Item {
         onOperationProgress: operationProgress(operation, name, version, progress);
         onOperationCompleted: operationCompleted(operation, name, version, message, error);
         onDownloadProgress: downloadProgress(operation, name, version, curBytes, totalBytes);
-        //onPackageListUpdate(QVariant result);
+        onPackageListUpdate: packageListUpdated(updates);
     }
 }

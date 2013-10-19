@@ -52,7 +52,7 @@ public slots:
     void onPkgOperationCompleted(QString operation, QString name, QString version, QString message, bool isError);
 
     void onPkgDownloadProgress(QString operation, QString name, QString version, qint32 curBytes, qint32 totalBytes);
-    void onPkgPackageListUpdate(bool result);
+    void onPkgPackageListUpdate(bool updates);
 
 signals:
     void actionDone(QVariant msg);
@@ -64,7 +64,7 @@ signals:
     void operationCompleted(QVariant operation, QVariant name, QVariant version, QVariant message, QVariant error);
 
     void downloadProgress(QVariant operation, QVariant name, QVariant version, QVariant curBytes, QVariant totalBytes);
-    void packageListUpdate(QVariant result);
+    void packageListUpdate(QVariant updates);
 
 private:
     QString getListFileName(QString name);

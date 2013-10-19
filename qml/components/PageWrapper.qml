@@ -99,7 +99,7 @@ Page {
         id: defaultMenu
         MenuLayout {
             MenuItem {
-                text: qsTr("Check updates")
+                text: qsTr("Check warehouse updates")
                 onClicked: {
                     updateDialog.getupdates();
                 }
