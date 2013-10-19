@@ -96,14 +96,19 @@ void PackageManager::processAction(QVariant message) {
     } else if(function == "isRepositoryEnabled") {
         msg["result"] = isRepositoryEnabled(params.toString());
     } else if(function == "getPackageInfo") {
-        msg["result"] = getPackageInfo(params.toString());
+        msg["result"] = getPackageInfo(params.toString(), "");
     } else if(function == "install") {
         install(params.toString());
+    } else if (function == "upgrade") {
+        upgrade(params.toString());
     } else if(function == "uninstall") {
         uninstall(params.toString());
+    } else if(function == "getInstalledPackages") {
+        msg["result"] = getInstalledPackages();
     } else if(function == "") {
         //install(params.toString());
     }
+
     emit actionDone(msg);
 }
 
@@ -128,16 +133,17 @@ void PackageManager::fetchRepositoryInfo(QString domain) {
 #endif
 }
 
-QVariant PackageManager::getPackageInfo(QString packagename) {
+QVariant PackageManager::getPackageInfo(QString packagename, QString version) {
 #if defined(Q_OS_HARMATTAN)
     QDBusMessage msg = QDBusMessage::createMethodCall(PKG_SERVICE,PKG_PATH,PKG_IFACE,"fetch_package_data");
     QVariantList args;
     args.push_back(packagename);
-    args.push_back("");
+    args.push_back(version);
     msg.setArguments(args);
     QDBusReply<QVariantMap> reply = m_bus.call(msg);
     if (reply.isValid()) {
         QVariantMap result = reply.value();
+        result.remove("IconData");
         return QVariant::fromValue(result);
     } else {
         return QVariant(false);
@@ -155,8 +161,28 @@ QVariant PackageManager::getPackageInfo(QString packagename) {
 #endif
 }
 
-//installed list
-//QList<QVariantMap>
+QVariant PackageManager::getInstalledPackages() {
+    QVariantList packages;
+#if defined(Q_OS_HARMATTAN)
+    QDBusMessage msg = QDBusMessage::createMethodCall(PKG_SERVICE,PKG_PATH,PKG_IFACE,"fetch_installed");
+    QDBusReply<QDBusArgument> reply = m_bus.call(msg);
+    if (reply.isValid()) {
+        QDBusArgument var = reply.value();
+        var.beginArray();
+        while( !var.atEnd() ) {
+            QVariantMap package;
+            var >> package;
+            QVariantMap pkgInfo = getPackageInfo(package["Name"].toString(), package["Version"].toString()).toMap();
+            QString repository = pkgInfo["Repository"].toString();
+            if (repository.contains("openrepos.net")) {
+                //qDebug() << "pushed";
+                packages.push_back(QVariant(package));
+            }
+        };
+    }
+#endif
+    return packages;
+}
 
 void PackageManager::install(QString packagename) {
 #if defined(Q_OS_HARMATTAN)
@@ -167,7 +193,6 @@ void PackageManager::install(QString packagename) {
     msg.setArguments(args);
     m_bus.call(msg);
 #else
-
     if (m_packages.contains(packagename)) {
         QVariantMap &package = m_packages[packagename];
         for (int i=0;i<100;i++) {
@@ -180,6 +205,32 @@ void PackageManager::install(QString packagename) {
             IWaiter::msleep(10);
         }
         emit operationCompleted("Install",packagename,package["Version"],"",false);
+        package["Type"] = "Installed";
+    }
+#endif
+}
+
+void PackageManager::upgrade(QString packagename) {
+#if defined(Q_OS_HARMATTAN)
+    QDBusMessage msg = QDBusMessage::createMethodCall(PKG_SERVICE,PKG_PATH,PKG_IFACE,"upgrade");
+    QVariantList args;
+    args.push_back(packagename);
+    args.push_back("");
+    msg.setArguments(args);
+    m_bus.call(msg);
+#else
+    if (m_packages.contains(packagename)) {
+        QVariantMap &package = m_packages[packagename];
+        for (int i=0;i<100;i++) {
+            emit downloadProgress("Download", packagename, package["Version"], i,100);
+            IWaiter::msleep(10);
+        }
+        emit operationStarted("Upgrade", packagename, package["Version"]);
+        for (int i=0;i<100;i++) {
+            emit operationProgress("Upgrade", packagename, package["Version"], i);
+            IWaiter::msleep(10);
+        }
+        emit operationCompleted("Upgrade",packagename,package["Version"],"",false);
         package["Type"] = "Installed";
     }
 #endif

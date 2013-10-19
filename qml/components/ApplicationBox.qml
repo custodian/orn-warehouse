@@ -74,7 +74,7 @@ Rectangle {
                     rightMargin: 12
                     bottom: parent.bottom
                 }
-                text: qsTr("by %1").arg(application.user.name)
+                text: application.user ? qsTr("by %1").arg(application.user.name) : ""
             }
         }
 

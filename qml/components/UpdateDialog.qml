@@ -9,7 +9,7 @@ QueryDialog  {
     property string build: ""
     property string url: ""
     property string changelog: ""
-    property string updatetype: "alpha"
+    property string updatetype: configuration.updateType
 
     icon: "image://theme/icon-m-content-system-update-dialog"
     titleText: qsTr("New update available")

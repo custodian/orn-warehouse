@@ -3,13 +3,13 @@ import Qt 4.7
 Row {
     id: scorebox
     property variant rating: {}
-    property int score: rating.rating
+    property int score: rating ? rating.rating : 0
 
     height: loader.height
 
     Loader {
         id: loader
-        sourceComponent: rating.count > 0 ? stars : unrated
+        sourceComponent: rating ? rating.count > 0 ? stars : unrated : undefined
     }
     Component {
         id: stars

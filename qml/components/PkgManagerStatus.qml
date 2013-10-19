@@ -6,6 +6,9 @@ import "."
 Column {
     width: parent.width
     spacing: 5
+
+    property bool localOperation: false
+
     Text {
         anchors.horizontalCenter: parent.horizontalCenter
         color: mytheme.colors.textColorShout
@@ -34,7 +37,7 @@ Column {
         maximumValue: 100
         value: 50
     }
-    visible: pkgManagerProxy.opInProgress
+    visible: pkgManagerProxy.opInProgress || localOperation
 
     Component.onCompleted: {
         pkgManagerProxy.reemitOperation(processOperation);
@@ -46,6 +49,10 @@ Column {
         case 'InstallFile':
         case 'Install':
             operationText.text = qsTr("Installing application");
+            operationTextApp.text = "%1 (%2)".arg(operation.name).arg(operation.version);
+            break;
+        case 'Upgrade':
+            operationText.text = qsTr("Upgrading application");
             operationTextApp.text = "%1 (%2)".arg(operation.name).arg(operation.version);
             break;
         case 'Uninstall':
@@ -63,8 +70,11 @@ Column {
             break;
         }
         if (operation.status === "Completed") {
+            localOperation = false;
             operationText.text = qsTr("Working");
             operationTextApp.text = "";
+        } else {
+            localOperation = true;
         }
     }
 

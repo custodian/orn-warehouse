@@ -40,7 +40,8 @@ Image {
 
     function cacheLoad() {
         if (__sourceUncached !== ""
-                && __sourceUncached.indexOf("http") !== -1 ) {
+                && (__sourceUncached.indexOf("http") !== -1
+                || __sourceUncached.indexOf("base64://") !== -1 )) {
             //if valid url - queue cache
             Api.objs.save(root).cacheCallback = cacheCallback;
             imageCache.queueObject(__sourceUncached,root.toString());

@@ -35,6 +35,8 @@ protected:
 
     bool m_cacheonly;
 
+    void processBase64Data(QVariant dataurl);
+
     bool queueCacheUpdate(QVariant url, QVariant callback);
     void makeCallbackAll(bool status, QVariant url);
     void makeCallback(QVariant callback, bool status, QVariant url);

@@ -79,6 +79,23 @@ void Cache::onDownloadFinished(QNetworkReply * reply){
     makeCallbackAll(true,url);
 }
 
+void Cache::processBase64Data(QVariant dataurl) {
+    QString url = dataurl.toString();
+    QString namelocal = makeCachedURL(url);
+    QString datastr = url.right(datastr.length()-4);
+    datastr = datastr.replace("base64://","");
+    QByteArray data = QByteArray::fromBase64(datastr.toLocal8Bit());
+    {
+        QFile file(namelocal);
+        file.open(QFile::WriteOnly);
+        file.write(data);
+    }
+    m_cachemap_lock.lockForWrite();
+    m_cachemap.insert(url,namelocal);
+    m_cachemap_lock.unlock();
+    makeCallbackAll(true,dataurl);
+}
+
 QString Cache::md5(QString data)
 {
     QCryptographicHash hash(QCryptographicHash::Md5);
@@ -147,8 +164,11 @@ void Cache::queueObject(QVariant dataurl, QVariant callback)
                 } else {
                     //add to queue, post and download query
                     if (queueCacheUpdate(dataurl, callback)) {
-                        //qDebug() << "download " << url;
+                        if (url.contains("base64://")) {
+                            processBase64Data(dataurl);
+                        } else {
                         manager->get(QNetworkRequest(QUrl(url)));
+                        }
                     }
                 }
             }            

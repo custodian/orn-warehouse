@@ -39,7 +39,7 @@ PageWrapper {
 
     function apploaded() {
         if (application.packages.harmattan !== undefined) {
-            manageBox.repository = application.user.name;
+            manageBox.repositoryName = application.user.name;
             manageBox.apppackage = application.packages.harmattan;
         }
     }

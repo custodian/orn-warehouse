@@ -1,9 +1,18 @@
-warehouse (0.0.7) unstable; urgency=low
-  * Minor ui fix
-  * Actions queue
+warehouse (0.0.9) stable; urgency=low
+  * Installed apps list
+
+ -- Basil Semuonov <basil.semuonov@gmail.com>  Sat, 19 Oct 2013 17:57:19 +0400
+
+warehouse (0.0.8) stable; urgency=low
   * Basic comments
-  * Collapsible description
   * Settings page
+  * Minor ui updates
+
+ -- Basil Semuonov <basil.semuonov@gmail.com>  Sat, 19 Oct 2013 17:16:44 +0400
+
+warehouse (0.0.7) unstable; urgency=low
+  * Minor ui fixes
+  * Actions queue
 
  -- Basil Semuonov <basil.semuonov@gmail.com>  Mon, 17 Oct 2013 22:38:37 +0400
 

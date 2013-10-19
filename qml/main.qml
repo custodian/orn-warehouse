@@ -91,6 +91,10 @@ PageStackWindow {
         }
     }
 
+    Configuration {
+        id: configuration
+    }
+
     QtObject {
         id: categotyParser
         function parse(category, style) {
@@ -201,7 +205,6 @@ PageStackWindow {
     }
 
     function reloadUI() {
-        platformUtils.clearFeed();
         tabLogin.clear();
         tabApps.clear();
         tabCategories.clear();

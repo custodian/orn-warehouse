@@ -24,17 +24,19 @@ Item {
     FocusScope {
         id: textPanel
 
-        anchors.left: parent.left
-        anchors.right: searchButton.left
-        anchors.verticalCenter: parent.verticalCenter
+        anchors {
+            left: parent.left
+            right: clearTextButton.left//searchButton.left
+            verticalCenter: parent.verticalCenter
+            margins: 10
+        }
         height: parent.height
 
         SipAttributes {
             id: sipAttributes
-            actionKeyLabel: /*translatorItem.emptyString +*/ qsTr("Search")
-            //actionKeyHighlighted: true
+            actionKeyLabel: qsTr("Search")
+            actionKeyHighlighted: true
             actionKeyEnabled: searchTextInput.text.length > 0
-
         }
 
         TextField {
@@ -46,11 +48,11 @@ Item {
             anchors {
                 left: parent.left
                 right: parent.right
-                rightMargin: -searchButton.width - searchButton.anchors.rightMargin
+                rightMargin: -clearTextButton.width - clearTextButton.anchors.rightMargin
                 verticalCenter: textPanel.verticalCenter
             }
             platformStyle: TextFieldStyle {
-                paddingRight: clearTextButton.width + 10 + searchButton.width + searchButton.anchors.rightMargin
+                paddingRight: clearTextButton.width//+ 10 + searchButton.width + searchButton.anchors.rightMargin
             }
             onActiveFocusChanged: {
                 if (!searchTextInput.activeFocus) {
@@ -60,7 +62,25 @@ Item {
             Keys.onReturnPressed: root.searchClicked()
         }
     }
-    Button {
+    Image {
+        id: clearTextButton
+        anchors {
+            right: parent.right
+            rightMargin: 10
+            verticalCenter: parent.verticalCenter
+        }
+        source: "image://theme/icon-m-input-clear"
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                searchTextInput.text = ""
+                searchTextInput.forceActiveFocus()
+                root.trashClicked()
+            }
+        }
+        visible: searchTextInput.text != ""
+    }
+    /*Button {
         id: clearTextButton
         iconSource: "image://theme/icon-m-toolbar-delete"//"trash.png"
         anchors {
@@ -91,5 +111,5 @@ Item {
         onClicked: {
             root.searchClicked()
         }
-    }
+    }*/
 }

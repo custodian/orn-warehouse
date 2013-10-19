@@ -67,19 +67,27 @@ PageWrapper {
             }
             Button {
                 anchors.horizontalCenter: parent.horizontalCenter
-                text: "Enable test repos"
+                text: qsTr("Enable test repos")
                 onClicked: {
                     pkgManagerProxy.enableRepository("basil");
                     pkgManagerProxy.enableRepository("appsformeego");
                     pkgManagerProxy.enableRepository("knobtviker");
                 }
             }
+            Button {
+                anchors.horizontalCenter: parent.horizontalCenter
+                text: qsTr("Installed applications list")
+                onClicked: {
+                    stack.push(Qt.resolvedUrl("InstalledApps.qml"));
+                }
+            }
+
             SectionHeader {
                 text: qsTr("Current operations")
             }
             Button {
                 anchors.horizontalCenter: parent.horizontalCenter
-                text: "Fetch repository info"
+                text: qsTr("Fetch repository info")
                 enabled: !pkgStatus.opInProgress
                 onClicked: {
                     pkgManagerProxy.fetchRepositoryInfo();

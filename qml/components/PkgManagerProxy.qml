@@ -60,8 +60,15 @@ Item {
         proxy.execute("getPackageInfo", packagename, callback);
     }
 
+    function getInstalledPackages(callback) {
+        proxy.execute("getInstalledPackages", "", callback);
+    }
+
     function install(packagename, callback) {
         proxy.execute("install", packagename, callback);
+    }
+    function upgrade(packagename, callback) {
+        proxy.execute("upgrade", packagename, callback);
     }
 
     function uninstall(packagename, callback) {

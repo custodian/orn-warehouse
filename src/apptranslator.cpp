@@ -67,7 +67,7 @@ void AppTranslator::loadAvailableLanguages()
     for (int i=0; i<list.size();i++) {
         QString filename = list.at(i).baseName();
         if (loader.load(filename,m_langdir)) {
-            QString code = filename.mid(11);
+            QString code = filename.mid(10);
             QLocale loc(code);
             //qDebug() << "Locale found:" << loc.name() << "from:" << code;
             QString name = QLocale::languageToString(loc.language());

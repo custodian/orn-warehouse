@@ -4,26 +4,28 @@ import com.nokia.meego 1.0
 import "."
 
 Column {
-    property string repository: ""
+    property string repositoryName: ""
     property bool isRepositoryEnabled: false
     property variant appstatus: {}
     property variant apppackage: {}
 
-    property bool opInProgress: pkgManagerProxy.opInProgress
+    property bool opInProgress: pkgManagerProxy.opInProgress || pkgStatus.localOperation
     property bool isInstalledFromLocalFile: appstatus.Repository === "local-file"
     property bool isInstalledFromOvi: appstatus.Origin === "com.nokia.maemo/ovi"
     property bool isInstalledNotFromOpenRepos: isInstalledFromOvi || isInstalledFromLocalFile
     property bool isInstalled: appstatus.Type === "Installed"
+    property bool isUpdateAvailable: appstatus.Type === "Update"
     property bool isNotInstalled: appstatus.Type === "NotInstalled"
     property bool isStateUnknown: appstatus.Type === undefined
+    property int downloadSize: appstatus.DownloadSize ? appstatus.DownloadSize : appstatus.Size ? appstatus.Size : 0
 
     width: parent.width
 
     onApppackageChanged: {
         updateAppStatus();
     }
-    onRepositoryChanged: {
-        pkgManagerProxy.isRepositoryEnabled(repository,
+    onRepositoryNameChanged: {
+        pkgManagerProxy.isRepositoryEnabled(repositoryName,
             function(result) {
                 isRepositoryEnabled = result;
             });
@@ -51,9 +53,9 @@ Column {
         anchors.horizontalCenter: parent.horizontalCenter
         color: mytheme.colors.textColorShout
         font.pixelSize: mytheme.font.sizeHelp
-        text: qsTr("Download size: %1 Kb").arg(appstatus.Size/1000)
+        text: qsTr("Download size: %1 Kb").arg(downloadSize/1000)
         wrapMode: Text.Wrap
-        visible: isNotInstalled && !opInProgress
+        visible: (isNotInstalled || isUpdateAvailable) && !opInProgress
     }
     Text {
         anchors.horizontalCenter: parent.horizontalCenter
@@ -75,7 +77,7 @@ Column {
         anchors.horizontalCenter: parent.horizontalCenter
         text: qsTr("Fetch repository info")
         onClicked: {
-            pkgManagerProxy.fetchRepositoryInfo(repository);
+            pkgManagerProxy.fetchRepositoryInfo(repositoryName);
         }
         visible: isRepositoryEnabled && isStateUnknown && !opInProgress
     }
@@ -83,20 +85,19 @@ Column {
         anchors.horizontalCenter: parent.horizontalCenter
         text: qsTr("Enable repository")
         onClicked: {
-            //enable repository
-            if (repository != "") {
-                pkgManagerProxy.enableRepository(repository);
-                pkgManagerProxy.isRepositoryEnabled(repository, function(result) {
+            if (repositoryName != "") {
+                pkgManagerProxy.enableRepository(repositoryName);
+                pkgManagerProxy.isRepositoryEnabled(repositoryName, function(result) {
                     isRepositoryEnabled = result;
                 });
-                pkgManagerProxy.fetchRepositoryInfo(repository, function(result){
+                pkgManagerProxy.fetchRepositoryInfo(repositoryName, function(result){
                     updateAppStatus();
                 });
             } else {
                 appDetails.show_error("Unknown repository!");
             }
         }
-        visible: repository!=="" && !isRepositoryEnabled && !opInProgress
+        visible: repositoryName!=="" && !isRepositoryEnabled && !opInProgress
     }
     Button {
         anchors.horizontalCenter: parent.horizontalCenter
@@ -110,9 +111,9 @@ Column {
         anchors.horizontalCenter: parent.horizontalCenter
         text: qsTr("Re-Install")
         onClicked: {
-            pkgManagerProxy.enableRepository(repository);
+            pkgManagerProxy.enableRepository(repositoryName);
             pkgManagerProxy.uninstall(apppackage.name);
-            pkgManagerProxy.fetchRepositoryInfo(repository);
+            pkgManagerProxy.fetchRepositoryInfo(repositoryName);
             pkgManagerProxy.install(apppackage.name, function(result){
                 updateAppStatus();
             });
@@ -121,14 +122,31 @@ Column {
     }
     Button {
         anchors.horizontalCenter: parent.horizontalCenter
+        text: qsTr("Upgrade")
+        onClicked: {
+            pkgManagerProxy.upgrade(apppackage.name, function(result){
+                updateAppStatus();
+            });
+        }
+        visible: isUpdateAvailable && !opInProgress
+    }
+    Button {
+        anchors.horizontalCenter: parent.horizontalCenter
         text: qsTr("Uninstall")
         onClicked: {
-            pkgManagerProxy.uninstall(apppackage.name, updateAppStatus);
+            pkgManagerProxy.uninstall(apppackage.name, function(result){
+                updateAppStatus();
+            });
         }
         visible: isInstalled && !opInProgress
     }
     PkgManagerStatus {
         id: pkgStatus
+
+        onLocalOperationChanged: {
+            updateAppStatus();
+        }
+
     }
 
 }

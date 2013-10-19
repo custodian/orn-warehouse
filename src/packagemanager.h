@@ -42,9 +42,12 @@ public slots:
 
     void fetchRepositoryInfo(QString domain);
     QVariant isRepositoryEnabled(QString name);
-    QVariant getPackageInfo(QString packagename);
+    QVariant getPackageInfo(QString packagename, QString version);
+
+    QVariant getInstalledPackages();
 
     void install(QString packagename);
+    void upgrade(QString packagename);
     void uninstall(QString packagename);
 
     void onPkgOperationStarted(QString operation, QString name, QString version);
