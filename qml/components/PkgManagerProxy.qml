@@ -25,8 +25,12 @@ Item {
 
     function actionDone(msg) {
         var actionitemobj = WorkerJS.objs.get(msg.item);
-        if (actionitemobj.callback !== undefined) {
-            actionitemobj.callback(msg.result);
+        if (msg.error) {
+            appWindow.stack.currentPage.show_error(msg.errorText);
+        } else {
+            if (actionitemobj.callback !== undefined) {
+                actionitemobj.callback(msg.result);
+            }
         }
         queuedActions--;
         WorkerJS.objs.remove(msg.item);

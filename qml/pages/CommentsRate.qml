@@ -65,12 +65,12 @@ PageWrapper {
                 Text {
                     id: textHeader
                     width: parent.width
-                    color: mytheme.colors.textColorSign
+                    color: mytheme.colors.textColorOptions
                     anchors {
                         left: parent.left
                         leftMargin: 10
                     }
-                    text: qsTr("Raiting options")
+                    text: qsTr("Rate application")
                     font.pixelSize: mytheme.font.sizeSigns
                 }
                 SectionHeader {

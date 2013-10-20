@@ -36,7 +36,10 @@ QtObject {
     onUpdateTypeChanged: Database.setSetting({"updateType": updateType})
 
     property string language: "en"
-    onLanguageChanged: Database.setSetting({"language": language})
+    onLanguageChanged: {
+        Database.setSetting({"language": language})
+        appTranslator.changeLanguage(language);
+    }
 
     property string debugEnabled: ""
     onDebugEnabledChanged: Database.setSetting({"debugEnabled": debugEnabled})

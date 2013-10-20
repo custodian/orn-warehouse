@@ -40,15 +40,15 @@ public slots:
     void enableRepository(QString name);
     void disableRepository(QString name);
 
-    void fetchRepositoryInfo(QString domain);
-    QVariant isRepositoryEnabled(QString name);
-    QVariant getPackageInfo(QString packagename, QString version);
+    QVariantMap fetchRepositoryInfo(QString domain);
+    QVariantMap isRepositoryEnabled(QString name);
+    QVariantMap getPackageInfo(QString packagename, QString version);
 
-    QVariant getInstalledPackages();
+    QVariantMap getInstalledPackages();
 
-    void install(QString packagename);
-    void upgrade(QString packagename);
-    void uninstall(QString packagename);
+    QVariantMap install(QString packagename);
+    QVariantMap upgrade(QString packagename);
+    QVariantMap uninstall(QString packagename);
 
     void onPkgOperationStarted(QString operation, QString name, QString version);
     void onPkgOperationProgress(QString operation, QString name, QString version, qint32 progress);

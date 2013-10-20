@@ -23,6 +23,10 @@ PageStackWindow {
         //console.log("active: " + windowActive);
     }
 
+    Configuration {
+        id: configuration
+    }
+
     Page {
         id: mainPage
         orientationLock: PageOrientation.LockPortrait
@@ -89,10 +93,6 @@ PageStackWindow {
                 }
             }
         }
-    }
-
-    Configuration {
-        id: configuration
     }
 
     QtObject {
@@ -181,7 +181,7 @@ PageStackWindow {
     }
 
     function processURI(url) {
-        console.log("uri: " + url);
+        console.log("Process URI: " + url);
         var params = url.split("/");
         var type = params[0];
         var id = params[1];
@@ -195,8 +195,17 @@ PageStackWindow {
                 popToTop(tabgroup.currentTab);
             }
             break;
-        case "application":
-            console.log("Should work with application: " + type);
+        case "apps":
+            console.log("Should work with application: " + id + " operation: " + operation);
+            var app = {
+                "appid":id,
+                "title": "Loading...",
+                "user": {
+                    "name": "Loading...",
+                },
+                "category": []
+            };
+            stack.push(Qt.resolvedUrl("pages/Application.qml"), {"application": app});
             break;
         default:
             console.log("Unimplemented callback for content: " + type);

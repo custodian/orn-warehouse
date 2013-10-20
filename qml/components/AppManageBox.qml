@@ -4,6 +4,8 @@ import com.nokia.meego 1.0
 import "."
 
 Column {
+    id: root
+
     property string repositoryName: ""
     property bool isRepositoryEnabled: false
     property variant appstatus: {}
@@ -103,7 +105,9 @@ Column {
         anchors.horizontalCenter: parent.horizontalCenter
         text: qsTr("Install")
         onClicked: {
-            pkgManagerProxy.install(apppackage.name, updateAppStatus);
+            pkgManagerProxy.install(apppackage.name, function(result) {
+                updateAppStatus();
+            });
         }
         visible: isNotInstalled && !opInProgress
     }

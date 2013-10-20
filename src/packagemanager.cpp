@@ -84,31 +84,38 @@ void PackageManager::processAction(QVariant message) {
     QVariantMap msg = message.toMap();
     QString function = msg["name"].toString();
     QVariant params = msg["params"];
+    QVariantMap reply;
     //qDebug() << "Process:" << function << "Args:" << params;
-    if (function == "fetchRepositoryInfo") {
-        fetchRepositoryInfo(params.toString());
-    } else if(function == "updateRepositoryList") {
-        updateRepositoryList();
-    } else if(function == "enableRepository") {
+    if(function == "enableRepository") {
         enableRepository(params.toString());
     } else if(function == "disableRepository") {
         disableRepository(params.toString());
+    } else if(function == "updateRepositoryList") {
+        updateRepositoryList();
+    } else if (function == "fetchRepositoryInfo") {
+        reply = fetchRepositoryInfo(params.toString());
     } else if(function == "isRepositoryEnabled") {
-        msg["result"] = isRepositoryEnabled(params.toString());
+        reply = isRepositoryEnabled(params.toString());
     } else if(function == "getPackageInfo") {
-        msg["result"] = getPackageInfo(params.toString(), "");
+        reply = getPackageInfo(params.toString(), "");
     } else if(function == "install") {
-        install(params.toString());
+        reply = install(params.toString());
     } else if (function == "upgrade") {
-        upgrade(params.toString());
+        reply = upgrade(params.toString());
     } else if(function == "uninstall") {
-        uninstall(params.toString());
+        reply = uninstall(params.toString());
     } else if(function == "getInstalledPackages") {
-        msg["result"] = getInstalledPackages();
-    } else if(function == "") {
-        //install(params.toString());
+        reply = getInstalledPackages();
+    }/* else if(function == "") {
+    }*/
+    if (reply.contains("reply")) {
+        msg["result"] = reply["reply"];
     }
-
+    if (reply.contains("error")) {
+        msg["error"] = true;
+        msg["errorText"] = reply["error"];
+        qDebug() << "Call:" << function << "Error:" << reply["error"];
+    }
     emit actionDone(msg);
 }
 
@@ -118,35 +125,47 @@ QString PackageManager::getListFileName(QString name) {
     return info.absoluteFilePath();
 }
 
-void PackageManager::fetchRepositoryInfo(QString domain) {
+QVariantMap PackageManager::fetchRepositoryInfo(QString domain) {
+    QVariantMap callresult;
 #if defined(Q_OS_HARMATTAN)
     QDBusMessage msg = QDBusMessage::createMethodCall(PKG_SERVICE,PKG_PATH,PKG_IFACE,"refresh_package_cache");
     QVariantList args;
     args.push_back(domain);
     args.push_back("");
     msg.setArguments(args);
-    m_bus.call(msg);
+    QDBusMessage reply = m_bus.call(msg, QDBus::Block, 60000);
+    if (reply.type() == QDBusMessage::ErrorMessage) {
+        qDebug() << "Error: " << reply.errorMessage();
+        callresult["error"] = reply.errorMessage();
+    }
 #else
     emit operationStarted("Refresh", "", "");
     IWaiter::sleep(2);
     emit operationCompleted("Refresh","","","",false);
 #endif
+    return callresult;
 }
 
-QVariant PackageManager::getPackageInfo(QString packagename, QString version) {
+QVariantMap PackageManager::getPackageInfo(QString packagename, QString version) {
+    QVariantMap callresult;
 #if defined(Q_OS_HARMATTAN)
     QDBusMessage msg = QDBusMessage::createMethodCall(PKG_SERVICE,PKG_PATH,PKG_IFACE,"fetch_package_data");
     QVariantList args;
     args.push_back(packagename);
     args.push_back(version);
     msg.setArguments(args);
-    QDBusReply<QVariantMap> reply = m_bus.call(msg);
+    QDBusReply<QVariantMap> reply = m_bus.call(msg, QDBus::Block, 60000);
     if (reply.isValid()) {
         QVariantMap result = reply.value();
         result.remove("IconData");
-        return QVariant::fromValue(result);
+        callresult["reply"] = QVariant::fromValue(result);
     } else {
-        return QVariant(false);
+        QDBusError error = reply.error();
+        if (error.type() == 1 && reply.error().name() == "com.nokia.package_manager.Error.PackageNotFound") {
+            callresult["reply"] = false;
+        } else {
+            callresult["error"] = reply.error().message();
+        }
     }
 #else
     QVariantMap result;
@@ -159,39 +178,48 @@ QVariant PackageManager::getPackageInfo(QString packagename, QString version) {
     }
     return result;
 #endif
+    return callresult;
 }
 
-QVariant PackageManager::getInstalledPackages() {
+QVariantMap PackageManager::getInstalledPackages() {
+    QVariantMap callresult;
     QVariantList packages;
 #if defined(Q_OS_HARMATTAN)
     QDBusMessage msg = QDBusMessage::createMethodCall(PKG_SERVICE,PKG_PATH,PKG_IFACE,"fetch_installed");
-    QDBusReply<QDBusArgument> reply = m_bus.call(msg);
+    QDBusReply<QDBusArgument> reply = m_bus.call(msg, QDBus::Block, 60000);
     if (reply.isValid()) {
         QDBusArgument var = reply.value();
         var.beginArray();
         while( !var.atEnd() ) {
             QVariantMap package;
             var >> package;
-            QVariantMap pkgInfo = getPackageInfo(package["Name"].toString(), package["Version"].toString()).toMap();
+            QVariantMap pkgInfo = getPackageInfo(package["Name"].toString(), package["Version"].toString())["reply"].toMap();
             QString repository = pkgInfo["Repository"].toString();
             if (repository.contains("openrepos.net")) {
                 //qDebug() << "pushed";
                 packages.push_back(QVariant(package));
             }
         };
+        callresult["reply"] = packages;
+    } else {
+        callresult["error"] = reply.error().message();
     }
 #endif
-    return packages;
+    return callresult;
 }
 
-void PackageManager::install(QString packagename) {
+QVariantMap PackageManager::install(QString packagename) {
+    QVariantMap callresult;
 #if defined(Q_OS_HARMATTAN)
     QDBusMessage msg = QDBusMessage::createMethodCall(PKG_SERVICE,PKG_PATH,PKG_IFACE,"install");
     QVariantList args;
     args.push_back(packagename);
     args.push_back("");
     msg.setArguments(args);
-    m_bus.call(msg);
+    QDBusMessage reply = m_bus.call(msg, QDBus::Block, 60000);
+    if (reply.type() == QDBusMessage::ErrorMessage) {
+        callresult["error"] = reply.errorMessage();
+    }
 #else
     if (m_packages.contains(packagename)) {
         QVariantMap &package = m_packages[packagename];
@@ -208,16 +236,21 @@ void PackageManager::install(QString packagename) {
         package["Type"] = "Installed";
     }
 #endif
+    return callresult;
 }
 
-void PackageManager::upgrade(QString packagename) {
+QVariantMap PackageManager::upgrade(QString packagename) {
+    QVariantMap callresult;
 #if defined(Q_OS_HARMATTAN)
     QDBusMessage msg = QDBusMessage::createMethodCall(PKG_SERVICE,PKG_PATH,PKG_IFACE,"upgrade");
     QVariantList args;
     args.push_back(packagename);
     args.push_back("");
     msg.setArguments(args);
-    m_bus.call(msg);
+    QDBusMessage reply = m_bus.call(msg, QDBus::Block, 60000);
+    if (reply.type() == QDBusMessage::ErrorMessage) {
+        callresult["error"] = reply.errorMessage();
+    }
 #else
     if (m_packages.contains(packagename)) {
         QVariantMap &package = m_packages[packagename];
@@ -234,15 +267,20 @@ void PackageManager::upgrade(QString packagename) {
         package["Type"] = "Installed";
     }
 #endif
+    return callresult;
 }
 
-void PackageManager::uninstall(QString packagename) {
+QVariantMap PackageManager::uninstall(QString packagename) {
+    QVariantMap callresult;
 #if defined(Q_OS_HARMATTAN)
     QDBusMessage msg = QDBusMessage::createMethodCall(PKG_SERVICE,PKG_PATH,PKG_IFACE,"uninstall");
     QVariantList args;
     args.push_back(packagename);
     msg.setArguments(args);
-    m_bus.call(msg);
+    QDBusMessage reply = m_bus.call(msg, QDBus::Block, 60000);
+    if (reply.type() == QDBusMessage::ErrorMessage) {
+        callresult["error"] = reply.errorMessage();
+    }
 #else
     if (m_packages.contains(packagename)) {
         QVariantMap &package = m_packages[packagename];
@@ -255,6 +293,7 @@ void PackageManager::uninstall(QString packagename) {
         package["Type"] = "NotInstalled";
     }
 #endif
+    return callresult;
 }
 
 void PackageManager::enableRepository(QString name)
@@ -302,7 +341,7 @@ void PackageManager::updateRepositoryList()
     emit repositoryListChanged(repos);
 }
 
-QVariant PackageManager::isRepositoryEnabled(QString name) {
+QVariantMap PackageManager::isRepositoryEnabled(QString name) {
     bool result = false;
     for (int i=0;i<m_repositories.count();i++) {
         QVariantMap rep = m_repositories.at(i).toMap();
@@ -312,5 +351,7 @@ QVariant PackageManager::isRepositoryEnabled(QString name) {
         }
     }
 
-    return QVariant(result);
+    QVariantMap callresult;
+    callresult["reply"] = result;
+    return callresult;
 }
