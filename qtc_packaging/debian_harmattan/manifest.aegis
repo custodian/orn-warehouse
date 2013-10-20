@@ -1,4 +1,4 @@
-AutoGenerateAegisFile
+<!-- AutoGenerateAegisFile -->
 <!-- Aegis manifest declares the security credentials required by an
      application to run correctly. By default, a manifest file will be
      created or updated automatically as a part of build.
@@ -29,6 +29,100 @@ AutoGenerateAegisFile
 
 -->
 <aegis>
+    <domain name="net.openrepos.harmattan" rank="-1">
+        <allow>
+            <!-- Global tokens -->
+            <credential match="Cellular" />
+            <credential match="TrackerReadAccess" />
+            <credential match="TrackerWriteAccess" />
+            <credential match="Location" />
+            <credential match="FacebookSocial" />
+            <!-- POSIX capabilities -->
+            <credential name="CAP::chown" />
+            <credential name="CAP::dac_read_search" />
+            <credential name="CAP::fowner" />
+            <credential name="CAP::fsetid" />
+            <credential name="CAP::kill" />
+            <credential name="CAP::linux_immutable" />
+            <credential name="CAP::net_bind_service" />
+            <credential name="CAP::net_broadcast" />
+            <credential name="CAP::net_admin" />
+            <credential name="CAP::net_raw" />
+            <credential name="CAP::ipc_lock" />
+            <credential name="CAP::ipc_owner" />
+            <credential name="CAP::sys_ptrace" />
+            <credential name="CAP::sys_pacct" />
+            <credential name="CAP::sys_boot" />
+            <credential name="CAP::sys_nice" />
+            <credential name="CAP::sys_resource" />
+            <credential name="CAP::sys_time" />
+            <credential name="CAP::sys_tty_config" />
+            <credential name="CAP::lease" />
+            <credential name="CAP::audit_write" />
+            <credential name="CAP::audit_control" />
+            <credential name="CAP::setfcap" />
+            <!-- UIDs, GRPs and GIDs -->
+            <credential match="UID::user" />
+            <credential match="GRP::users" />
+            <credential match="GID::users" />
+            <credential match="UID::root" />
+            <credential match="GRP::root" />
+            <credential match="GID::root" />
+            <credential match="UID::calendar" />
+            <credential match="GRP::calendar" />
+            <credential match="GID::calendar" />
+            <credential match="GRP::dialout" />
+            <credential match="GID::dialout" />
+            <credential match="GRP::video" />
+            <credential match="GID::video" />
+            <credential match="GRP::pulse-access" />
+            <credential match="GID::pulse-access" />
+            <credential match="GRP::metadata-users" />
+            <credential match="GRP::gallerycoredata-users" />
+            <!-- OVI specific SSO tokens -->
+            <credential match="libaccounts-noa::accesssvt" />
+            <credential match="account-plugin-ovi::access" />
+            <!-- icd2 tokens -->
+            <credential match="icd2::icd2-plugin" />
+            <!-- tracker tokens (in addition to global tracker tokens) -->
+            <credential match="tracker::tracker-extract-access" />
+            <credential match="tracker::tracker-miner-fs-access" />
+            <!-- Package Manager tokens -->
+            <credential match="package-manager::packagemanager_limited" />
+            <credential match="package-manager::packagemanager_private" />
+        </allow>
+        <origin>
+            <keyinfo>
+                mQENBFHebZIBCADBfsu9PJunjQtDaA5T0yQ/yfFhUupfvnf9rSQoiRHNHr3z/qv9
+                je8nV/9OgCDKt85CB2PuPpej4qfgG+SLeA0KXwS3VCpUlXRihWHXDgjdnLENDeak
+                SQZDknZV0w22Zj1SEKmQ6ayWLiFU1OoYa+9tyDRMxn0uaHbOGWlfnABSD2uUm1iY
+                XX6p7HwPKjSpB9Dqr++UDZcfqerlWm06k9OfRD1RjWAHLYjBcvqQQyURQNOMgWi/
+                HRJCsmHOPFW1yoMm70wt077g92rsa4oALHKw0unYnIb20BcF0lDEWdY97n5BfnqQ
+                dcdyPP4RaO5juf2vfMuvKZ8eQUmVdBAZQeSvABEBAAG0OE9wZW5SZXBvcyBOZXR3
+                b3JrIChSZXBvc2l0b3J5IGtleSkgPHJvYm90QG9wZW5yZXBvcy5uZXQ+iQE4BBMB
+                AgAiBQJR3m2SAhsDBgsJCAcDAgYVCAIJCgsEFgIDAQIeAQIXgAAKCRC7k/lGTC2p
+                jOsRB/9UM5ckPcjq6LBmaFulUisCU0U1ETmwjrsntodTYzk2M+DBqalLfQVk1nAz
+                5t79mX8ddApVX2c/RNG6I+SzckA/7nAOUV7XsSgj6U1zsZvOaHXTIcWxTwYJJbgK
+                tz/jrqUdrj7scXCoPpqXw/4npO68cGER2lLv6mAweytO8Ipe3quPw18xb5KZ5sql
+                uXYKYdQ7w9VMOmV3lZAoLEGxDlgAORTt+sDk2F9Rv5l9KKtfw+wppq165pX0Ceqw
+                ouAh8jon2nKN4nbsCT+D7kWB+CdAFdDYnCcNYmabkG9/VPlgrt5ZD3yEfWNHTSXQ
+                StVnUwxv0mva6w9DXWl+EkHVeWALuQENBFHebZIBCADOr7Qfkud4vms0sjBDkaEe
+                GJ/ux5FLmOUjB5nqtZzmZ/5HGCbySjWfLZbk9ZCj40GUo6xnnXLibAsP+d92w65a
+                /VeSVyy1NyTq9ODBzWmtJAFYoZ3jfzbocafj3Zip2ks+WtDW+149oowjp97xpJ9W
+                vXWVtSTSVc2DycnOEVOzuqktn3WenkDfz851BPx1sKmAsAL+VSltRZyk/exZim7/
+                sM3Ule2Lnh8+ycmmwe3uDSrHY9J15iGHn6+Z8d1mZaP6mIvKlYSgIL0ktltOH3Wd
+                rEDQGKxBcWs9lJrv2pfcABVBN2OFMnuzPQ2s8slAfA3Q4BTfimosO2pzzOQ+HqkJ
+                ABEBAAGJAR8EGAECAAkFAlHebZICGwwACgkQu5P5RkwtqYxAFgf/eys0Du9nu1D5
+                k5U9N9wold/5YI1thHXQRI1zzeBHmrMMtsV7oTE0FrYWgWh+t6gyDUHMTXYwcBvg
+                0gTJ/eHaX9ntF68UxcmjUCozSQML2AOyYFFlv2Xg61QsmCP8CW7EhfH7v90nwPXu
+                2Fds2CaxHc0qvTPyIoEKpu55y2ej93jFq/JKCxJltRtxzHdN1xEUV9/bTvfBa87n
+                Cg+HoiyTAnV7fCIAAabEd7mB9XnYluFnyxmMReOXUWcKSKg7Ki0LglvHi+18Kq56
+                hdjuIc/OgTZVRWcHmYY5QeCYm+l/Dkkuc2vQ7ek8eksOnwNExqY5LVq1w76J0mRP
+                u2B+PU8Wag==
+                =aRVD
+            </keyinfo>
+        </origin>
+    </domain>
 	<request policy="add">
 
 		<!-- Make a GSM call, send text messages (SMS). -->
@@ -63,7 +157,9 @@ AutoGenerateAegisFile
 		<credential name="GRP::audio" />
 	-->
 
-	</request>
+        <!-- direct dbus calls -->
+        <credential name="package-manager::packagemanager_limited" />
+    </request>
 
 	<for path="/opt/warehouse/bin/warehouse" />
 	<for path="applauncherd-launcher::/usr/bin/applauncherd.bin" id="" />

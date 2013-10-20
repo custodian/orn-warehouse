@@ -33,9 +33,7 @@ categories.onPreloadFailed = function(call, response) {
 categories.parse = function(cats, style) {
     var text = "";
     cats.forEach(function(cat) {
-        if (style === "done") {
-            text = cat;
-        } else if (style === "small") {
+        if (style === "small") {
             text = categories._fulllist[cat.tid].name;
         } else {
             if (text.length > 0) {

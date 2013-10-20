@@ -8,7 +8,6 @@ PageWrapper {
     id: appList
     signal update()
 
-
     width: parent.width
     height: parent.height
     color: mytheme.colors.backgroundMain
@@ -20,17 +19,10 @@ PageWrapper {
         var page = appList;
         page.update.connect(function(){
             page.waiting_show();
-            pkgManagerProxy.getInstalledPackages(function(packages) {
+            pkgManagerProxy.getInstalledPackages(false, function(packages) {
                 page.waiting_hide();
                 packages.forEach(function(pkg) {
-                    var application = { "application" :{
-                                         "title": pkg.DisplayName,
-                                         "icon": {
-                                            "url": "base64://" + pkg.IconData + ".png",
-                                         },
-                                         "category": [pkg.Category]
-                                        }
-                                     };
+                    var application = { "application" : pkg };
                     appsModel.append(application);
                 });
             });
@@ -61,14 +53,8 @@ PageWrapper {
     Component {
         id: appDelegate
 
-        ApplicationBox {
-            id: appbox
-            categorystyle: "done"
+        PackageBox {
             application: model.application
-
-            onAreaClicked: {
-                appList.application( model.application );
-            }
         }
     }
 }

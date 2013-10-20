@@ -5,11 +5,9 @@ import "../components"
 import "../js/api.js" as Api
 
 PageWrapper {
-    id: appList
+    id: root
 
     signal update()
-
-    property variant repositories: undefined
 
     width: parent.width
     height: parent.height
@@ -19,9 +17,17 @@ PageWrapper {
     //headerIcon: "../icons/icon-header-checkinhistory.png"
 
     function load() {
-        var page = appList;
+        var page = root;
         page.update.connect(function(){
-            pkgManagerProxy.updateRepositoryList();
+            page.waiting_show();
+            appsModel.clear();
+            pkgManagerProxy.getInstalledPackages(true, function(packages) {
+                page.waiting_hide();
+                packages.forEach(function(pkg) {
+                    var application = { "application" : pkg };
+                    appsModel.append(application);
+                });
+            });
         });
         page.update();
     }
@@ -29,16 +35,13 @@ PageWrapper {
         update();
     }
 
+    ListModel {
+        id: appsModel
+    }
+
     MouseArea {
         anchors.fill: parent
         onClicked: { }
-    }
-
-    Connections {
-        target: pkgManager
-        onRepositoryListChanged: {
-            repositories = repos;
-        }
     }
 
     Flickable{
@@ -63,32 +66,12 @@ PageWrapper {
             }
 
             SectionHeader {
-                text: qsTr("Some weird stuff")
-            }
-            Button {
-                anchors.horizontalCenter: parent.horizontalCenter
-                text: qsTr("Enable test repos")
-                onClicked: {
-                    pkgManagerProxy.enableRepository("basil");
-                    pkgManagerProxy.enableRepository("appsformeego");
-                    pkgManagerProxy.enableRepository("knobtviker");
-                }
-            }
-            Button {
-                anchors.horizontalCenter: parent.horizontalCenter
-                text: qsTr("Installed applications list")
-                onClicked: {
-                    stack.push(Qt.resolvedUrl("InstalledApps.qml"));
-                }
-            }
-
-            SectionHeader {
                 text: qsTr("Current operations")
             }
             Button {
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("Fetch repository info")
-                enabled: !pkgStatus.opInProgress
+                enabled: !pkgManagerProxy.opInProgress
                 onClicked: {
                     pkgManagerProxy.fetchRepositoryInfo();
                 }
@@ -98,62 +81,32 @@ PageWrapper {
             }
 
             SectionHeader {
-                text: qsTr("Enabled repositories")
+                text: qsTr("Installed applications")
             }
-
+            Button {
+                anchors.horizontalCenter: parent.horizontalCenter
+                text: qsTr("View full list")
+                onClicked: {
+                    stack.push(Qt.resolvedUrl("InstalledApps.qml"));
+                }
+            }
+            SectionHeader {
+                text: qsTr("Installed via Warehouse")
+            }
             Repeater {
                 width: parent.width
-                model: repositories
-                delegate: repositoryDelegate
+                model: appsModel
+                delegate: appDelegate
             }
         }
     }
 
     Component {
-        id: repositoryDelegate
+        id: appDelegate
 
-        Item {
+        PackageBox {
+            application: model.application
             width: reposColumn.width
-            height: disableButton.height + 10
-            Text {
-                id: repoName
-                anchors{
-                    left: parent.left
-                    right: refreshButton.left
-                    margins: mytheme.paddingMedium
-                    verticalCenter: parent.verticalCenter
-                }
-                font.pixelSize: mytheme.fontSizeLarge
-                maximumLineCount: 2
-                color: mytheme.colors.textColorOptions
-                wrapMode: Text.Wrap
-                elide: Text.ElideRight
-                text: modelData.name
-            }
-            Button {
-                id: refreshButton
-                anchors {
-                    right: disableButton.left
-                    rightMargin: 5
-                    verticalCenter: parent.verticalCenter
-                }
-                width: 120
-                text: qsTr("Refresh")
-                enabled: !pkgManagerProxy.opInProgress
-                onClicked: pkgManagerProxy.fetchRepositoryInfo(modelData.name);
-            }
-
-            Button {
-                id: disableButton
-                anchors {
-                    right: parent.right
-                    verticalCenter: parent.verticalCenter
-                }
-
-                width: 120
-                text: qsTr("Disable")
-                onClicked: pkgManagerProxy.disableRepository(modelData.name);
-            }
         }
     }
 }

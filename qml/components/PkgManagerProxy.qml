@@ -7,7 +7,8 @@ Item {
 
     property variant lastoperation: undefined
     property int actionNumber: 0
-    property bool opInProgress: queuedActions !== 0
+    property bool opInProgress: queuedActions !== 0 || localOperation
+    property bool localOperation: false
     property int queuedActions: 0
 
     function execute(name, params, callback) {
@@ -64,8 +65,8 @@ Item {
         proxy.execute("getPackageInfo", packagename, callback);
     }
 
-    function getInstalledPackages(callback) {
-        proxy.execute("getInstalledPackages", "", callback);
+    function getInstalledPackages(owned, callback) {
+        proxy.execute("getInstalledPackages", owned, callback);
     }
 
     function install(packagename, callback) {
@@ -88,6 +89,11 @@ Item {
             "version": version,
             "progress": progress
         };
+        if (status === "Completed") {
+            localOperation = false;
+        } else {
+            localOperation = true;
+        }
         pkgManagerProxy.processedOperation(lastoperation);
     }
 
@@ -105,7 +111,7 @@ Item {
     }
     function downloadProgress(operation, name, version, curBytes, totalBytes){
         //console.log("DOWNLOAD PROGRESS: %1 %2 %3 %4 %5".arg(operation).arg(name).arg(version).arg(curBytes).arg(totalBytes));
-        operationProgress('Download', name, version, curBytes/totalBytes*100);
+        operationProgress("Download", name, version, curBytes/totalBytes*100);
     }
     function packageListUpdated(updates) {
         //console.log("PACKAGE LIST UPDATED: " + updates);

@@ -44,7 +44,7 @@ public slots:
     QVariantMap isRepositoryEnabled(QString name);
     QVariantMap getPackageInfo(QString packagename, QString version);
 
-    QVariantMap getInstalledPackages();
+    QVariantMap getInstalledPackages(bool owned);
 
     QVariantMap install(QString packagename);
     QVariantMap upgrade(QString packagename);

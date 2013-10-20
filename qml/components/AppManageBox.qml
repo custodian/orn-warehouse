@@ -11,7 +11,7 @@ Column {
     property variant appstatus: {}
     property variant apppackage: {}
 
-    property bool opInProgress: pkgManagerProxy.opInProgress || pkgStatus.localOperation
+    property bool opInProgress: pkgManagerProxy.opInProgress
     property bool isInstalledFromLocalFile: appstatus.Repository === "local-file"
     property bool isInstalledFromOvi: appstatus.Origin === "com.nokia.maemo/ovi"
     property bool isInstalledNotFromOpenRepos: isInstalledFromOvi || isInstalledFromLocalFile
@@ -122,7 +122,7 @@ Column {
                 updateAppStatus();
             });
         }
-        visible: isInstalled && isInstalledNotFromOpenRepos && !opInProgress
+        visible: isInstalled && isInstalledNotFromOpenRepos && isRepositoryEnabled && !opInProgress
     }
     Button {
         anchors.horizontalCenter: parent.horizontalCenter
@@ -147,10 +147,9 @@ Column {
     PkgManagerStatus {
         id: pkgStatus
 
-        onLocalOperationChanged: {
+        onBusyStatusChanged: {
             updateAppStatus();
         }
-
     }
 
 }

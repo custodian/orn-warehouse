@@ -78,6 +78,16 @@ Item{
         text: headerText
     }
 
+    Image {
+        source: "image://theme/icon-s-transfer-download-inverse"
+        anchors {
+            right: busy ? busyIndicatorLoader.left : parent.right;
+            rightMargin: mytheme.paddingXXLarge;
+            verticalCenter: parent.verticalCenter
+        }
+        visible: pkgManagerProxy.opInProgress
+    }
+
     Loader{
         id: busyIndicatorLoader
         anchors{ right: parent.right; rightMargin: mytheme.paddingXXLarge; verticalCenter: parent.verticalCenter }

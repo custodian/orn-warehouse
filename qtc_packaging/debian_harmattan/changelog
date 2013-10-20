@@ -3,8 +3,10 @@ warehouse (0.0.9) stable; urgency=low
   * Error notifications
   * Multi Language support
   * URI support
+  * Profile page update
+  * Settigs page update
 
- -- Basil Semuonov <basil.semuonov@gmail.com>  Sat, 19 Oct 2013 17:57:19 +0400
+ -- Basil Semuonov <basil.semuonov@gmail.com>  Mon, 21 Oct 2013 00:36:28 +0400
 
 warehouse (0.0.8) stable; urgency=low
   * Basic comments

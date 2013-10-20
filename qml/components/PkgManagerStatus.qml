@@ -4,10 +4,10 @@ import com.nokia.meego 1.0
 import "."
 
 Column {
+    signal busyStatusChanged
+
     width: parent.width
     spacing: 5
-
-    property bool localOperation: false
 
     Text {
         anchors.horizontalCenter: parent.horizontalCenter
@@ -20,6 +20,7 @@ Column {
         anchors.horizontalCenter: parent.horizontalCenter
         color: mytheme.colors.textColorShout
         font.pixelSize: mytheme.font.sizeHelp
+        text: qsTr("Working");
         visible: operationText.text.length > 0
     }
     Text {
@@ -37,7 +38,7 @@ Column {
         maximumValue: 100
         value: 50
     }
-    visible: pkgManagerProxy.opInProgress || localOperation
+    visible: pkgManagerProxy.opInProgress
 
     Component.onCompleted: {
         pkgManagerProxy.reemitOperation(processOperation);
@@ -70,16 +71,14 @@ Column {
             break;
         }
         if (operation.status === "Completed") {
-            localOperation = false;
             operationText.text = qsTr("Working");
             operationTextApp.text = "";
-        } else {
-            localOperation = true;
         }
     }
 
     Connections {
         target: pkgManagerProxy
         onProcessedOperation: processOperation(operation)
+        onLocalOperationChanged: busyStatusChanged
     }
 }

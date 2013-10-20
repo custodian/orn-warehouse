@@ -1,4 +1,4 @@
-import Qt 4.7
+import QtQuick 1.1
 import com.nokia.meego 1.0
 import "../build.info.js" as BuildInfo
 import "../components"
@@ -11,6 +11,7 @@ PageWrapper {
     signal settingsChanged(string type, string value);
 
     property string cacheSize: qsTr("updating...")
+    property variant repositories: undefined
 
     id: settings
     color: mytheme.colors.backgroundMain
@@ -82,6 +83,13 @@ PageWrapper {
         }
     }
 
+    Connections {
+        target: pkgManager
+        onRepositoryListChanged: {
+            repositories = repos;
+        }
+    }
+
     ListModel {
         id: languageNamesModel
 
@@ -126,6 +134,7 @@ PageWrapper {
         page.settingsChanged.connect(function(type,value) {
             configuration.settingChanged(type,value);
         });
+        pkgManagerProxy.updateRepositoryList();
         cacheUpdater.start();
     }
 
@@ -202,41 +211,6 @@ PageWrapper {
                         onClicked: settingsChanged("updateType","alpha")
                     }
                 }
-
-                SectionHeader {}
-                Text {
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    text: "https://openrepos.net/content/basil/warehouse"
-                    color: mytheme.colors.textColorOptions
-                    font.pixelSize: mytheme.font.sizeHelp
-                    font.underline: true
-
-                    horizontalAlignment: Text.AlignHCenter
-                    MouseArea {
-                        anchors.fill: parent
-                        onClicked: {
-                            Qt.openUrlExternally("https://openrepos.net/content/basil/warehouse");
-                        }
-                    }
-                }
-                Item{
-                    height: 20
-                    width: parent.width
-                }
-
-            }
-        }
-        Flickable {
-            id: themeTab
-
-            anchors.fill: parent
-            contentHeight: themeTabColumn.height + 2 * mytheme.paddingMedium
-
-            Column {
-                id: themeTabColumn
-                anchors { left: parent.left; right: parent.right; top: parent.top; topMargin: mytheme.paddingMedium }
-                spacing: mytheme.paddingMedium
-
                 SectionHeader{
                     text: qsTr("LANGUAGE")
                 }
@@ -247,18 +221,6 @@ PageWrapper {
                         translationSelector.open();
                     }
                 }
-            }
-        }
-        Flickable {
-            id: serviceTab
-
-            anchors.fill: parent
-            contentHeight: serviceTabColumn.height + 2 * mytheme.paddingMedium
-
-            Column {
-                id: serviceTabColumn
-                anchors { left: parent.left; right: parent.right; top: parent.top; topMargin: mytheme.paddingMedium }
-                spacing: mytheme.paddingMedium
 
                 SectionHeader{
                     text: qsTr("IMAGE LOADING")
@@ -348,6 +310,61 @@ PageWrapper {
                     }
                 }
 
+                SectionHeader {}
+                Text {
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    text: "https://openrepos.net/content/basil/warehouse"
+                    color: mytheme.colors.textColorOptions
+                    font.pixelSize: mytheme.font.sizeHelp
+                    font.underline: true
+
+                    horizontalAlignment: Text.AlignHCenter
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            Qt.openUrlExternally("https://openrepos.net/content/basil/warehouse");
+                        }
+                    }
+                }
+                Item{
+                    height: 20
+                    width: parent.width
+                }
+
+            }
+        }
+        Flickable {
+            id: reposTab
+
+            anchors.fill: parent
+            contentHeight: reposTabColumn.height + 2 * mytheme.paddingMedium
+
+            Column {
+                id: reposTabColumn
+                anchors { left: parent.left; right: parent.right; top: parent.top; topMargin: mytheme.paddingMedium }
+                spacing: mytheme.paddingMedium
+
+                SectionHeader {
+                    text: qsTr("Test stuff")
+                }
+                Button {
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    text: qsTr("Enable test repos")
+                    onClicked: {
+                        pkgManagerProxy.enableRepository("basil");
+                        pkgManagerProxy.enableRepository("appsformeego");
+                        pkgManagerProxy.enableRepository("knobtviker");
+                    }
+                }
+                SectionHeader {
+                    text: qsTr("Enabled repositories")
+                }
+                Repeater {
+                    width: parent.width
+                    model: repositories
+                    delegate: repositoryDelegate
+                }
+
             }
         }
         Flickable {
@@ -394,9 +411,55 @@ PageWrapper {
         anchors { top: pagetop; left: parent.left; right: parent.right }
 
         TabButton { tab: generalTab; text: qsTr("General")}
-        TabButton { tab: themeTab; text: qsTr("Theme") }
-        TabButton { tab: serviceTab; text: qsTr("Service") }
+        TabButton { tab: reposTab; text: qsTr("Repository") }
         TabButton { tab: debugTab; text: qsTr("Debug") }
     }
 
+    Component {
+        id: repositoryDelegate
+
+        Item {
+            width: reposTabColumn.width
+            height: disableButton.height + 10
+            Text {
+                id: repoName
+                anchors{
+                    left: parent.left
+                    right: refreshButton.left
+                    margins: mytheme.paddingMedium
+                    verticalCenter: parent.verticalCenter
+                }
+                font.pixelSize: mytheme.fontSizeLarge
+                maximumLineCount: 2
+                color: mytheme.colors.textColorOptions
+                wrapMode: Text.Wrap
+                elide: Text.ElideRight
+                text: modelData.name
+            }
+            Button {
+                id: refreshButton
+                anchors {
+                    right: disableButton.left
+                    rightMargin: 5
+                    verticalCenter: parent.verticalCenter
+                }
+                width: 120
+                text: qsTr("Refresh")
+                enabled: !pkgManagerProxy.opInProgress
+                onClicked: pkgManagerProxy.fetchRepositoryInfo(modelData.name);
+            }
+
+            Button {
+                id: disableButton
+                anchors {
+                    right: parent.right
+                    verticalCenter: parent.verticalCenter
+                }
+
+                width: 120
+                text: qsTr("Disable")
+                onClicked: pkgManagerProxy.disableRepository(modelData.name);
+            }
+        }
+    }
 }

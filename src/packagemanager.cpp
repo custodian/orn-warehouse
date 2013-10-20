@@ -105,7 +105,7 @@ void PackageManager::processAction(QVariant message) {
     } else if(function == "uninstall") {
         reply = uninstall(params.toString());
     } else if(function == "getInstalledPackages") {
-        reply = getInstalledPackages();
+        reply = getInstalledPackages(params.toBool());
     }/* else if(function == "") {
     }*/
     if (reply.contains("reply")) {
@@ -181,7 +181,7 @@ QVariantMap PackageManager::getPackageInfo(QString packagename, QString version)
     return callresult;
 }
 
-QVariantMap PackageManager::getInstalledPackages() {
+QVariantMap PackageManager::getInstalledPackages(bool owned) {
     QVariantMap callresult;
     QVariantList packages;
 #if defined(Q_OS_HARMATTAN)
@@ -193,10 +193,19 @@ QVariantMap PackageManager::getInstalledPackages() {
         while( !var.atEnd() ) {
             QVariantMap package;
             var >> package;
-            QVariantMap pkgInfo = getPackageInfo(package["Name"].toString(), package["Version"].toString())["reply"].toMap();
-            QString repository = pkgInfo["Repository"].toString();
-            if (repository.contains("openrepos.net")) {
-                //qDebug() << "pushed";
+            bool goodpackage = !owned;
+            if (owned) {
+                QString origin = package["Origin"].toString();
+                if (origin == "/net.openrepos.harmattan") {
+                    goodpackage = true;
+                } else if (origin != "com.nokia.maemo/ovi" && origin != "com.nokia.maemo" ) {
+                    QVariantMap pkgInfo = getPackageInfo(package["Name"].toString(),package["Version"].toString())["reply"].toMap();
+                    if (pkgInfo["Origin"].toString() == "/net.openrepos.harmattan" || pkgInfo["Repository"].toString().contains("harmattan.openrepos.net")) {
+                        goodpackage = true;
+                    }
+                }
+            }
+            if (goodpackage) {
                 packages.push_back(QVariant(package));
             }
         };
