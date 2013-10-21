@@ -30,7 +30,9 @@ Item {
             appWindow.stack.currentPage.show_error(msg.errorText);
         } else {
             if (actionitemobj.callback !== undefined) {
-                actionitemobj.callback(msg.result);
+                try {
+                    actionitemobj.callback(msg.result);
+                } catch (e) {};
             }
         }
         queuedActions--;

@@ -1,5 +1,6 @@
 import QtQuick 1.1
 import com.nokia.meego 1.0
+import com.nokia.extras 1.0
 import "../components"
 
 import "../js/api.js" as Api
@@ -8,6 +9,8 @@ PageWrapper {
     id: root
 
     signal update()
+
+    property variant selectedApp: undefined
 
     width: parent.width
     height: parent.height
@@ -107,6 +110,10 @@ PageWrapper {
         PackageBox {
             application: model.application
             width: reposColumn.width
+
+            onAreaClicked: {
+                stack.push(Qt.resolvedUrl("PkgInfo.qml"), {"pkg" : model.application, "warehouse": true, "parentPage": root});
+            }
         }
     }
 }

@@ -9,6 +9,7 @@ Rectangle {
 
     property variant application: model.application
     property bool highlight: false
+    property bool onlyName: false
 
     color: mouseArea.pressed || highlight ? mytheme.colors.backgroundSand : mytheme.colors.backgroundMain
     width: parent.width
@@ -50,7 +51,7 @@ Rectangle {
         Text {
             id: appNameText
             color: mytheme.colors.textColorOptions
-            font.pixelSize: mytheme.font.sizeSigns
+            font.pixelSize: onlyName ? mytheme.font.sizeSettigs : mytheme.font.sizeSigns
             font.bold: true
             width: parent.width
             text: application.DisplayName.length > 0 ? application.DisplayName : application.Name
@@ -75,6 +76,7 @@ Rectangle {
                 }
                 text: qsTr("Version %1").arg(application.Version)
             }
+            visible: !onlyName
         }
     }
 

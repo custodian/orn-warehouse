@@ -35,7 +35,13 @@ void DBusService::loadURI(const QStringList &url)
     showApplication();
     if (url.size()) {
         QString param = url.at(0);
-        emit processURI(QVariant(param.replace("openrepos://","")));
+        if (param.contains("openrepos://")) {
+            param.replace("openrepos://","");
+        }
+        if (param.contains("http://openrepos/")) {
+            param.replace("http://openrepos/","");
+        }
+        emit processURI(QVariant(param));
     }
 }
 

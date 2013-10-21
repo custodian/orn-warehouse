@@ -183,7 +183,7 @@
 <context>
     <name>InstalledApps</name>
     <message>
-        <location filename="../qml/pages/InstalledApps.qml" line="16"/>
+        <location filename="../qml/pages/InstalledApps.qml" line="15"/>
         <source>Installed applications</source>
         <translation>Установленные приложения</translation>
     </message>
@@ -191,49 +191,42 @@
 <context>
     <name>Me</name>
     <message>
-        <location filename="../qml/pages/Me.qml" line="18"/>
+        <location filename="../qml/pages/Me.qml" line="16"/>
         <source>Your profile</source>
         <translation>Ваш профиль</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Me.qml" line="66"/>
-        <source>Some weird stuff</source>
-        <translation>Всякое говнецо</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/Me.qml" line="70"/>
-        <source>Enable test repos</source>
-        <translation>Включить тестовые репы</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/Me.qml" line="79"/>
-        <source>Installed applications list</source>
-        <translation>Список установленных приложений</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/Me.qml" line="86"/>
+        <location filename="../qml/pages/Me.qml" line="69"/>
         <source>Current operations</source>
         <translation>Очередь операций</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Me.qml" line="90"/>
+        <location filename="../qml/pages/Me.qml" line="73"/>
         <source>Fetch repository info</source>
         <translation>Обновить репозитории</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Me.qml" line="101"/>
-        <source>Enabled repositories</source>
-        <translation>Включенные репозитории</translation>
+        <location filename="../qml/pages/Me.qml" line="84"/>
+        <source>Installed applications</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../qml/pages/Me.qml" line="141"/>
-        <source>Refresh</source>
-        <translation>Обновить</translation>
+        <location filename="../qml/pages/Me.qml" line="88"/>
+        <source>View full list</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../qml/pages/Me.qml" line="154"/>
-        <source>Disable</source>
-        <translation>Выключить</translation>
+        <location filename="../qml/pages/Me.qml" line="94"/>
+        <source>Installed via Warehouse</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>PackageBox</name>
+    <message>
+        <location filename="../qml/components/PackageBox.qml" line="76"/>
+        <source>Version %1</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -262,31 +255,32 @@
         <translation>Текущая операция</translation>
     </message>
     <message>
-        <location filename="../qml/components/PkgManagerStatus.qml" line="51"/>
+        <location filename="../qml/components/PkgManagerStatus.qml" line="52"/>
         <source>Installing application</source>
         <translation>Установка приложения</translation>
     </message>
     <message>
-        <location filename="../qml/components/PkgManagerStatus.qml" line="55"/>
+        <location filename="../qml/components/PkgManagerStatus.qml" line="56"/>
         <source>Upgrading application</source>
         <translation>Обновление приложения</translation>
     </message>
     <message>
-        <location filename="../qml/components/PkgManagerStatus.qml" line="59"/>
+        <location filename="../qml/components/PkgManagerStatus.qml" line="60"/>
         <source>Uninstalling application</source>
         <translation>Удаление приложения</translation>
     </message>
     <message>
-        <location filename="../qml/components/PkgManagerStatus.qml" line="63"/>
+        <location filename="../qml/components/PkgManagerStatus.qml" line="64"/>
         <source>Downloading application</source>
         <translation>Загрузка приложения</translation>
     </message>
     <message>
-        <location filename="../qml/components/PkgManagerStatus.qml" line="67"/>
+        <location filename="../qml/components/PkgManagerStatus.qml" line="68"/>
         <source>Fetching repositories</source>
         <translation>Обновление репозиториев</translation>
     </message>
     <message>
+        <location filename="../qml/components/PkgManagerStatus.qml" line="23"/>
         <location filename="../qml/components/PkgManagerStatus.qml" line="74"/>
         <source>Working</source>
         <translation>Работаем</translation>
@@ -352,173 +346,193 @@
         <translation>обновление...</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="21"/>
+        <location filename="../qml/pages/Settings.qml" line="22"/>
         <source>SETTINGS</source>
         <translation>НАСТРОЙКИ</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="55"/>
+        <location filename="../qml/pages/Settings.qml" line="56"/>
         <source>If any problems, tweet @basil_s</source>
         <translation>При проблемах, твиттер @basil_s</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="56"/>
+        <location filename="../qml/pages/Settings.qml" line="57"/>
         <source>Version</source>
         <translation>Версия</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="58"/>
+        <location filename="../qml/pages/Settings.qml" line="59"/>
         <source>Build</source>
         <translation>Сборка</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="62"/>
+        <location filename="../qml/pages/Settings.qml" line="63"/>
         <source>Close</source>
         <translation>Закрыть</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="68"/>
-        <location filename="../qml/pages/Settings.qml" line="113"/>
+        <location filename="../qml/pages/Settings.qml" line="69"/>
+        <location filename="../qml/pages/Settings.qml" line="121"/>
         <source>Reset settings</source>
         <translation>Сбросить настройки</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="69"/>
+        <location filename="../qml/pages/Settings.qml" line="70"/>
         <source>This action will erase all data including auth token, application settings and cache.</source>
         <translation>Это действие удалит все данные настрое, включая кеш приложения и параметры авторизации</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="70"/>
+        <location filename="../qml/pages/Settings.qml" line="71"/>
         <source>Yes, clear the data</source>
         <translation>Да, удалить данные</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="71"/>
+        <location filename="../qml/pages/Settings.qml" line="72"/>
         <source>No, thanks</source>
         <translation>Нет, спасибо</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="79"/>
+        <location filename="../qml/pages/Settings.qml" line="80"/>
         <source>Language</source>
         <translation>Язык</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="107"/>
+        <location filename="../qml/pages/Settings.qml" line="115"/>
         <source>Check updates</source>
         <translation>Проверить обновления</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="159"/>
+        <location filename="../qml/pages/Settings.qml" line="168"/>
         <source>UPDATES CHECK</source>
         <translation>ПРОВЕРКА ОБНОВЛЕНИЙ</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="184"/>
+        <location filename="../qml/pages/Settings.qml" line="193"/>
         <source>None</source>
         <translation>Выкл</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="190"/>
+        <location filename="../qml/pages/Settings.qml" line="199"/>
         <source>Stable</source>
         <translation>Стабильная</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="195"/>
+        <location filename="../qml/pages/Settings.qml" line="204"/>
         <source>Beta</source>
         <translation>Бета</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="201"/>
+        <location filename="../qml/pages/Settings.qml" line="210"/>
         <source>Alpha</source>
         <translation>Альфа</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="241"/>
+        <location filename="../qml/pages/Settings.qml" line="215"/>
         <source>LANGUAGE</source>
         <translation>ЯЗЫК ИНФЕРФЕЙСА</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="264"/>
+        <location filename="../qml/pages/Settings.qml" line="226"/>
         <source>IMAGE LOADING</source>
         <translation>ЗАГРУЗКА ИЗОБРАЖЕНИЙ</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="283"/>
+        <location filename="../qml/pages/Settings.qml" line="245"/>
         <source>All</source>
         <translation>Все</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="288"/>
+        <location filename="../qml/pages/Settings.qml" line="250"/>
         <source>Cached</source>
         <translation>Из кэша</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="294"/>
+        <location filename="../qml/pages/Settings.qml" line="256"/>
         <source>APPLICATION CACHE</source>
         <translation>КЭШ ПРИЛОЖЕНИЯ</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="312"/>
+        <location filename="../qml/pages/Settings.qml" line="274"/>
         <source>Size: %1</source>
         <translation>Размер: %1</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="322"/>
+        <location filename="../qml/pages/Settings.qml" line="284"/>
         <source>Clear</source>
         <translation>Очистить</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="332"/>
+        <location filename="../qml/pages/Settings.qml" line="294"/>
         <source>UI</source>
         <translation>ИНТЕРФЕЙС</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="335"/>
+        <location filename="../qml/pages/Settings.qml" line="297"/>
         <source>Reload UI</source>
         <translation>Перезагрузить UI</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="341"/>
+        <location filename="../qml/pages/Settings.qml" line="303"/>
         <source>AUTHENTICATION</source>
         <translation>АВТОРИЗАЦИЯ</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="344"/>
+        <location filename="../qml/pages/Settings.qml" line="306"/>
         <source>Reset authentication</source>
         <translation>Сбросить авторизацию</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="365"/>
+        <location filename="../qml/pages/Settings.qml" line="348"/>
+        <source>Test stuff</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../qml/pages/Settings.qml" line="352"/>
+        <source>Enable test repos</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../qml/pages/Settings.qml" line="360"/>
+        <source>Enabled repositories</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../qml/pages/Settings.qml" line="382"/>
         <source>DEBUG</source>
         <translation>ОТЛАДКА</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="368"/>
+        <location filename="../qml/pages/Settings.qml" line="385"/>
         <source>Enable debug</source>
         <translation>Включить отладку</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="382"/>
+        <location filename="../qml/pages/Settings.qml" line="399"/>
         <source>Options will be available soon</source>
         <translation>Настройки скоро появятся</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="396"/>
+        <location filename="../qml/pages/Settings.qml" line="413"/>
         <source>General</source>
         <translation>Общие</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="397"/>
-        <source>Theme</source>
-        <translation>Тема</translation>
+        <location filename="../qml/pages/Settings.qml" line="414"/>
+        <source>Repository</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="398"/>
-        <source>Service</source>
-        <translation>Сервис</translation>
+        <location filename="../qml/pages/Settings.qml" line="447"/>
+        <source>Refresh</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="399"/>
+        <location filename="../qml/pages/Settings.qml" line="460"/>
+        <source>Disable</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../qml/pages/Settings.qml" line="415"/>
         <source>Debug</source>
         <translation>Отладка</translation>
     </message>

@@ -10,7 +10,7 @@ X-Window-Icon=
 X-HildonDesk-ShowInToolbar=true
 X-Osso-Type=application/x-executable
 #contentaction+dbus
-MimeType=x-maemo-urischeme/openrepos;
+MimeType=x-maemo-urischeme/openrepos;x-maemo-urischeme/openrepos-url;x-maemo-highlight/openrepos;x-maemo-highlight/openrepos-url;
 X-Maemo-Service=com.thecust.warehouse
 X-Maemo-Object-Path=/com/thecust/warehouse
 X-Maemo-Method=com.thecust.warehouse.loadURI

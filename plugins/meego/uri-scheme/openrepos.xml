@@ -1,4 +1,5 @@
 <?xml version="1.0"?>
 <actions>
     <highlight regexp="openrepos://(.*)/?" name="openrepos"/>
+    <highlight regexp="http://openrepos/(.*)?" name="openrepos-url" specialCaseOf="http-url" />
 </actions>

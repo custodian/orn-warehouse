@@ -1,5 +1,50 @@
 #!/bin/sh
 
+DEFAULT_MIMETYPES_FILE='/usr/share/applications/defaults.list'
+MIMETYPE_STR1='x-maemo-highlight/openrepos-url=warehouse_meego.desktop'
+MIMETYPE_STR2='x-maemo-highlight/openrepos=warehouse_meego.desktop'
+MIMETYPE_STR3='x-maemo-urischeme/openrepos-url=warehouse_meego.desktop'
+MIMETYPE_STR4='x-maemo-urischeme/openrepos=warehouse_meego.desktop'
+
+echo "Adding mimetypes"
+
+if [ -f $DEFAULT_MIMETYPES_FILE ]; then
+   if grep -qs $MIMETYPE_STR1 $DEFAULT_MIMETYPES_FILE
+   then
+      echo " x-maemo-highlight/openrepos-url already set"
+   else
+      echo $MIMETYPE_STR1 >> $DEFAULT_MIMETYPES_FILE
+      echo " x-maemo-highlight/openrepos-url set"
+   fi
+
+   if grep -qs $MIMETYPE_STR2 $DEFAULT_MIMETYPES_FILE
+   then
+      echo " x-maemo-highlight/openrepos already set"
+   else
+      echo $MIMETYPE_STR2 >> $DEFAULT_MIMETYPES_FILE
+      echo " x-maemo-highlight/openrepos set"
+   fi
+
+   if grep -qs $MIMETYPE_STR3 $DEFAULT_MIMETYPES_FILE
+   then
+      echo " x-maemo-urischeme/openrepos-url already set"
+   else
+      echo $MIMETYPE_STR3 >> $DEFAULT_MIMETYPES_FILE
+      echo " x-maemo-urischeme/openrepos-url set"
+   fi
+
+   if grep -qs $MIMETYPE_STR4 $DEFAULT_MIMETYPES_FILE
+   then
+      echo " x-maemo-urischeme/openrepos already set"
+   else
+      echo $MIMETYPE_STR4 >> $DEFAULT_MIMETYPES_FILE
+      echo " x-maemo-urischeme/openrepos set"
+   fi
+fi
+
+echo "Updating desktop database"
+update-desktop-database
+
 OPENREPOS_KEY='/opt/warehouse/openrepos.key'
 
 echo "Installing OpenRepos.key"

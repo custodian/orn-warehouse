@@ -185,6 +185,7 @@ QVariantMap PackageManager::getPackageInfo(QString packagename, QString version)
 QVariantMap PackageManager::getInstalledPackages(bool owned) {
     QVariantMap callresult;
     QVariantList packages;
+    packages.reserve(300);
 #if defined(Q_OS_HARMATTAN)
     QDBusMessage msg = QDBusMessage::createMethodCall(PKG_SERVICE,PKG_PATH,PKG_IFACE,"fetch_installed");
     QDBusReply<QDBusArgument> reply = m_bus.call(msg, QDBus::Block, 60000);
@@ -194,6 +195,9 @@ QVariantMap PackageManager::getInstalledPackages(bool owned) {
         while( !var.atEnd() ) {
             QVariantMap package;
             var >> package;
+            if (package.contains("FlagSystemUpdate")) {
+                continue;
+            }
             bool goodpackage = !owned;
             if (owned) {
                 QString origin = package["Origin"].toString();

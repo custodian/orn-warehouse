@@ -4,7 +4,7 @@ TARGET = warehouse
 VERSION = 0.1
 PACKAGENAME = com.thecust.warehouse
 
-QT += qt network
+QT += network
 #CONFIG +=
 
 DEFINES += QT_USE_FAST_CONCATENATION QT_USE_FAST_OPERATOR_PLUS
@@ -56,7 +56,9 @@ OTHER_FILES += \
     qtc_packaging/debian_harmattan/copyright \
     qtc_packaging/debian_harmattan/control \
     qtc_packaging/debian_harmattan/compat \
-    qtc_packaging/debian_harmattan/changelog
+    qtc_packaging/debian_harmattan/changelog \
+    qtc_packaging/debian_harmattan/postinst \
+    qtc_packaging/debian_harmattan/postrm
 
 OTHER_FILES += \
     warehouse_maemo.desktop \

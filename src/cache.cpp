@@ -85,6 +85,10 @@ void Cache::processBase64Data(QVariant dataurl) {
     QString datastr = url.right(datastr.length()-4);
     datastr = datastr.replace("base64://","");
     QByteArray data = QByteArray::fromBase64(datastr.toLocal8Bit());
+    datastr = data;
+    if (datastr.contains("xml version")) {
+        namelocal += ".svg";
+    }
     {
         QFile file(namelocal);
         file.open(QFile::WriteOnly);

@@ -5,7 +5,7 @@ import "../components"
 import "../js/api.js" as Api
 
 PageWrapper {
-    id: appList
+    id: root
     signal update()
 
     width: parent.width
@@ -16,7 +16,7 @@ PageWrapper {
     //headerIcon: "../icons/icon-header-checkinhistory.png"
 
     function load() {
-        var page = appList;
+        var page = root;
         page.update.connect(function(){
             page.waiting_show();
             pkgManagerProxy.getInstalledPackages(false, function(packages) {
@@ -55,6 +55,10 @@ PageWrapper {
 
         PackageBox {
             application: model.application
+
+            onAreaClicked: {
+                stack.push(Qt.resolvedUrl("PkgInfo.qml"), {"pkg" : model.application, "warehouse": false, "parentPage": root});
+            }
         }
     }
 }
