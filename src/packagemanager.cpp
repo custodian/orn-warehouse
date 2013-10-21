@@ -135,8 +135,9 @@ QVariantMap PackageManager::fetchRepositoryInfo(QString domain) {
     msg.setArguments(args);
     QDBusMessage reply = m_bus.call(msg, QDBus::Block, 60000);
     if (reply.type() == QDBusMessage::ErrorMessage) {
-        qDebug() << "Error: " << reply.errorMessage();
-        callresult["error"] = reply.errorMessage();
+        if (reply.errorName() != "org.freedesktop.DBus.Error.NoReply") {
+            callresult["error"] = reply.errorMessage();
+        }
     }
 #else
     emit operationStarted("Refresh", "", "");
@@ -227,7 +228,9 @@ QVariantMap PackageManager::install(QString packagename) {
     msg.setArguments(args);
     QDBusMessage reply = m_bus.call(msg, QDBus::Block, 60000);
     if (reply.type() == QDBusMessage::ErrorMessage) {
-        callresult["error"] = reply.errorMessage();
+        if (reply.errorName() != "org.freedesktop.DBus.Error.NoReply") {
+            callresult["error"] = reply.errorMessage();
+        }
     }
 #else
     if (m_packages.contains(packagename)) {
@@ -258,7 +261,9 @@ QVariantMap PackageManager::upgrade(QString packagename) {
     msg.setArguments(args);
     QDBusMessage reply = m_bus.call(msg, QDBus::Block, 60000);
     if (reply.type() == QDBusMessage::ErrorMessage) {
-        callresult["error"] = reply.errorMessage();
+        if (reply.errorName() != "org.freedesktop.DBus.Error.NoReply") {
+            callresult["error"] = reply.errorMessage();
+        }
     }
 #else
     if (m_packages.contains(packagename)) {
@@ -288,7 +293,9 @@ QVariantMap PackageManager::uninstall(QString packagename) {
     msg.setArguments(args);
     QDBusMessage reply = m_bus.call(msg, QDBus::Block, 60000);
     if (reply.type() == QDBusMessage::ErrorMessage) {
-        callresult["error"] = reply.errorMessage();
+        if (reply.errorName() != "org.freedesktop.DBus.Error.NoReply") {
+            callresult["error"] = reply.errorMessage();
+        }
     }
 #else
     if (m_packages.contains(packagename)) {

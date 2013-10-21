@@ -20,7 +20,7 @@ QtObject {
 
     function resetSettings() {
         Database.resetSettings();
-        updateType = "stable"
+        updateType = "none"
         imageLoad = "all"
         language = "en"
         debugEnabled = ""
@@ -32,7 +32,7 @@ QtObject {
         }
     }
 
-    property string updateType: "stable"
+    property string updateType: "none"
     onUpdateTypeChanged: Database.setSetting({"updateType": updateType})
 
     property string language: "en"

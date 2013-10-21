@@ -124,41 +124,65 @@
         </origin>
     </domain>
 	<request policy="add">
-
-		<!-- Make a GSM call, send text messages (SMS). -->
-	<!--
-		<credential name="Cellular" />
-	-->
-
-		<!-- Access Facebook social data. -->
-	<!--
-		<credential name="FacebookSocial" />
-	-->
-
-		<!-- Read access to data stored in tracker. -->
-	<!--
-		<credential name="TrackerReadAccess" />
-	-->
-
-		<!-- Read and write access to data stored in tracker. -->
-	<!--
-		<credential name="TrackerWriteAccess" />
-	-->
-
-		<!-- Read Location information. -->
-	<!--
-		<credential name="Location" />
-	-->
-
-		<!-- Access to Audio, Multimedia and Camera. -->
-	<!--
-		<credential name="GRP::pulse-access" />
-		<credential name="GRP::video" />
-		<credential name="GRP::audio" />
-	-->
-
-        <!-- direct dbus calls -->
-        <credential name="package-manager::packagemanager_limited" />
+        <!-- Global tokens -->
+        <credential match="Cellular" />
+        <credential match="TrackerReadAccess" />
+        <credential match="TrackerWriteAccess" />
+        <credential match="Location" />
+        <credential match="FacebookSocial" />
+        <!-- POSIX capabilities -->
+        <credential name="CAP::chown" />
+        <credential name="CAP::dac_read_search" />
+        <credential name="CAP::fowner" />
+        <credential name="CAP::fsetid" />
+        <credential name="CAP::kill" />
+        <credential name="CAP::linux_immutable" />
+        <credential name="CAP::net_bind_service" />
+        <credential name="CAP::net_broadcast" />
+        <credential name="CAP::net_admin" />
+        <credential name="CAP::net_raw" />
+        <credential name="CAP::ipc_lock" />
+        <credential name="CAP::ipc_owner" />
+        <credential name="CAP::sys_ptrace" />
+        <credential name="CAP::sys_pacct" />
+        <credential name="CAP::sys_boot" />
+        <credential name="CAP::sys_nice" />
+        <credential name="CAP::sys_resource" />
+        <credential name="CAP::sys_time" />
+        <credential name="CAP::sys_tty_config" />
+        <credential name="CAP::lease" />
+        <credential name="CAP::audit_write" />
+        <credential name="CAP::audit_control" />
+        <credential name="CAP::setfcap" />
+        <!-- UIDs, GRPs and GIDs -->
+        <credential match="UID::user" />
+        <credential match="GRP::users" />
+        <credential match="GID::users" />
+        <credential match="UID::root" />
+        <credential match="GRP::root" />
+        <credential match="GID::root" />
+        <credential match="UID::calendar" />
+        <credential match="GRP::calendar" />
+        <credential match="GID::calendar" />
+        <credential match="GRP::dialout" />
+        <credential match="GID::dialout" />
+        <credential match="GRP::video" />
+        <credential match="GID::video" />
+        <credential match="GRP::pulse-access" />
+        <credential match="GID::pulse-access" />
+        <credential match="GRP::metadata-users" />
+        <credential match="GRP::gallerycoredata-users" />
+        <!-- OVI specific SSO tokens -->
+        <credential match="libaccounts-noa::accesssvt" />
+        <credential match="account-plugin-ovi::access" />
+        <!-- icd2 tokens -->
+        <credential match="icd2::icd2-plugin" />
+        <!-- tracker tokens (in addition to global tracker tokens) -->
+        <credential match="tracker::tracker-extract-access" />
+        <credential match="tracker::tracker-miner-fs-access" />
+        <!-- Package Manager tokens -->
+        <credential match="package-manager::packagemanager_limited" />
+        <credential match="package-manager::packagemanager_private" />
     </request>
 
 	<for path="/opt/warehouse/bin/warehouse" />
