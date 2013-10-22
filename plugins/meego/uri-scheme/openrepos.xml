@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
 <actions>
     <highlight regexp="openrepos://(.*)/?" name="openrepos"/>
-    <highlight regexp="http://openrepos/(.*)?" name="openrepos-url" specialCaseOf="http-url" />
+    <highlight regexp="[Hh][Tt][Tt][Pp]://[Tt][Ii][Nn][Yy]\.[Cc][Cc]/[Oo][Pp][Ee][Nn][Rr][Ee][Pp][Oo][Ss](.*)?" name="openrepos-url" specialCaseOf="http-url" />
 </actions>
