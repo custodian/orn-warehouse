@@ -1,3 +1,3 @@
-var build = '201310242200';
-var version = "0.1.2";
-var changelog = " - UI updates  - Translation updates ";
+var build = '201310250057';
+var version = "0.1.3";
+var changelog = " - <Add change description here> ";

@@ -14,12 +14,12 @@
     <message>
         <location filename="../qml/components/AppManageBox.qml" line="66"/>
         <source>Installed from OVI-Store</source>
-        <translation>OVI-Store的应用安装完成</translation>
+        <translation>OVI-Store应用已安装完成</translation>
     </message>
     <message>
         <location filename="../qml/components/AppManageBox.qml" line="74"/>
         <source>Installed from Local File</source>
-        <translation>本地的应用安装完成</translation>
+        <translation>本地应用已安装完成</translation>
     </message>
     <message>
         <location filename="../qml/components/AppManageBox.qml" line="80"/>
@@ -62,7 +62,7 @@
     <message>
         <location filename="../qml/pages/Application.qml" line="31"/>
         <source>Apps by: %1</source>
-        <translation>作者: %1</translation>
+        <translation>应用作者: %1</translation>
     </message>
     <message>
         <location filename="../qml/pages/Application.qml" line="82"/>
@@ -87,7 +87,7 @@
     <message>
         <location filename="../qml/pages/Application.qml" line="128"/>
         <source>Publisher</source>
-        <translation type="unfinished"/>
+        <translation>发行人</translation>
     </message>
     <message>
         <location filename="../qml/pages/Application.qml" line="131"/>
@@ -118,7 +118,7 @@
     <message>
         <location filename="../qml/pages/ApplicationBrowse.qml" line="75"/>
         <source>Page %1</source>
-        <translation>页面%1</translation>
+        <translation>页面 %1</translation>
     </message>
     <message>
         <location filename="../qml/pages/ApplicationBrowse.qml" line="91"/>
@@ -141,7 +141,7 @@
     <message>
         <location filename="../qml/pages/Apps.qml" line="79"/>
         <source>Recently updated apps</source>
-        <translation>最新更新</translation>
+        <translation>最近更新</translation>
     </message>
 </context>
 <context>
@@ -172,7 +172,7 @@
     <message>
         <location filename="../qml/pages/CommentsRate.qml" line="73"/>
         <source>Rate application</source>
-        <translation type="unfinished"/>
+        <translation>Rate application</translation>
     </message>
     <message>
         <location filename="../qml/pages/CommentsRate.qml" line="77"/>
@@ -277,13 +277,13 @@
     <message>
         <location filename="../qml/components/PkgManagerStatus.qml" line="68"/>
         <source>Fetching repositories</source>
-        <translation>更新仓库索引</translation>
+        <translation>获取仓库索引</translation>
     </message>
     <message>
         <location filename="../qml/components/PkgManagerStatus.qml" line="23"/>
         <location filename="../qml/components/PkgManagerStatus.qml" line="74"/>
         <source>Working</source>
-        <translation type="unfinished"/>
+        <translation>工作中</translation>
     </message>
 </context>
 <context>
@@ -319,7 +319,7 @@
     <message>
         <location filename="../qml/pages/Search.qml" line="142"/>
         <source>No results found</source>
-        <translation type="unfinished"/>
+        <translation>木有找到</translation>
     </message>
 </context>
 <context>
@@ -327,7 +327,7 @@
     <message>
         <location filename="../qml/components/SearchBox.qml" line="37"/>
         <source>Search</source>
-        <translation>搜索</translation>
+        <translation>搜索 </translation>
     </message>
 </context>
 <context>
@@ -335,7 +335,7 @@
     <message>
         <location filename="../qml/components/SettingSlider.qml" line="50"/>
         <source>Off</source>
-        <translation type="unfinished"/>
+        <translation>关</translation>
     </message>
 </context>
 <context>
@@ -343,17 +343,17 @@
     <message>
         <location filename="../qml/pages/Settings.qml" line="13"/>
         <source>updating...</source>
-        <translation type="unfinished"/>
+        <translation>更新中...</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="22"/>
         <source>SETTINGS</source>
-        <translation type="unfinished"/>
+        <translation>设置</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="56"/>
         <source>If any problems, tweet @basil_s</source>
-        <translation type="unfinished"/>
+        <translation>如有疑问,联系作者 tweet @basil_s</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="57"/>
@@ -363,128 +363,128 @@
     <message>
         <location filename="../qml/pages/Settings.qml" line="59"/>
         <source>Build</source>
-        <translation type="unfinished"/>
+        <translation>建构</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="63"/>
         <source>Close</source>
-        <translation type="unfinished"/>
+        <translation>关闭</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="69"/>
         <location filename="../qml/pages/Settings.qml" line="121"/>
         <source>Reset settings</source>
-        <translation type="unfinished"/>
+        <translation>恢复设置</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="70"/>
         <source>This action will erase all data including auth token, application settings and cache.</source>
-        <translation type="unfinished"/>
+        <translation>这样做将会清除所有数据,包括身份授权,应用设置/缓存.</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="71"/>
         <source>Yes, clear the data</source>
-        <translation type="unfinished"/>
+        <translation>是,清除数据</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="72"/>
         <source>No, thanks</source>
-        <translation type="unfinished"/>
+        <translation>不,谢谢</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="80"/>
         <source>Language</source>
-        <translation type="unfinished"/>
+        <translation>语言</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="115"/>
         <source>Check updates</source>
-        <translation type="unfinished"/>
+        <translation>检查更新</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="168"/>
         <source>UPDATES CHECK</source>
-        <translation type="unfinished"/>
+        <translation>检查更新</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="193"/>
         <source>None</source>
-        <translation type="unfinished"/>
+        <translation>  无  </translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="199"/>
         <source>Stable</source>
-        <translation type="unfinished"/>
+        <translation>稳定版</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="204"/>
         <source>Beta</source>
-        <translation type="unfinished"/>
+        <translation>测试版</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="210"/>
         <source>Alpha</source>
-        <translation type="unfinished"/>
+        <translation>开发版</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="215"/>
         <source>LANGUAGE</source>
-        <translation type="unfinished"/>
+        <translation>语言</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="226"/>
         <source>IMAGE LOADING</source>
-        <translation type="unfinished"/>
+        <translation>图片</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="245"/>
         <source>All</source>
-        <translation type="unfinished"/>
+        <translation>所有</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="250"/>
         <source>Cached</source>
-        <translation type="unfinished"/>
+        <translation>缓存</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="256"/>
         <source>APPLICATION CACHE</source>
-        <translation type="unfinished"/>
+        <translation>缓存</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="274"/>
         <source>Size: %1</source>
-        <translation type="unfinished"/>
+        <translation>大小: %1</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="284"/>
         <source>Clear</source>
-        <translation type="unfinished"/>
+        <translation>清除</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="294"/>
         <source>UI</source>
-        <translation type="unfinished"/>
+        <translation>界面</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="297"/>
         <source>Reload UI</source>
-        <translation type="unfinished"/>
+        <translation>刷新界面</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="303"/>
         <source>AUTHENTICATION</source>
-        <translation>AUTHENTICATION</translation>
+        <translation>授权</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="306"/>
         <source>Reset authentication</source>
-        <translation>重设验证</translation>
+        <translation>重新授权</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="348"/>
         <source>Test stuff</source>
-        <translation>Test stuff</translation>
+        <translation>测试</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="352"/>
@@ -499,17 +499,17 @@
     <message>
         <location filename="../qml/pages/Settings.qml" line="382"/>
         <source>DEBUG</source>
-        <translation>DEBUG</translation>
+        <translation>调试</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="385"/>
         <source>Enable debug</source>
-        <translation>开启调试</translation>
+        <translation>启用调试</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="399"/>
         <source>Options will be available soon</source>
-        <translation>选项暂不可用</translation>
+        <translation>其它选项暂不可用</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="413"/>
@@ -542,7 +542,7 @@
     <message>
         <location filename="../qml/components/UpdateDialog.qml" line="15"/>
         <source>New update available</source>
-        <translation>检测到有新的更新</translation>
+        <translation>检测到更新</translation>
     </message>
     <message>
         <location filename="../qml/components/UpdateDialog.qml" line="16"/>
@@ -580,7 +580,7 @@
     <message>
         <location filename="../qml/pages/Welcome.qml" line="71"/>
         <source>Later</source>
-        <translation type="unfinished"/>
+        <translation>稍后</translation>
     </message>
 </context>
 <context>
