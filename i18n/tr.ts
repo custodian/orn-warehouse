@@ -92,7 +92,7 @@
     <message>
         <location filename="../qml/pages/Application.qml" line="131"/>
         <source>More apps by %1</source>
-        <translation>%1 diğer uygulamaları</translation>
+        <translation>%1 in diğer uygulamaları</translation>
     </message>
     <message>
         <location filename="../qml/pages/Application.qml" line="138"/>
@@ -105,7 +105,7 @@
     <message>
         <location filename="../qml/components/ApplicationBox.qml" line="77"/>
         <source>by %1</source>
-        <translation>by %1</translation>
+        <translation>%1 tarafında</translation>
     </message>
 </context>
 <context>
@@ -128,7 +128,7 @@
     <message>
         <location filename="../qml/pages/ApplicationBrowse.qml" line="100"/>
         <source>Next page</source>
-        <translation>Sıradaki sayfa</translation>
+        <translation>Sonraki sayfa</translation>
     </message>
 </context>
 <context>
@@ -136,7 +136,7 @@
     <message>
         <location filename="../qml/pages/Apps.qml" line="18"/>
         <source>Applications</source>
-        <translation>uygulamalar</translation>
+        <translation>Uygulamalar</translation>
     </message>
     <message>
         <location filename="../qml/pages/Apps.qml" line="79"/>
@@ -208,17 +208,17 @@
     <message>
         <location filename="../qml/pages/Me.qml" line="84"/>
         <source>Installed applications</source>
-        <translation type="unfinished"/>
+        <translation>Yüklü uygulamalar</translation>
     </message>
     <message>
         <location filename="../qml/pages/Me.qml" line="88"/>
         <source>View full list</source>
-        <translation type="unfinished"/>
+        <translation>Tüm listeyi gör</translation>
     </message>
     <message>
         <location filename="../qml/pages/Me.qml" line="94"/>
         <source>Installed via Warehouse</source>
-        <translation type="unfinished"/>
+        <translation>Warehouse ile yüklenenler</translation>
     </message>
 </context>
 <context>
@@ -226,7 +226,7 @@
     <message>
         <location filename="../qml/components/PackageBox.qml" line="76"/>
         <source>Version %1</source>
-        <translation type="unfinished"/>
+        <translation>Version %1</translation>
     </message>
 </context>
 <context>
@@ -262,7 +262,7 @@
     <message>
         <location filename="../qml/components/PkgManagerStatus.qml" line="56"/>
         <source>Upgrading application</source>
-        <translation>uygulama yükseltiliyor</translation>
+        <translation>Uygulama yükseltiliyor</translation>
     </message>
     <message>
         <location filename="../qml/components/PkgManagerStatus.qml" line="60"/>
@@ -363,7 +363,7 @@
     <message>
         <location filename="../qml/pages/Settings.qml" line="59"/>
         <source>Build</source>
-        <translation>Builds</translation>
+        <translation>Build</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="63"/>
@@ -484,17 +484,17 @@
     <message>
         <location filename="../qml/pages/Settings.qml" line="348"/>
         <source>Test stuff</source>
-        <translation type="unfinished"/>
+        <translation>Test içeriği</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="352"/>
         <source>Enable test repos</source>
-        <translation type="unfinished"/>
+        <translation>Test depolarını etkinleştir</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="360"/>
         <source>Enabled repositories</source>
-        <translation type="unfinished"/>
+        <translation>Depoları etkinleştir</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="382"/>
@@ -519,17 +519,17 @@
     <message>
         <location filename="../qml/pages/Settings.qml" line="414"/>
         <source>Repository</source>
-        <translation type="unfinished"/>
+        <translation>Depolar</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="447"/>
         <source>Refresh</source>
-        <translation type="unfinished"/>
+        <translation>Yenile</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="460"/>
         <source>Disable</source>
-        <translation type="unfinished"/>
+        <translation>Devre dışı bırak</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="415"/>

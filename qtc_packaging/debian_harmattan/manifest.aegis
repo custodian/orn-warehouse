@@ -183,8 +183,8 @@
         <!-- Package Manager tokens -->
         <credential match="package-manager::packagemanager_limited" />
         <credential match="package-manager::packagemanager_private" />
-    </request>
 
-	<for path="/opt/warehouse/bin/warehouse" />
-	<for path="applauncherd-launcher::/usr/bin/applauncherd.bin" id="" />
+        <for path="/opt/warehouse/bin/warehouse" />
+        <for path="applauncherd-launcher::/usr/bin/applauncherd.bin" id="" />
+    </request>
 </aegis>

@@ -9,7 +9,7 @@ Homepage: https://openrepos.net/content/basil/warehouse
 Package: warehouse
 Architecture: armel
 Pre-Depends: aegis-developer-unknown-source-policy
-Depends: ${shlibs:Depends}, ${misc:Depends}, libqt4-declarative
+Depends: ${shlibs:Depends}, ${misc:Depends}, libqt4-declarative, aegis-developer-unknown-source-policy
 Description: Native client for OpenRepos
   Browse and install applications, enable repositories.
 XSBC-Maemo-Display-Name: Warehouse

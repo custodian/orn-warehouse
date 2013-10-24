@@ -40,7 +40,7 @@ void AppTranslator::changeLanguage(QVariant language)
     m_app->removeTranslator(&m_translator);
     QString lang = language.toString();
     qDebug("Loading \"%s\" translation", qPrintable(lang));
-    m_translator.load("warehouse_" + lang, m_langdir);
+    m_translator.load(lang, m_langdir);
     m_app->installTranslator(&m_translator);
     emit languageChanged(lang);
 }
@@ -62,12 +62,12 @@ void AppTranslator::loadAvailableLanguages()
     QTranslator loader;
     QDir dir(m_langdir);
     dir.setFilter(QDir::Files | QDir::Hidden | QDir::NoSymLinks);
-    dir.setNameFilters(QStringList("warehouse_*.qm"));
+    dir.setNameFilters(QStringList("*.qm"));
     QFileInfoList list = dir.entryInfoList();
     for (int i=0; i<list.size();i++) {
         QString filename = list.at(i).baseName();
         if (loader.load(filename,m_langdir)) {
-            QString code = filename.mid(10);
+            QString code = filename;
             QLocale loc(code);
             //qDebug() << "Locale found:" << loc.name() << "from:" << code;
             QString name = QLocale::languageToString(loc.language());

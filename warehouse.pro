@@ -79,10 +79,10 @@ include(src/qmlapplicationviewer/qmlapplicationviewer.pri)
 
 maemo5 {
     qmlresources.source = $$PWD/qml
-    qmli18n.source = $$PWD/i18n/warehouse_*.qm
+    qmli18n.source = $$PWD/i18n/*.qm
 } else {
     qmlresources.source = qml
-    qmli18n.source = i18n/warehouse_*.qm
+    qmli18n.source = i18n/*.qm
 }
 qmlresources.target = .
 qmli18n.target = i18n
