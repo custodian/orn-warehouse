@@ -38,8 +38,8 @@ void DBusService::loadURI(const QStringList &url)
         if (param.contains("openrepos://")) {
             param.replace("openrepos://","");
         }
-        if (param.contains("http://tiny.cc/openrepos?")) {
-            param.replace("http://tiny.cc/openrepos?","");
+        if (param.contains("https://openrepos.net/client?")) {
+            param.replace("https://openrepos.net/client?","");
         }
         emit processURI(QVariant(param));
     }

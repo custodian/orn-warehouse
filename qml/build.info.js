@@ -1,3 +1,3 @@
-var build = '201310241658';
-var version = "0.1.1";
-var changelog = " - Global link support  - Security update ";
+var build = '201310242200';
+var version = "0.1.2";
+var changelog = " - UI updates  - Translation updates ";

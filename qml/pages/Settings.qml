@@ -359,6 +359,7 @@ PageWrapper {
                 SectionHeader {
                     text: qsTr("Enabled repositories")
                 }
+                PkgManagerStatus {}
                 Repeater {
                     width: parent.width
                     model: repositories

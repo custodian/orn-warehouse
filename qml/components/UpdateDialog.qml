@@ -45,8 +45,9 @@ QueryDialog  {
     }
 
     function getupdates() {
-        //TODO: change to configuration.platform, "checkupdates"
-        Updater.getUpdateInfo("meego",updatetype,onUpdateAvailable);
+        if (updatetype!=="none") {
+            Updater.getUpdateInfo("meego",updatetype,onUpdateAvailable);
+        }
     }
     function onUpdateAvailable(build, version, changelog, url) {
         var update = false;
