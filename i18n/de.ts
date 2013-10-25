@@ -24,7 +24,7 @@
     <message>
         <location filename="../qml/components/AppManageBox.qml" line="80"/>
         <source>Fetch repository info</source>
-        <translation>Zugriff auf Repositoriumsinformation</translation>
+        <translation>Zugriff auf Repodaten</translation>
     </message>
     <message>
         <location filename="../qml/components/AppManageBox.qml" line="88"/>
@@ -193,7 +193,7 @@
     <message>
         <location filename="../qml/pages/Me.qml" line="16"/>
         <source>Your profile</source>
-        <translation>Your profile</translation>
+        <translation>Meine Inhalte</translation>
     </message>
     <message>
         <location filename="../qml/pages/Me.qml" line="69"/>
@@ -203,7 +203,7 @@
     <message>
         <location filename="../qml/pages/Me.qml" line="73"/>
         <source>Fetch repository info</source>
-        <translation>Zugriff auf Repositoriumsinformation</translation>
+        <translation>Zugriff auf Repodaten</translation>
     </message>
     <message>
         <location filename="../qml/pages/Me.qml" line="84"/>
@@ -348,7 +348,7 @@
     <message>
         <location filename="../qml/pages/Settings.qml" line="22"/>
         <source>SETTINGS</source>
-        <translation>EinstellungeN</translation>
+        <translation>EINSTELLUNGEN</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="56"/>
@@ -479,7 +479,7 @@
     <message>
         <location filename="../qml/pages/Settings.qml" line="306"/>
         <source>Reset authentication</source>
-        <translation>Authentifizierung zurücksetzen</translation>
+        <translation>Neuauthentifizierung </translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="348"/>

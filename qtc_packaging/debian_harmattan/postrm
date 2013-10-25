@@ -22,6 +22,7 @@ set -e
 case "$1" in
     purge|remove|failed-upgrade|abort-install|abort-upgrade|disappear)
         ## Remove or what ever
+        #rm -rf /home/user/.cache/warehouse
     ;;
 
     upgrade)

@@ -1,3 +1,3 @@
-var build = '201310251333';
-var version = "0.1.3";
-var changelog = " - Icons download fix ";
+var build = '201310252325';
+var version = "0.1.4";
+var changelog = " - Screenshot panel update ";
