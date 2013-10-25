@@ -25,9 +25,6 @@ PageStackWindow {
 
     Configuration {
         id: configuration
-        onUpdateTypeChanged: {
-            updateDialog.getupdates();
-        }
         onLanguageChanged: {
             appTranslator.changeLanguage(language);
         }
