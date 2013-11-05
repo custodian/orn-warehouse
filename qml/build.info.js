@@ -1,3 +1,3 @@
-var build = '201310252325';
+var build = '201311060048';
 var version = "0.1.4";
-var changelog = " - Screenshot panel update ";
+var changelog = " - Source policy added  - Screenshot panel update  - Language pack update ";

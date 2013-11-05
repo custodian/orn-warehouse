@@ -39,6 +39,10 @@ Item {
         WorkerJS.objs.remove(msg.item);
     }
 
+    function installSourcePolicy(callback) {
+        proxy.execute("installSourcePolicy","",callback);
+    }
+
     function fetchRepositoryInfo(name, callback) {
         if (name === undefined) {
             name = "";
@@ -96,6 +100,7 @@ Item {
         } else {
             localOperation = true;
         }
+        //console.log("PROCESS OPERATION: " + JSON.stringify(lastoperation));
         pkgManagerProxy.processedOperation(lastoperation);
     }
 

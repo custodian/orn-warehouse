@@ -1,4 +1,4 @@
-<!-- AutoGenerateAegisFile -->
+AutoGenerateAegisFile
 <!-- Aegis manifest declares the security credentials required by an
      application to run correctly. By default, a manifest file will be
      created or updated automatically as a part of build.
@@ -29,6 +29,7 @@
 
 -->
 <aegis>
+<!--
     <domain name="net.openrepos.harmattan" rank="-1">
         <allow>
             <!-- Global tokens -->
@@ -123,6 +124,7 @@
             </keyinfo>
         </origin>
     </domain>
+-->
 	<request policy="add">
         <!-- Global tokens -->
         <credential match="Cellular" />

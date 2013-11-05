@@ -62,7 +62,7 @@
     <message>
         <location filename="../qml/pages/Application.qml" line="31"/>
         <source>Apps by: %1</source>
-        <translation>Apps di %1</translation>
+        <translation>Apps di: %1</translation>
     </message>
     <message>
         <location filename="../qml/pages/Application.qml" line="82"/>
@@ -162,7 +162,7 @@
     <message>
         <location filename="../qml/pages/CommentsRate.qml" line="18"/>
         <source>Comments and Reviews</source>
-        <translation>Commenti e recensioni</translation>
+        <translation>Commenti e Recensioni</translation>
     </message>
     <message>
         <location filename="../qml/pages/CommentsRate.qml" line="63"/>
@@ -291,7 +291,7 @@
     <message>
         <location filename="../qml/components/RatingBox.qml" line="31"/>
         <source>not rated yet</source>
-        <translation>nessuna valutaz.</translation>
+        <translation>non valutato</translation>
     </message>
 </context>
 <context>
@@ -384,7 +384,7 @@
     <message>
         <location filename="../qml/pages/Settings.qml" line="71"/>
         <source>Yes, clear the data</source>
-        <translation>Si, cancella dati</translation>
+        <translation>Si, cancella i dati</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="72"/>
@@ -404,7 +404,7 @@
     <message>
         <location filename="../qml/pages/Settings.qml" line="168"/>
         <source>UPDATES CHECK</source>
-        <translation>AGGIORNAMENTI</translation>
+        <translation>CONTROLLO AGGIORNAMENTI</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="193"/>
@@ -414,7 +414,7 @@
     <message>
         <location filename="../qml/pages/Settings.qml" line="199"/>
         <source>Stable</source>
-        <translation>Stabile</translation>
+        <translation>Stabili</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="204"/>
@@ -489,7 +489,7 @@
     <message>
         <location filename="../qml/pages/Settings.qml" line="352"/>
         <source>Enable test repos</source>
-        <translation>Attiva test repos</translation>
+        <translation>Attiva test repo</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="360"/>

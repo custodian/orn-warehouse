@@ -55,14 +55,29 @@ PackageManager::PackageManager(QObject *parent) :
 }
 
 void PackageManager::onPkgOperationStarted(QString operation, QString name, QString version) {
+#if defined(Q_OS_HARMATTAN)
+    if (name.contains("openrepos-source-policy")) {
+        name = "OpenRepos Source Policy";
+    }
+#endif
     //qDebug() << "Operation started" << operation << name << version;
     emit operationStarted(QVariant(operation),QVariant(name),QVariant(version));
 }
 void PackageManager::onPkgOperationProgress(QString operation, QString name, QString version, qint32 progress){
+#if defined(Q_OS_HARMATTAN)
+    if (name.contains("openrepos-source-policy")) {
+        name = "OpenRepos Source Policy";
+    }
+#endif
     //qDebug() << "Operation progress" << operation << name << version << "progress" << progress;
     emit operationProgress(QVariant(operation), QVariant(name), QVariant(version), QVariant(progress));
 }
 void PackageManager::onPkgOperationCompleted(QString operation, QString name, QString version, QString message, bool isError) {
+#if defined(Q_OS_HARMATTAN)
+    if (name.contains("openrepos-source-policy")) {
+        name = "OpenRepos Source Policy";
+    }
+#endif
     //qDebug() << "Operation completed" << operation << name << version << "Message:" << message << "IsError" << isError;
     emit operationCompleted(QVariant(operation), QVariant(name), QVariant(version), QVariant(message), QVariant(isError));
 }
@@ -106,6 +121,8 @@ void PackageManager::processAction(QVariant message) {
         reply = uninstall(params.toString());
     } else if(function == "getInstalledPackages") {
         reply = getInstalledPackages(params.toBool());
+    } else if(function == "installSourcePolicy") {
+        reply = installSourcePolicy();
     }/* else if(function == "") {
     }*/
     if (reply.contains("reply")) {
@@ -123,6 +140,27 @@ QString PackageManager::getListFileName(QString name) {
     QString filename = QString("openrepos-%1.list").arg(name);
     QFileInfo info(m_repospath, filename);
     return info.absoluteFilePath();
+}
+
+QVariantMap PackageManager::installSourcePolicy() {
+    QVariantMap callresult;
+#if defined(Q_OS_HARMATTAN)
+    QDBusMessage msg = QDBusMessage::createMethodCall(PKG_SERVICE,PKG_PATH,PKG_IFACE,"install_file");
+    QVariantList args;
+    args.push_back("/opt/warehouse/policy/openrepos-source-policy_1.0.0_armel.deb");
+    msg.setArguments(args);
+    QDBusMessage reply = m_bus.call(msg, QDBus::Block, 60000);
+    if (reply.type() == QDBusMessage::ErrorMessage) {
+        if (reply.errorName() != "org.freedesktop.DBus.Error.NoReply") {
+            callresult["error"] = reply.errorMessage();
+        }
+    }
+#else
+    emit operationStarted("Install", "openrepos-source-policy", "");
+    IWaiter::sleep(2);
+    emit operationCompleted("Install","openrepos-source-policy","","",false);
+#endif
+    return callresult;
 }
 
 QVariantMap PackageManager::fetchRepositoryInfo(QString domain) {

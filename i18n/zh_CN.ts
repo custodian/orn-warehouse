@@ -9,17 +9,17 @@
     <message>
         <location filename="../qml/components/AppManageBox.qml" line="58"/>
         <source>Download size: %1 Kb</source>
-        <translation>下载大小: %1 Kb</translation>
+        <translation>下载文件大小: %1 Kb</translation>
     </message>
     <message>
         <location filename="../qml/components/AppManageBox.qml" line="66"/>
         <source>Installed from OVI-Store</source>
-        <translation>OVI-Store应用已安装完成</translation>
+        <translation>已从OVI-Store安装</translation>
     </message>
     <message>
         <location filename="../qml/components/AppManageBox.qml" line="74"/>
         <source>Installed from Local File</source>
-        <translation>本地应用已安装完成</translation>
+        <translation>已从本地安装</translation>
     </message>
     <message>
         <location filename="../qml/components/AppManageBox.qml" line="80"/>
@@ -87,7 +87,7 @@
     <message>
         <location filename="../qml/pages/Application.qml" line="128"/>
         <source>Publisher</source>
-        <translation>发行人</translation>
+        <translation>作者</translation>
     </message>
     <message>
         <location filename="../qml/pages/Application.qml" line="131"/>
@@ -118,7 +118,7 @@
     <message>
         <location filename="../qml/pages/ApplicationBrowse.qml" line="75"/>
         <source>Page %1</source>
-        <translation>页面 %1</translation>
+        <translation>第 %1 页</translation>
     </message>
     <message>
         <location filename="../qml/pages/ApplicationBrowse.qml" line="91"/>
@@ -167,12 +167,12 @@
     <message>
         <location filename="../qml/pages/CommentsRate.qml" line="63"/>
         <source>Rating</source>
-        <translation>等级</translation>
+        <translation>评分</translation>
     </message>
     <message>
         <location filename="../qml/pages/CommentsRate.qml" line="73"/>
         <source>Rate application</source>
-        <translation>应用等级</translation>
+        <translation>应用评分</translation>
     </message>
     <message>
         <location filename="../qml/pages/CommentsRate.qml" line="77"/>
@@ -218,7 +218,7 @@
     <message>
         <location filename="../qml/pages/Me.qml" line="94"/>
         <source>Installed via Warehouse</source>
-        <translation>使用Warehouse安装的应用</translation>
+        <translation>Warehouse安装的应用</translation>
     </message>
 </context>
 <context>

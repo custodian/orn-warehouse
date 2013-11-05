@@ -17,6 +17,7 @@ contains(MEEGO_EDITION,harmattan){
     MOBILITY += feedback
     include(plugins/meego/notifications/notifications.pri)
     include(plugins/meego/uri-scheme/uri-scheme.pri)
+    include(plugins/meego/source-policy/source-policy.pri)
 }
 maemo5 {
     DEFINES += Q_OS_MAEMO

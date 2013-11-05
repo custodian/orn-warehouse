@@ -17,6 +17,14 @@ PageStackWindow {
 
     Component.onCompleted: {
         mytheme.loadTheme("light");
+        pkgManagerProxy.getPackageInfo("openrepos-source-policy", function(result) {
+            if (result !== false) {
+                console.log("Source policy version: " + result.Version);
+            } else {
+                console.log("Source policy is not installed!");
+                pkgManagerProxy.installSourcePolicy();
+            }
+        });
     }
 
     onWindowActiveChanged: {

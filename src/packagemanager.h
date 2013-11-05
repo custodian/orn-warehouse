@@ -40,6 +40,8 @@ public slots:
     void enableRepository(QString name);
     void disableRepository(QString name);
 
+    QVariantMap installSourcePolicy();
+
     QVariantMap fetchRepositoryInfo(QString domain);
     QVariantMap isRepositoryEnabled(QString name);
     QVariantMap getPackageInfo(QString packagename, QString version);

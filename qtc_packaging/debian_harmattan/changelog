@@ -1,7 +1,9 @@
 warehouse (0.1.4) stable; urgency=low
+  * Source policy added
   * Screenshot panel update
+  * Language pack update
 
- -- Basil Semuonov <basil.semuonov@gmail.com>  Fri, 25 Oct 2013 13:39:05 +0400
+ -- Basil Semuonov <basil.semuonov@gmail.com>  Tue, 05 Nov 2013 23:11:07 +0400
 
 warehouse (0.1.3) stable; urgency=low
   * Icons download fix
