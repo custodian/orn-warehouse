@@ -24,12 +24,12 @@
     <message>
         <location filename="../qml/components/AppManageBox.qml" line="80"/>
         <source>Fetch repository info</source>
-        <translation type="unfinished"/>
+        <translation>Ophalen informatie softwarebron </translation>
     </message>
     <message>
         <location filename="../qml/components/AppManageBox.qml" line="88"/>
         <source>Enable repository</source>
-        <translation type="unfinished"/>
+        <translation>Inschakelen softwarebron</translation>
     </message>
     <message>
         <location filename="../qml/components/AppManageBox.qml" line="106"/>
@@ -72,12 +72,12 @@
     <message>
         <location filename="../qml/pages/Application.qml" line="100"/>
         <source>Comments &amp; reviews</source>
-        <translation type="unfinished"/>
+        <translation>Reacties &amp; beoordelingen</translation>
     </message>
     <message>
         <location filename="../qml/pages/Application.qml" line="103"/>
         <source>Comments (%1)</source>
-        <translation type="unfinished"/>
+        <translation>Reacties (%1)</translation>
     </message>
     <message>
         <location filename="../qml/pages/Application.qml" line="119"/>
@@ -141,7 +141,7 @@
     <message>
         <location filename="../qml/pages/Apps.qml" line="79"/>
         <source>Recently updated apps</source>
-        <translation type="unfinished"/>
+        <translation>Recent bijgewerkte apps</translation>
     </message>
 </context>
 <context>
@@ -149,12 +149,12 @@
     <message>
         <location filename="../qml/pages/Categories.qml" line="18"/>
         <source>Categories</source>
-        <translation type="unfinished"/>
+        <translation>Categorieën</translation>
     </message>
     <message>
         <location filename="../qml/pages/Categories.qml" line="30"/>
         <source>Category: %1</source>
-        <translation type="unfinished"/>
+        <translation>Categorie: %1</translation>
     </message>
 </context>
 <context>
@@ -162,22 +162,22 @@
     <message>
         <location filename="../qml/pages/CommentsRate.qml" line="18"/>
         <source>Comments and Reviews</source>
-        <translation type="unfinished"/>
+        <translation>Reacties en reviews</translation>
     </message>
     <message>
         <location filename="../qml/pages/CommentsRate.qml" line="63"/>
         <source>Rating</source>
-        <translation type="unfinished"/>
+        <translation>Waardering</translation>
     </message>
     <message>
         <location filename="../qml/pages/CommentsRate.qml" line="73"/>
         <source>Rate application</source>
-        <translation type="unfinished"/>
+        <translation>Waardeer applicatie</translation>
     </message>
     <message>
         <location filename="../qml/pages/CommentsRate.qml" line="77"/>
         <source>Comments</source>
-        <translation type="unfinished"/>
+        <translation>Reacties</translation>
     </message>
 </context>
 <context>
@@ -185,7 +185,7 @@
     <message>
         <location filename="../qml/pages/InstalledApps.qml" line="15"/>
         <source>Installed applications</source>
-        <translation type="unfinished"/>
+        <translation>Geïnstalleerde applicaties</translation>
     </message>
 </context>
 <context>
@@ -193,32 +193,32 @@
     <message>
         <location filename="../qml/pages/Me.qml" line="16"/>
         <source>Your profile</source>
-        <translation type="unfinished"/>
+        <translation>Uw profiel</translation>
     </message>
     <message>
         <location filename="../qml/pages/Me.qml" line="69"/>
         <source>Current operations</source>
-        <translation type="unfinished"/>
+        <translation>Huidige activiteiten</translation>
     </message>
     <message>
         <location filename="../qml/pages/Me.qml" line="73"/>
         <source>Fetch repository info</source>
-        <translation type="unfinished"/>
+        <translation>Ophalen informatie softwarebron </translation>
     </message>
     <message>
         <location filename="../qml/pages/Me.qml" line="84"/>
         <source>Installed applications</source>
-        <translation type="unfinished"/>
+        <translation>Geïnstalleerde applicaties</translation>
     </message>
     <message>
         <location filename="../qml/pages/Me.qml" line="88"/>
         <source>View full list</source>
-        <translation type="unfinished"/>
+        <translation>Toon volledige lijst</translation>
     </message>
     <message>
         <location filename="../qml/pages/Me.qml" line="94"/>
         <source>Installed via Warehouse</source>
-        <translation type="unfinished"/>
+        <translation>Geïnstalleerd via Warehouse</translation>
     </message>
 </context>
 <context>
@@ -226,7 +226,7 @@
     <message>
         <location filename="../qml/components/PackageBox.qml" line="76"/>
         <source>Version %1</source>
-        <translation type="unfinished"/>
+        <translation>Versie %1</translation>
     </message>
 </context>
 <context>
@@ -234,17 +234,17 @@
     <message>
         <location filename="../qml/components/PageWrapper.qml" line="102"/>
         <source>Check updates</source>
-        <translation type="unfinished"/>
+        <translation>Controleer updates</translation>
     </message>
     <message>
         <location filename="../qml/components/PageWrapper.qml" line="108"/>
         <source>Settings</source>
-        <translation type="unfinished"/>
+        <translation>Instellingen</translation>
     </message>
     <message>
         <location filename="../qml/components/PageWrapper.qml" line="114"/>
         <source>Exit</source>
-        <translation type="unfinished"/>
+        <translation>Afsluiten</translation>
     </message>
 </context>
 <context>
@@ -252,38 +252,38 @@
     <message>
         <location filename="../qml/components/PkgManagerStatus.qml" line="16"/>
         <source>Current operation</source>
-        <translation type="unfinished"/>
+        <translation>Huidige activiteit</translation>
     </message>
     <message>
         <location filename="../qml/components/PkgManagerStatus.qml" line="52"/>
         <source>Installing application</source>
-        <translation type="unfinished"/>
+        <translation>Applicatie wordt geïnstalleerd</translation>
     </message>
     <message>
         <location filename="../qml/components/PkgManagerStatus.qml" line="56"/>
         <source>Upgrading application</source>
-        <translation type="unfinished"/>
+        <translation>Applicatie wordt bijgewerkt</translation>
     </message>
     <message>
         <location filename="../qml/components/PkgManagerStatus.qml" line="60"/>
         <source>Uninstalling application</source>
-        <translation type="unfinished"/>
+        <translation>Applicatie wordt verwijderen</translation>
     </message>
     <message>
         <location filename="../qml/components/PkgManagerStatus.qml" line="64"/>
         <source>Downloading application</source>
-        <translation type="unfinished"/>
+        <translation>Applicatie wordt gedownload</translation>
     </message>
     <message>
         <location filename="../qml/components/PkgManagerStatus.qml" line="68"/>
         <source>Fetching repositories</source>
-        <translation type="unfinished"/>
+        <translation>Ophalen softwarebronnen</translation>
     </message>
     <message>
         <location filename="../qml/components/PkgManagerStatus.qml" line="23"/>
         <location filename="../qml/components/PkgManagerStatus.qml" line="74"/>
         <source>Working</source>
-        <translation type="unfinished"/>
+        <translation>Bezig</translation>
     </message>
 </context>
 <context>
@@ -291,7 +291,7 @@
     <message>
         <location filename="../qml/components/RatingBox.qml" line="31"/>
         <source>not rated yet</source>
-        <translation type="unfinished"/>
+        <translation>nog geen waardering</translation>
     </message>
 </context>
 <context>
@@ -299,27 +299,27 @@
     <message>
         <location filename="../qml/pages/Search.qml" line="22"/>
         <source>Search</source>
-        <translation type="unfinished"/>
+        <translation>Zoeken</translation>
     </message>
     <message>
         <location filename="../qml/pages/Search.qml" line="106"/>
         <source>Prev page</source>
-        <translation type="unfinished"/>
+        <translation>Vorige pagina</translation>
     </message>
     <message>
         <location filename="../qml/pages/Search.qml" line="115"/>
         <source>Next page</source>
-        <translation type="unfinished"/>
+        <translation>Volgende pagina</translation>
     </message>
     <message>
         <location filename="../qml/pages/Search.qml" line="142"/>
         <source>Searching...</source>
-        <translation type="unfinished"/>
+        <translation>Zoeken...</translation>
     </message>
     <message>
         <location filename="../qml/pages/Search.qml" line="142"/>
         <source>No results found</source>
-        <translation type="unfinished"/>
+        <translation>Geen resultaten gevonden</translation>
     </message>
 </context>
 <context>
@@ -327,7 +327,7 @@
     <message>
         <location filename="../qml/components/SearchBox.qml" line="37"/>
         <source>Search</source>
-        <translation type="unfinished"/>
+        <translation>Zoeken</translation>
     </message>
 </context>
 <context>
@@ -335,7 +335,7 @@
     <message>
         <location filename="../qml/components/SettingSlider.qml" line="50"/>
         <source>Off</source>
-        <translation type="unfinished"/>
+        <translation>Uit</translation>
     </message>
 </context>
 <context>
@@ -343,198 +343,198 @@
     <message>
         <location filename="../qml/pages/Settings.qml" line="13"/>
         <source>updating...</source>
-        <translation type="unfinished"/>
+        <translation>bijwerken...</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="22"/>
         <source>SETTINGS</source>
-        <translation type="unfinished"/>
+        <translation>INSTELLINGEN</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="56"/>
         <source>If any problems, tweet @basil_s</source>
-        <translation type="unfinished"/>
+        <translation>Bij problemen, tweet @basil_s</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="57"/>
         <source>Version</source>
-        <translation type="unfinished"/>
+        <translation>Versie</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="59"/>
         <source>Build</source>
-        <translation type="unfinished"/>
+        <translation>Build</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="63"/>
         <source>Close</source>
-        <translation type="unfinished"/>
+        <translation>Sluiten</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="69"/>
         <location filename="../qml/pages/Settings.qml" line="121"/>
         <source>Reset settings</source>
-        <translation type="unfinished"/>
+        <translation>Instellingen herstellen</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="70"/>
         <source>This action will erase all data including auth token, application settings and cache.</source>
-        <translation type="unfinished"/>
+        <translation>Deze actie verwijderd alle data inclusief auth token, applicatie-instellingen en cache.</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="71"/>
         <source>Yes, clear the data</source>
-        <translation type="unfinished"/>
+        <translation>Ja, verwijder de data</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="72"/>
         <source>No, thanks</source>
-        <translation type="unfinished"/>
+        <translation>Nee dank je</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="80"/>
         <source>Language</source>
-        <translation type="unfinished"/>
+        <translation>Taal</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="115"/>
         <source>Check updates</source>
-        <translation type="unfinished"/>
+        <translation>Controleer updates</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="168"/>
         <source>UPDATES CHECK</source>
-        <translation type="unfinished"/>
+        <translation>BIJWERKINGEN CONTROLE</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="193"/>
         <source>None</source>
-        <translation type="unfinished"/>
+        <translation>Geen</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="199"/>
         <source>Stable</source>
-        <translation type="unfinished"/>
+        <translation>Stabiel</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="204"/>
         <source>Beta</source>
-        <translation type="unfinished"/>
+        <translation>Beta</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="210"/>
         <source>Alpha</source>
-        <translation type="unfinished"/>
+        <translation>Alfa</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="215"/>
         <source>LANGUAGE</source>
-        <translation type="unfinished"/>
+        <translation>TAAL</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="226"/>
         <source>IMAGE LOADING</source>
-        <translation type="unfinished"/>
+        <translation>AFBEELDING LAADT</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="245"/>
         <source>All</source>
-        <translation type="unfinished"/>
+        <translation>Allen</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="250"/>
         <source>Cached</source>
-        <translation type="unfinished"/>
+        <translation>Gecached</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="256"/>
         <source>APPLICATION CACHE</source>
-        <translation type="unfinished"/>
+        <translation>APPLICATIE CACHE</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="274"/>
         <source>Size: %1</source>
-        <translation type="unfinished"/>
+        <translation>Grootte: %1</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="284"/>
         <source>Clear</source>
-        <translation type="unfinished"/>
+        <translation>Wis</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="294"/>
         <source>UI</source>
-        <translation type="unfinished"/>
+        <translation>UI</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="297"/>
         <source>Reload UI</source>
-        <translation type="unfinished"/>
+        <translation>Herlaad UI</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="303"/>
         <source>AUTHENTICATION</source>
-        <translation type="unfinished"/>
+        <translation>AUTHENTICATIE</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="306"/>
         <source>Reset authentication</source>
-        <translation type="unfinished"/>
+        <translation>Authenticatie herstellen</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="348"/>
         <source>Test stuff</source>
-        <translation type="unfinished"/>
+        <translation>Test zaken</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="352"/>
         <source>Enable test repos</source>
-        <translation type="unfinished"/>
+        <translation>Schakel test databank in</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="360"/>
         <source>Enabled repositories</source>
-        <translation type="unfinished"/>
+        <translation>Inschakelen softwarebronnen</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="382"/>
         <source>DEBUG</source>
-        <translation type="unfinished"/>
+        <translation>DEBUG</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="385"/>
         <source>Enable debug</source>
-        <translation type="unfinished"/>
+        <translation>Debug inschakelen</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="399"/>
         <source>Options will be available soon</source>
-        <translation type="unfinished"/>
+        <translation>Opties binnenkort beschikbaar</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="413"/>
         <source>General</source>
-        <translation type="unfinished"/>
+        <translation>Algemeen</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="414"/>
         <source>Repository</source>
-        <translation type="unfinished"/>
+        <translation>Softwarebron</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="447"/>
         <source>Refresh</source>
-        <translation type="unfinished"/>
+        <translation>Herlaad</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="460"/>
         <source>Disable</source>
-        <translation type="unfinished"/>
+        <translation>Uitschakelen</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="415"/>
         <source>Debug</source>
-        <translation type="unfinished"/>
+        <translation>Debug</translation>
     </message>
 </context>
 <context>
@@ -542,22 +542,22 @@
     <message>
         <location filename="../qml/components/UpdateDialog.qml" line="15"/>
         <source>New update available</source>
-        <translation type="unfinished"/>
+        <translation>Nieuwe update beschikbaar</translation>
     </message>
     <message>
         <location filename="../qml/components/UpdateDialog.qml" line="16"/>
         <source>Version: %1&lt;br&gt;Type: %2&lt;br&gt;Build: %3&lt;br&gt;&lt;br&gt;Changelog: &lt;br&gt;%4</source>
-        <translation type="unfinished"/>
+        <translation>Versie: %1&lt;br&gt;Type: %2&lt;br&gt;Build: %3&lt;br&gt;&lt;br&gt;Wijzigingen: &lt;br&gt;%4</translation>
     </message>
     <message>
         <location filename="../qml/components/UpdateDialog.qml" line="22"/>
         <source>Update!</source>
-        <translation type="unfinished"/>
+        <translation>Bijwerken!</translation>
     </message>
     <message>
         <location filename="../qml/components/UpdateDialog.qml" line="23"/>
         <source>No, thanks</source>
-        <translation type="unfinished"/>
+        <translation>Nee dank je</translation>
     </message>
 </context>
 <context>
@@ -565,22 +565,22 @@
     <message>
         <location filename="../qml/pages/Welcome.qml" line="38"/>
         <source>Welcome!</source>
-        <translation type="unfinished"/>
+        <translation>Welkom!</translation>
     </message>
     <message>
         <location filename="../qml/pages/Welcome.qml" line="55"/>
         <source>Please, login with OpenRepos!</source>
-        <translation type="unfinished"/>
+        <translation>Graag inloggen met OpenRepos!</translation>
     </message>
     <message>
         <location filename="../qml/pages/Welcome.qml" line="62"/>
         <source>Login</source>
-        <translation type="unfinished"/>
+        <translation>Inloggen</translation>
     </message>
     <message>
         <location filename="../qml/pages/Welcome.qml" line="71"/>
         <source>Later</source>
-        <translation type="unfinished"/>
+        <translation>Later</translation>
     </message>
 </context>
 <context>
@@ -588,7 +588,7 @@
     <message>
         <location filename="../qml/pages/temp.qml" line="16"/>
         <source>Me or Developers</source>
-        <translation type="unfinished"/>
+        <translation>Ontwikkelaars of ik</translation>
     </message>
 </context>
 </TS>

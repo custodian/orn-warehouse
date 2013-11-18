@@ -1,3 +1,8 @@
+warehouse (0.1.5) stable; urgency=low
+  * Language pack update
+
+ -- Basil Semuonov <basil.semuonov@gmail.com>  Mon, 18 Nov 2013 18:11:34 +0400
+
 warehouse (0.1.4) stable; urgency=low
   * Source policy added
   * Screenshot panel update
