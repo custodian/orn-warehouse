@@ -65,6 +65,11 @@ Rectangle {
             width: parent.width
             text: categotyParser.parse(application.category, appItem.categorystyle)
             wrapMode: Text.Wrap
+        }
+
+        RatingBox {
+            rating: application.rating
+            width: parent.width
 
             Text {
                 color: mytheme.colors.textColorShout
@@ -76,10 +81,6 @@ Rectangle {
                 }
                 text: application.user ? qsTr("by %1").arg(application.user.name) : ""
             }
-        }
-
-        RatingBox {
-            rating: application.rating
         }
     }
 

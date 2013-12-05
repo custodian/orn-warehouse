@@ -1,11 +1,12 @@
 import Qt 4.7
 
-Row {
+Item {
     id: scorebox
     property variant rating: {}
     property int score: rating.rating || 0
 
     height: loader.height
+    width: loader.width
 
     Loader {
         id: loader
