@@ -15,6 +15,15 @@ PageStackWindow {
     property alias stack: tabgroup.currentTab;
     property int notificationsCount: 0
 
+    property string platform: getCurrentPlatform()
+    function getCurrentPlatform() {
+        return "Harmattan";
+        //return "SailfishOS";
+    }
+    onPlatformChanged: {
+        Api.api.platform = platform;
+    }
+
     Component.onCompleted: {
         mytheme.loadTheme("light");
         pkgManagerProxy.getPackageInfo("openrepos-source-policy", function(result) {

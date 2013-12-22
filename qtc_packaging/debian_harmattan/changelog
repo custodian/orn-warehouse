@@ -1,3 +1,8 @@
+warehouse (0.1.6) stable; urgency=low
+  * Platform filtering
+
+ -- Basil Semuonov <basil.semuonov@gmail.com>  Sun, 22 Dec 2013 14:27:47 +0400
+
 warehouse (0.1.5) stable; urgency=low
   * Language pack update
 

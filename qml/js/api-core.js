@@ -10,6 +10,7 @@ api.log("loading api-core...");
 api.accessToken = "";
 api.inverted = false; //TODO: have to move this somewhere to make common function with icons work
 api.locale = "en";
+api.platform = "unknown";
 
 //Const section
 api.VERSION = "v1";
@@ -81,6 +82,7 @@ api.request = function(call, onSuccess, onErrorCustom) {
     }
     doc.open(call.type, url);
     doc.setRequestHeader("Accept-Language",api.locale);
+    doc.setRequestHeader("Warehouse-Platform",api.platform);
     //doc.setRequestHeader("Accept-Language",api.locale); //SECURITY DATA
     if (call.type === "POST") {
         doc.send(JSON.stringify(call.params));

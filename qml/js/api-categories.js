@@ -7,7 +7,7 @@
 api.log("loading api-categories...");
 
 var categories = new ApiObject();
-//notifications.debuglevel = 1;
+categories.debuglevel = 1;
 
 categories.preload = function() {
     var call = apiCall(null,"GET","categories");
@@ -21,9 +21,11 @@ categories.onPreloadSuccess = function(call, response) {
     categories._fulllist = {};
     response.forEach(function(cat) {
         categories._fulllist[cat.tid] = cat;
-        cat.childrens.forEach(function(child) {
-            categories._fulllist[child.tid] = child;
-        });
+        if (cat.childrens !== undefined) {
+            cat.childrens.forEach(function(child) {
+                categories._fulllist[child.tid] = child;
+            });
+        }
     });
 }
 categories.onPreloadFailed = function(call, response) {
