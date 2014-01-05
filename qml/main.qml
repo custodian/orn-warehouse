@@ -281,7 +281,7 @@ PageStackWindow {
     function msgCallbackFunction(msg) {
         console.log("In msgCallbackFunction");
         try {
-        pkgManagerProxy.processAction(msg);
+            pkgManagerProxy.processAction(msg);
         } catch (err) {
             console.log("execute error:" + err);
         }

@@ -5,6 +5,7 @@ QtObject {
     id: config
 
     signal settingsLoaded
+    signal settingsReseted
 
     Component.onCompleted: {
         loadSettings();
@@ -24,6 +25,8 @@ QtObject {
         imageLoad = "all"
         language = "en"
         debugEnabled = ""
+
+        settingsReseted()
     }
 
     function settingChanged(name, value) {
@@ -32,15 +35,23 @@ QtObject {
         }
     }
 
+    function save(name) {
+        if (config.hasOwnProperty(name)) {
+            var data = JSON.parse("{ \"%1\" : \"%2\" }".arg(name).arg(config[name]));
+            //console.log("Saved setting: " + JSON.stringify(data));
+            Database.setSetting(data);
+        }
+    }
+
     property string updateType: "none"
-    onUpdateTypeChanged: Database.setSetting({"updateType": updateType})
+    onUpdateTypeChanged: save("updateType")
 
     property string language: "en"
-    onLanguageChanged: Database.setSetting({"language": language})
+    onLanguageChanged: save("language")
 
     property string debugEnabled: ""
-    onDebugEnabledChanged: Database.setSetting({"debugEnabled": debugEnabled})
+    onDebugEnabledChanged: save("debugEnabled")
 
-    property string imageLoad: ""
-    onImageLoadChanged: Database.setSetting({"imageLoad": imageLoad})
+    property string imageLoad: "all"
+    onImageLoadChanged: save("imageLoad")
 }
