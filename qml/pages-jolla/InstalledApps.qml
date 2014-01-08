@@ -33,6 +33,7 @@ PageWrapper {
         target: pkgManagerProxy
         onTransactionPackage: {
             if (trname == getAppsTransaction) {
+                appsModel.append({"application":pkgobject});
                 //console.log("PACKAGE STATUS", JSON.stringify(pkgobject), pkgstatus, pkgsummary )
             }
         }
@@ -64,9 +65,9 @@ PageWrapper {
         PackageBox {
             application: model.application
 
-            onAreaClicked: {
+            /*onAreaClicked: {
                 stack.push(Qt.resolvedUrl("PkgInfo.qml"), {"pkg" : model.application, "warehouse": false, "parentPage": root});
-            }
+            }*/
         }
     }
 }

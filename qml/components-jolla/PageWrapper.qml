@@ -105,30 +105,4 @@ Page {
             }
         }
     }*/
-
-    /*Menu {
-        id: defaultMenu
-        MenuLayout {
-            MenuItem {
-                text: qsTr("Check updates")
-                onClicked: {
-                    updateDialog.getupdates();
-                }
-            }
-            MenuItem {
-                text: qsTr("Settings")
-                onClicked: {
-                    stack.push(Qt.resolvedUrl("../pages/Settings.qml"));
-                }
-            }
-            MenuItem {
-                text: qsTr("Exit")
-                onClicked: {
-                    //TODO:
-                    //windowHelper.disableSwype(false);
-                    Qt.quit();
-                }
-            }
-        }
-    }*/
 }

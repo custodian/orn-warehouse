@@ -15,7 +15,8 @@ Item {
     onApplicationChanged: {
         var url = "../images/default_package.png"
         if (application.icon) {
-            url = application.icon;
+            //TODO: only icon name here, need to get full link to local system
+            url = "/usr/share/icons/hicolor/86x86/apps/%1.png".arg(application.icon);
         }
         appImage.photoUrl = url;
     }
@@ -57,7 +58,7 @@ Item {
             color: myTheme.primaryColor
             font.pixelSize: myTheme.fontSizeSmall
             width: parent.width
-            text: application.group?application.group:""
+            text: application.data?application.data:""
             wrapMode: Text.Wrap
 
             Text {

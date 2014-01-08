@@ -80,6 +80,14 @@ PageWrapper {
             }
             Button {
                 anchors.horizontalCenter: parent.horizontalCenter
+                text: qsTr("Show updates")
+                enabled: !pkgStatus.transactionCount
+                onClicked: {
+                    stack.push("AvailableUpdates.qml");
+                }
+            }
+            Button {
+                anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("View full list")
                 onClicked: {
                     stack.push(Qt.resolvedUrl("InstalledApps.qml"));
@@ -89,17 +97,15 @@ PageWrapper {
             SectionHeader {
                 text: qsTr("Current operations")
             }
-            Button {
-                anchors.horizontalCenter: parent.horizontalCenter
-                text: qsTr("Check apps updates")
-                enabled: !pkgStatus.transactionCount
-                onClicked: {
-                    pkgManagerProxy.refreshRepositoryInfo();
-                }
-            }
             PkgManagerStatus {
                 id: pkgStatus
                 showPending: true
+            }
+            Text {
+                color: myTheme.primaryColor
+                font.pixelSize: myTheme.fontSizeSmall
+                text: qsTr("Queue is empty")
+                visible: !pkgStatus.transactionCount
             }
 
             SectionHeader {

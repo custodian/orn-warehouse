@@ -16,7 +16,7 @@ PageWrapper {
     signal application(variant app)
     signal update()
 
-    headerText: qsTr("Recently updated apps")
+    //headerText: qsTr("Recently updated apps")
 
     property alias appsModel: appsModel
 
@@ -34,40 +34,44 @@ PageWrapper {
         page.update();
     }
 
-    onHeaderClicked: {
+    /*onHeaderClicked: {
         loadedContent.scrollToTop();
-    }
+    }*/
 
     ListModel {
         id: appsModel
     }
 
-    tools: PullDownMenu {
-        MenuItem {
-            text: "My profile"
-            onClicked: pageStack.push(Qt.resolvedUrl("Me.qml"))
-        }
-        MenuItem {
-            text: "Categories"
-            onClicked: pageStack.push(Qt.resolvedUrl("Categories.qml"))
-        }
-        MenuItem {
-            text: "Search app"
-            onClicked: pageStack.push(Qt.resolvedUrl("Search.qml"))
-        }
-        MenuItem {
-            text: "Refresh"
-            onClicked: appList.update()
-        }
-    }
-
-    content: SilicaListView {
+    SilicaListView {
         id: appsListView
+        anchors.fill: parent
         model: appsModel
         delegate: appDelegate
         clip: true
+        header: PageHeader {
+            title: qsTr("Recently updated apps")
+        }
 
         spacing: myTheme.paddingSmall
+
+        PullDownMenu {
+            MenuItem {
+                text: "My profile"
+                onClicked: pageStack.push(Qt.resolvedUrl("Me.qml"))
+            }
+            MenuItem {
+                text: "Categories"
+                onClicked: pageStack.push(Qt.resolvedUrl("Categories.qml"))
+            }
+            MenuItem {
+                text: "Search app"
+                onClicked: pageStack.push(Qt.resolvedUrl("Search.qml"))
+            }
+            MenuItem {
+                text: "Refresh"
+                onClicked: appList.update()
+            }
+        }
     }
 
     Component {

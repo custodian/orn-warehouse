@@ -27,6 +27,8 @@ public:
     PackageKitProxy(QObject *parent = NULL);
 
     Q_INVOKABLE QString getRepoList();
+    Q_INVOKABLE QString getUpdatesList();
+
     Q_INVOKABLE QString refreshRepositoryInfo();
     Q_INVOKABLE void enableRepository(QString reponame);
     Q_INVOKABLE void disableRepository(QString reponame);

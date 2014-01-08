@@ -152,6 +152,13 @@ QString PackageKitProxy::getRepoList()
     return transaction->name();
 }
 
+QString PackageKitProxy::getUpdatesList()
+{
+    TransactionProxy *transaction = createTransaction();
+    transaction->getUpdates();
+    return transaction->name();
+}
+
 QString PackageKitProxy::refreshRepositoryInfo()
 {
     TransactionProxy *transaction = createTransaction();
@@ -292,7 +299,7 @@ void PackageKitProxy::t_onItemProgress(QString packageid, PackageKit::Transactio
     if (tran) {
         QString trName = tran->name();
         QString status = ENUM_TO_STRING(Status, code);
-        qDebug() << "t_onItemProcess" << trName << "Package:" << packageid << "status" << status << "progress" << progress;
+        //qDebug() << "t_onItemProcess" << trName << "Package:" << packageid << "status" << status << "progress" << progress;
         emit transactionProgress(trName, packageObject(packageid), status, progress);
     }
 }
@@ -303,7 +310,7 @@ void PackageKitProxy::t_onPackage(PackageKit::Transaction::Info info, QString pa
     if (tran) {
         QString trName = tran->name();
         QString status = ENUM_TO_STRING(Info, info);
-        qDebug() << "t_onPackage" << trName << "info:" << status << "packageid" << packageid << "summary" << summary;
+        //qDebug() << "t_onPackage" << trName << "info:" << status << "packageid" << packageid << "summary" << summary;
         emit transactionPackage(trName, packageObject(packageid), status, summary);
     }
 }
@@ -325,7 +332,7 @@ void PackageKitProxy::t_onFinished(PackageKit::Transaction::Exit code, quint32 r
     if (tran) {
         QString trName = tran->name();
         QString status = ENUM_TO_STRING(Exit, code);
-        qDebug() << "t_onFinished" << trName << "exit:" << status << "runtime" << runtime;
+        //qDebug() << "t_onFinished" << trName << "exit:" << status << "runtime" << runtime;
         emit transactionFinished(trName, status, runtime);
         deleteTransaction(tran);
     }
@@ -336,7 +343,7 @@ void PackageKitProxy::t_onRepoDetail(QString repoid, QString description, bool e
     TransactionProxy *tran = qobject_cast<TransactionProxy *>(sender());
     if (tran) {
         QString trName = tran->name();
-        qDebug() << "t_onRepoDetail" << trName << "repoid" << repoid << "desc" << description << "enabeld" << enabled;
+        //qDebug() << "t_onRepoDetail" << trName << "repoid" << repoid << "desc" << description << "enabeld" << enabled;
         emit transactionRepoDetail(trName, repoid, description, enabled);
     }
 }
