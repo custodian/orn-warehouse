@@ -33,7 +33,7 @@ apps.onLoadApplication = function(call, response) {
     var page = call.page;
     page.waiting_hide();
     page.application = response;
-    page.apploaded();
+    page.appLoaded();
 }
 
 apps.browseApps = function(page) {

@@ -1,0 +1,33 @@
+Name: harbour-warehouse
+Summary: Warehouse application
+Version: 0.1
+Release: 3
+Group: Qt/Qt
+URL: https://openrepos.net/
+License: LICENSE
+Sources:
+- '%{name}-%{version}.tar.bz2'
+Description: |
+  Warehouse is a native client for OpenRepos.net
+Configure: none
+Builder: qtc5
+PkgConfigBR:
+- Qt5Quick
+- Qt5Qml
+- Qt5Core
+- sailfishapp >= 0.0.10
+Requires:
+- sailfishsilica-qt5 >= 0.10.9
+- PackageKit >= 0.8.9
+- PackageKit-Qt5 >= 0.8.8
+Files:
+- '%{_bindir}'
+- '%{_datadir}/%{name}/qml'
+- '%{_datadir}/applications/%{name}.desktop'
+- '%{_datadir}/icons/hicolor/86x86/apps/%{name}.png'
+- /usr/bin
+- /usr/share/harbour-warehouse
+- /usr/share/applications
+- /usr/share/icons/hicolor/86x86/apps
+- /etc/zypp/repos.d
+PkgBR: []

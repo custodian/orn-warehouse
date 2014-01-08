@@ -1,6 +1,6 @@
 #include <QDebug>
 #include <QVariant>
-#include <QApplication>
+#include <QCoreApplication>
 #include <QFile>
 #include <QDir>
 #include <QMap>
@@ -8,10 +8,14 @@
 
 #include "apptranslator.h"
 
-AppTranslator::AppTranslator(QApplication *app)
+AppTranslator::AppTranslator(QCoreApplication *app)
 {
     m_app = app;
+#if defined(Q_OS_SAILFISH)
+    m_langdir = "/usr/share/harbour-warehouse/i18n";
+#else
     m_langdir = QmlApplicationViewerPrivate::adjustPath("i18n");
+#endif
     loadAvailableLanguages();
     m_app->installTranslator(&m_translator);
     //changeLanguage(QVariant(lang));

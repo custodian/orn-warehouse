@@ -18,8 +18,13 @@ Cache::Cache(QString name, QObject *parent) :
 {
     m_cacheonly = false;
 
+
+#if defined(Q_OS_SAILFISH)
+    m_path = QStandardPaths::writableLocation(QStandardPaths::CacheLocation);
+#else
     QDesktopServices dirs;
     m_path = dirs.storageLocation(QDesktopServices::CacheLocation);
+#endif
     m_path += "/"+name+"/";
     //qDebug() << "Cache location: " << m_path;
 
@@ -103,7 +108,7 @@ void Cache::processBase64Data(QVariant dataurl) {
 QString Cache::md5(QString data)
 {
     QCryptographicHash hash(QCryptographicHash::Md5);
-    hash.addData(data.toAscii());
+    hash.addData(data.toLatin1());
     return hash.result().toHex();
 }
 

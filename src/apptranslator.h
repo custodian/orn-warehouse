@@ -2,17 +2,16 @@
 #define APPTRANSLATOR_H
 
 #include <QObject>
-#include <QApplication>
+#include <QCoreApplication>
 #include <QVariant>
 #include <QTranslator>
-#include "qmlapplicationviewer.h"
 
 class AppTranslator : public QObject
 {
     Q_OBJECT
 
 private:
-    QApplication * m_app;
+    QCoreApplication * m_app;
     QString m_langdir;
     QTranslator m_translator;
     QVariantMap m_languages;
@@ -20,7 +19,7 @@ private:
     Q_INVOKABLE void loadAvailableLanguages();
 
 public:
-    explicit AppTranslator(QApplication *app = 0);
+    explicit AppTranslator(QCoreApplication *app = 0);
 
     Q_INVOKABLE void changeLanguage(QVariant lang);
     Q_INVOKABLE QVariant getAvailableLanguages();

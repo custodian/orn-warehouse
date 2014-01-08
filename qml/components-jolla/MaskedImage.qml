@@ -1,5 +1,4 @@
-import Qt 4.7
-import com.nokia.extras 1.1 //MaskedItem
+import QtQuick 2.0
 
 Item {
     id: profileImage
@@ -15,7 +14,7 @@ Item {
     property variant photoSourceSize: undefined
     property bool enableMouseArea: true
     property bool photoSmooth: true
-    property variant photoAspect: Image.PreserveAspectCrop
+    property int photoAspect: Image.PreserveAspectCrop
 
     property bool masked: false
 
@@ -23,26 +22,7 @@ Item {
     height: photoHeight
 
     Loader {
-        sourceComponent: (masked ? maskedImage : cachedImage)
-    }
-
-    Component {
-        id: maskedImage
-
-        MaskedItem {
-            width: photoWidth
-            height: photoHeight
-            mask: Image{
-                width: photoWidth
-                height: photoHeight
-                source: "../images/image_mask.png"
-            }
-
-            Loader {
-                sourceComponent: cachedImage
-            }
-
-        }
+        sourceComponent: cachedImage
     }
 
     Component {
