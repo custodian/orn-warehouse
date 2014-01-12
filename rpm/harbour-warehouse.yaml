@@ -1,10 +1,10 @@
 Name: harbour-warehouse
 Summary: Warehouse application
 Version: 0.2
-Release: 1
+Release: 5
 Group: Qt/Qt
 URL: https://openrepos.net/
-License: LICENSE
+License: GPLv3
 Sources:
 - '%{name}-%{version}.tar.bz2'
 Description: |
@@ -12,22 +12,22 @@ Description: |
 Configure: none
 Builder: qtc5
 PkgConfigBR:
-- Qt5Quick
-- Qt5Qml
-- Qt5Core
 - sailfishapp >= 0.0.10
+- Qt5Core
+- Qt5Qml
+- Qt5Quick
 Requires:
-- sailfishsilica-qt5 >= 0.10.9
-- PackageKit >= 0.8.9
 - PackageKit-Qt5 >= 0.8.8
+- PackageKit >= 0.8.9
+- sailfishsilica-qt5 >= 0.10.9
 Files:
-- '%{_bindir}'
-- '%{_datadir}/%{name}/qml'
-- '%{_datadir}/applications/%{name}.desktop'
-- '%{_datadir}/icons/hicolor/86x86/apps/%{name}.png'
-- /usr/bin
-- /usr/share/harbour-warehouse
-- /usr/share/applications
-- /usr/share/icons/hicolor/86x86/apps
 - /etc/zypp/repos.d
+- /usr/share/icons/hicolor/86x86/apps
+- /usr/share/applications
+- /usr/share/harbour-warehouse
+- /usr/bin
+- '%{_datadir}/icons/hicolor/86x86/apps/%{name}.png'
+- '%{_datadir}/applications/%{name}.desktop'
+- '%{_datadir}/%{name}/qml'
+- '%{_bindir}'
 PkgBR: []

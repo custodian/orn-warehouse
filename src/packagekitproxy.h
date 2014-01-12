@@ -37,6 +37,8 @@ public:
     Q_INVOKABLE QString packageDetails(QString packageid);
     Q_INVOKABLE QString getInstalledApps();
 
+
+    Q_INVOKABLE QString installFile(QString filename);
     Q_INVOKABLE QString installPackage(QString packageid);
     Q_INVOKABLE QString updatePackage(QString packageid);
     Q_INVOKABLE QString removePackage(QString packageid);

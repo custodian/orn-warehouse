@@ -110,7 +110,6 @@ TransactionProxy* PackageKitProxy::createTransaction(QString name, bool own)
     connect(transaction,SIGNAL(itemProgress(QString,PackageKit::Transaction::Status,uint)),SLOT(t_onItemProgress(QString,PackageKit::Transaction::Status,uint)));
     connect(transaction,SIGNAL(repoDetail(QString,QString,bool)),SLOT(t_onRepoDetail(QString,QString,bool)));
     connect(transaction,SIGNAL(details(QString,QString,PackageKit::Transaction::Group,QString,QString,qulonglong)),SLOT(t_onDetails(QString,QString,PackageKit::Transaction::Group,QString,QString,qulonglong)));
-    //connect(transaction,SIGNAL(i
 
     return transaction;
 }
@@ -233,6 +232,12 @@ QString PackageKitProxy::packageDetails(QString packageid)
     transaction->getDetails(packageid);
     return transaction->name();
 }
+QString PackageKitProxy::installFile(QString filename)
+{
+    TransactionProxy *transaction = createTransaction();
+    transaction->installFile(filename);
+    return transaction->name();
+}
 
 QString PackageKitProxy::installPackage(QString packageid)
 {
@@ -251,7 +256,7 @@ QString PackageKitProxy::updatePackage(QString packageid)
 QString PackageKitProxy::removePackage(QString packageid)
 {
     TransactionProxy *transaction = createTransaction();
-    transaction->removePackage(packageid, false, true);
+    transaction->removePackage(packageid, false, false);
     return transaction->name();
 }
 
@@ -322,7 +327,9 @@ void PackageKitProxy::t_onErrorCode(PackageKit::Transaction::Error code,QString 
         QString trName = tran->name();
         QString status = ENUM_TO_STRING(Error, code);
         qDebug() << "t_onErrorCode" << trName << "code" << status << "message" << message;
-        emit transactionError(trName, status, message);
+        if (tran->own) {
+            emit transactionError(trName, status, message);
+        }
     }
 }
 

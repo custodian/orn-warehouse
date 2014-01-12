@@ -128,46 +128,4 @@ Column {
             }
         }
     }
-
-    /*
-    Connections {
-        target: pkgManagerProxy
-        onProcessedOperation: processOperation(operation)
-        onLocalOperationChanged: busyStatusChanged
-    }
-    */
-
-    /*
-    function processOperation(operation){
-        progressBar.indeterminate = false;
-        progressBar.value = operation.progress;
-        switch(operation.operation) {
-        case 'InstallFile':
-        case 'Install':
-            operationText.text = qsTr("Installing application");
-            operationTextApp.text = "%1 (%2)".arg(operation.name).arg(operation.version);
-            break;
-        case 'Upgrade':
-            operationText.text = qsTr("Upgrading application");
-            operationTextApp.text = "%1 (%2)".arg(operation.name).arg(operation.version);
-            break;
-        case 'Uninstall':
-            operationText.text = qsTr("Uninstalling application");
-            operationTextApp.text = "%1 (%2)".arg(operation.name).arg(operation.version);
-            break;
-        case 'Download':
-            operationText.text = qsTr("Downloading application");
-            operationTextApp.text = "%1 (%2)".arg(operation.name).arg(operation.version);
-            break;
-        case 'Refresh':
-            operationText.text = qsTr("Fetching repositories");
-            operationTextApp.text = "";
-            progressBar.indeterminate = true;
-            break;
-        }
-        if (operation.status === "Completed") {
-            operationText.text = qsTr("Working");
-            operationTextApp.text = "";
-        }
-    }*/
 }
