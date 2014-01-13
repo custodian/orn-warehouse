@@ -1,6 +1,6 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import "../components-jolla"
+import "../components"
 
 import "../js/api.js" as Api
 

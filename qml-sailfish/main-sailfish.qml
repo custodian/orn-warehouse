@@ -1,7 +1,7 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import "pages-jolla"
-import "components-jolla"
+import "pages"
+import "components"
 
 import net.thecust.packagekit 1.0
 
@@ -19,7 +19,9 @@ ApplicationWindow
     }
 
     initialPage: Component {
-        Applications { }
+        Applications {
+            id: applicatiosPage
+        }
     }
     cover: CoverBackground {
         Label {
@@ -32,11 +34,26 @@ ApplicationWindow
             id: coverAction
 
             CoverAction {
-                iconSource: "image://theme/icon-cover-sync"
-            }
-
-            CoverAction {
                 iconSource: "image://theme/icon-cover-search"
+                onTriggered: {
+                    //coverActionSearch();
+                    while(pageStack.depth>1) {
+                        pageStack.pop(undefined, PageStackAction.Immediate);
+                    }
+                    appWindow.activate();
+                    pageStack.push("pages/Search.qml");
+                }
+            }
+            CoverAction {
+                iconSource: "image://theme/icon-cover-refresh"
+                onTriggered: {
+                    //coverActionRefresh();
+                    while(pageStack.depth>1) {
+                        pageStack.pop(undefined, PageStackAction.Immediate);
+                    }
+                    appWindow.activate();
+                    pageStack.push("pages/AvailableUpdates.qml");
+                }
             }
         }
     }
@@ -69,7 +86,7 @@ ApplicationWindow
                 pageStack.currentPage.update();
             } else {
                 remorse.execute("Updates available", function() {
-                    pageStack.push("pages-jolla/AvailableUpdates.qml");
+                    pageStack.push("pages/AvailableUpdates.qml");
                 });
             }
         }
@@ -93,7 +110,7 @@ ApplicationWindow
         }
 
         onTransactionError: {
-            pageStack.push("components-jolla/ErrorDialog.qml", {"trName": trname, "trStatus":trstatus, "trMessage":trmessage});
+            pageStack.push("components/ErrorDialog.qml", {"trName": trname, "trStatus":trstatus, "trMessage":trmessage});
         }
     }
 

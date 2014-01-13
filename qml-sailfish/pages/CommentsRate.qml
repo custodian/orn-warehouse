@@ -1,5 +1,5 @@
 import QtQuick 2.0
-import "../components-jolla"
+import "../components"
 
 import "../js/api.js" as Api
 

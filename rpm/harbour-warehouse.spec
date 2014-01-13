@@ -14,7 +14,7 @@ Name:       harbour-warehouse
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    Warehouse application
 Version:    0.2
-Release:    5
+Release:    6
 Group:      Qt/Qt
 License:    GPLv3
 URL:        https://openrepos.net/
@@ -72,7 +72,7 @@ desktop-file-install --delete-original       \
 /usr/bin
 %{_datadir}/icons/hicolor/86x86/apps/%{name}.png
 %{_datadir}/applications/%{name}.desktop
-%{_datadir}/%{name}/qml
+%{_datadir}/%{name}/qml-sailfish
 %{_bindir}
 # >> files
 %defattr(-,nemo,privileged,-)

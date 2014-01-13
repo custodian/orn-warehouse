@@ -1,7 +1,7 @@
 Name: harbour-warehouse
 Summary: Warehouse application
 Version: 0.2
-Release: 5
+Release: 6
 Group: Qt/Qt
 URL: https://openrepos.net/
 License: GPLv3
@@ -28,6 +28,6 @@ Files:
 - /usr/bin
 - '%{_datadir}/icons/hicolor/86x86/apps/%{name}.png'
 - '%{_datadir}/applications/%{name}.desktop'
-- '%{_datadir}/%{name}/qml'
+- '%{_datadir}/%{name}/qml-sailfish'
 - '%{_bindir}'
 PkgBR: []

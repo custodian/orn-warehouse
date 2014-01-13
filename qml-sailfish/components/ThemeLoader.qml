@@ -40,17 +40,4 @@ Item {
     property color secondaryColor: Theme.secondaryColor
     property color highlightColor: Theme.highlightColor
     property color secondaryHighlightColor: Theme.secondaryHighlightColor
-
-/*    function loadTheme(type) {
-        //console.log("LOADING THEME " + type)
-        //actually loading theme
-        var factory = Qt.createComponent(Qt.resolvedUrl("../themes/"+type + ".qml"));
-        if (factory.status === Component.Ready) {
-            var loadedTheme = factory.createObject(themeLoader);
-            applyTheme(loadedTheme);
-        } else {
-            console.log("Theme " + type + " not found!");
-        }
-    }
-*/
 }

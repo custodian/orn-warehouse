@@ -3,11 +3,13 @@ TEMPLATE = app
 TARGET = harbour-warehouse
 target.path = $$INSTALL_ROOT/usr/bin
 
-QT += network dbus
+QT += network dbus quick qml
 
-CONFIG += sailfishapp
 CONFIG += link_pkgconfig
-PKGCONFIG += packagekit-qt5 sailfishapp
+PKGCONFIG += packagekit-qt5
+
+PKGCONFIG += sailfishapp
+INCLUDEPATH += /usr/include/sailfishapp
 
 DEFINES += QT_USE_FAST_CONCATENATION QT_USE_FAST_OPERATOR_PLUS
 DEFINES += Q_OS_SAILFISH
@@ -17,7 +19,7 @@ packagesExist(sailfishapp) {
 }
 
 ####################DEPLOYMENT SETTINGS###################
-qml.files = qml
+qml.files = qml-sailfish
 qml.path = $$INSTALL_ROOT/usr/share/harbour-warehouse
 
 desktop.files = harbour-warehouse.desktop
@@ -32,7 +34,7 @@ icon.path = $$INSTALL_ROOT/usr/share/icons/hicolor/86x86/apps
 zypp.files = rpm/openrepos.enabled
 zypp.path = $$INSTALL_ROOT/etc/zypp/repos.d
 
-INSTALLS += zypp target qml desktop icon #dbus
+INSTALLS = zypp target qml desktop icon #dbus
 
 INCLUDEPATH += $PWD/src
 
@@ -59,15 +61,12 @@ OTHER_FILES += \
 
 OTHER_FILES += \
     harbour-warehouse.desktop \
-    qml/*
+    qml-sailfish/*
 
 ############## translations settings ##################
 lupdate_only {
-    SOURCES = qml/main-sailfish.qml \
-        qml/main-harmattan.qml \
-        qml/components/*.qml \
-        qml/components-jolla/*.qml \
-        qml/pages/*.qml \
-        qml/pages-jolla/*.qml \
-        qml/js/*.js
+    SOURCES = qml-sailfish/main-sailfish.qml \
+        qml-sailfish/components/*.qml \
+        qml-sailfish/pages/*.qml \
+        qml-sailfish/js/*.js
 }

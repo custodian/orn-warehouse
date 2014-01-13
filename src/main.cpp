@@ -83,7 +83,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 #endif
 
 #if defined(Q_OS_SAILFISH)
-    viewer->setSource(SailfishApp::pathTo("qml/main-sailfish.qml"));
+    viewer->setSource(SailfishApp::pathTo("qml-sailfish/main-sailfish.qml"));
     QObject::connect(viewer->engine(), SIGNAL(quit()), QCoreApplication::instance(), SLOT(quit()));
 #else
     viewer->setAttribute(Qt::WA_OpaquePaintEvent);
@@ -91,7 +91,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     viewer->viewport()->setAttribute(Qt::WA_OpaquePaintEvent);
     viewer->viewport()->setAttribute(Qt::WA_NoSystemBackground);
 
-    viewer->setMainQmlFile(QLatin1String("qml/main-harmattan.qml"));
+    viewer->setMainQmlFile(QLatin1String("qml-harmattan/main-harmattan.qml"));
     QObject *rootObject = qobject_cast<QObject*>(viewer.rootObject());
     Q_UNUSED(rootObject)
     //rootObject->connect(cache,SIGNAL(cacheUpdated(QVariant,QVariant,QVariant)),SLOT(onCacheUpdated(QVariant,QVariant,QVariant)));
