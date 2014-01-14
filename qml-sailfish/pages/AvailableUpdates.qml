@@ -65,6 +65,7 @@ PageWrapper {
     }
 
     content: SilicaListView {
+        id: updatesView
         model: updateModel
         delegate: updateDelegate
         clip: true
@@ -76,6 +77,7 @@ PageWrapper {
                 text: qsTr("Check for updates")
                 onClicked: {
                     pkgManagerProxy.refreshRepositoryInfo();
+                    updatesView.scrollToTop();
                 }
             }
             SectionHeader {

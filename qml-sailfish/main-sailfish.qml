@@ -24,10 +24,19 @@ ApplicationWindow
         }
     }
     cover: CoverBackground {
-        Label {
-            id: label
+        Column {
             anchors.centerIn: parent
-            text: "Warehouse"
+            width: parent.width
+            spacing: Theme.paddingMedium
+
+            Image {
+                anchors.horizontalCenter: parent.horizontalCenter
+                source: "/usr/share/icons/hicolor/86x86/apps/harbour-warehouse.png"
+            }
+            Label {
+                anchors.horizontalCenter: parent.horizontalCenter
+                text: "Warehouse"
+            }
         }
 
         CoverActionList {
