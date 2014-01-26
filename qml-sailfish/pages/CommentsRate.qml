@@ -90,6 +90,7 @@ PageWrapper {
 
             Column {
                 id: commentColumn
+                spacing: 0
                 anchors {
                     top: parent.top
                     left: userPhoto.right
@@ -102,13 +103,20 @@ PageWrapper {
                     font.pixelSize: myTheme.fontSizeMedium
                     font.bold: true
                     width: parent.width
-                    text: model.user.name + " @ " + model.created
+                    text: model.user.name
                     wrapMode: Text.Wrap
                 }
-
+                Text {
+                    color: myTheme.secondaryColor
+                    font.pixelSize: myTheme.fontSizeSmall
+                    font.bold: true
+                    width: parent.width
+                    text: Api.makeTime(model.created)
+                    wrapMode: Text.Wrap
+                }
                 Text {
                     color: myTheme.primaryColor
-                    font.pixelSize: myTheme.fontsizeSmall
+                    font.pixelSize: myTheme.fontSizeSmall
                     width: parent.width
                     text: model.text
                     wrapMode: Text.Wrap

@@ -7,7 +7,7 @@ Page {
 
     signal headerClicked
 
-    //property alias pagetop: pageHeader.bottom
+    property alias pagetop: pageHeader.bottom
     property bool busy: false
     property alias headerText: pageHeader.title
     property alias tools: pullDownLoader.sourceComponent
@@ -23,6 +23,7 @@ Page {
     SilicaFlickable {
         id: flicable
         anchors.fill: parent
+        pressDelay: 0
 
         Loader {
             id: pullDownLoader

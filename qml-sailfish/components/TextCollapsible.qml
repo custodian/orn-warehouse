@@ -12,6 +12,9 @@ Text {
     property bool __collapsed: false
 
     linkColor: myTheme.highlightColor
+    onLinkActivated: {
+        Qt.openUrlExternally(link);
+    }
 
     function updateHeight() {
         if (__overflow) {

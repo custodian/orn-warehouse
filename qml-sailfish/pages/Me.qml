@@ -102,6 +102,7 @@ PageWrapper {
                 showPending: true
             }
             Text {
+                anchors.horizontalCenter: parent.horizontalCenter
                 color: myTheme.primaryColor
                 font.pixelSize: myTheme.fontSizeSmall
                 text: qsTr("Queue is empty")

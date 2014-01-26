@@ -16,9 +16,11 @@ PageWrapper {
     signal application(variant app)
     signal update()
 
-    //headerText: qsTr("Recently updated apps")
+    headerText: qsTr("Recently updated apps")
 
     property alias appsModel: appsModel
+
+    property string refreshCacheTransaction: ""
 
     function load() {
         Api.api.platform = appWindow.getCurrentPlatform();
@@ -34,33 +36,55 @@ PageWrapper {
         page.update();
     }
 
-    /*onHeaderClicked: {
+    onHeaderClicked: {
         loadedContent.scrollToTop();
-    }*/
+    }
 
     ListModel {
         id: appsModel
     }
 
-    SilicaListView {
-        id: appsListView
-        anchors.fill: parent
-        model: appsModel
-        delegate: appDelegate
-        clip: true
-        header: PageHeader {
-            title: qsTr("Recently updated apps")
+    Connections {
+        target: pkgManagerProxy
+        onTransactionFinished: {
+            if (trname == refreshCacheTransaction) {
+                refreshCacheTransaction = "";
+            }
         }
+        onTransactionListChanged: {
+            transactionList.forEach(function(transaction) {
+                if (transaction.role == "refresh-cache") {
+                    refreshCacheTransaction = transaction.name;
+                }
+            });
+        }
+    }
 
-        spacing: myTheme.paddingSmall
-
+    tools: Component {
         PullDownMenu {
             MenuItem {
                 text: "My profile"
                 onClicked: pageStack.push(Qt.resolvedUrl("Me.qml"))
             }
             MenuItem {
-                text: "Categories"
+                text: "Check updates"
+                enabled: !refreshCacheTransaction.length
+                onClicked: {
+                    pkgManagerProxy.refreshRepositoryInfo();
+                }
+                BusyIndicator {
+                    anchors{
+                        right: parent.right
+                        rightMargin: myTheme.paddingLarge * 2
+                        verticalCenter: parent.verticalCenter
+                    }
+                    size: BusyIndicatorSize.Small
+                    running: !parent.enabled
+                    visible: !parent.enabled
+                }
+            }
+            MenuItem {
+                text: "Browse by categories"
                 onClicked: pageStack.push(Qt.resolvedUrl("Categories.qml"))
             }
             MenuItem {
@@ -72,6 +96,16 @@ PageWrapper {
                 onClicked: appList.update()
             }
         }
+    }
+
+    content: SilicaListView {
+        id: appsListView
+        anchors.fill: parent
+        model: appsModel
+        delegate: appDelegate
+        clip: true
+        spacing: myTheme.paddingSmall
+        pressDelay: 0
     }
 
     Component {

@@ -69,6 +69,7 @@ ApplicationWindow
 
     Component.onCompleted: {
         getReposTransaction = pkgManagerProxy.getRepoList();
+        pkgManagerProxy.getUpdatesList();
     }
 
     QtObject {
@@ -85,6 +86,12 @@ ApplicationWindow
     RemorsePopup {
         id: remorse
     }
+    ProceedPopup {
+        id: updateProceed
+        onCanceled: {
+            pageStack.push("pages/AvailableUpdates.qml");
+        }
+    }
 
     PackageManagerProxy {
         id: pkgManagerProxy
@@ -94,9 +101,7 @@ ApplicationWindow
             if (pageStack.currentPage.getUpdatesTransaction !== undefined) {
                 pageStack.currentPage.update();
             } else {
-                remorse.execute("Updates available", function() {
-                    pageStack.push("pages/AvailableUpdates.qml");
-                });
+                updateProceed.execute("Updates available", function() {});
             }
         }
 

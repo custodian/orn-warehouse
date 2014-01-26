@@ -1,6 +1,7 @@
 import QtQuick 2.0
+import Sailfish.Silica 1.0
 
-Item {
+BackgroundItem {
     id: nextBox
 
     signal areaClicked()
@@ -9,7 +10,7 @@ Item {
     property bool highlight: false
 
     width: parent.width
-    height: nextImage.height*2
+    height: nextImage.height
     //color: mouseArea.pressed || highlight ? mytheme.colors.backgroundSand : mytheme.colors.backgroundMain
 
     Text {
@@ -34,11 +35,15 @@ Item {
         source: "image://theme/icon-m-right"
         asynchronous: true
     }
-    MouseArea {
+    onClicked: {
+        nextBox.areaClicked();
+    }
+/*    MouseArea {
         id: mouseArea
         anchors.fill: parent
         onClicked: {
             nextBox.areaClicked();
         }
     }
+*/
 }

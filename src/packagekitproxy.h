@@ -46,7 +46,7 @@ public:
 signals:
     void repoListChanged();
     void restartScheduled();
-    void transactionListChanged(QStringList transactionList);
+    void transactionListChanged(QVariantList transactionList);
     void updatesChanged();
     void daemonQuit();
 

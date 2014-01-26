@@ -70,7 +70,8 @@ PageWrapper {
         Column {
             width: parent.width
             NextBox {
-                text: "%1 (%2)".arg(modelData.name).arg(modelData.apps_count)
+                //text: "%1 (%2)".arg(modelData.name).arg(modelData.apps_count)
+                text: "%1 ".arg(modelData.name)
                 onAreaClicked: {
                     catList.browse(modelData.tid, modelData.name);
                 }
@@ -85,7 +86,8 @@ PageWrapper {
                     model: modelData.childrens
                     width: parent.width
                     delegate: NextBox {
-                        text: "%1 (%2)".arg(modelData.name).arg(modelData.apps_count)
+                        //text: "%1 (%2)".arg(modelData.name).arg(modelData.apps_count)
+                        text: "%1".arg(modelData.name)
                         onAreaClicked: {
                             catList.browse(modelData.tid, modelData.name);
                         }

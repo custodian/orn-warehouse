@@ -150,6 +150,7 @@ Column {
     }
 
     onAppPackageChanged: {
+        //console.log("APP PACKAGE:", JSON.stringify(appPackage));
         if (appPackage !== undefined) {
             updateAppStatus();
         }

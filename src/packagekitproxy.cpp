@@ -110,6 +110,7 @@ TransactionProxy* PackageKitProxy::createTransaction(QString name, bool own)
     connect(transaction,SIGNAL(itemProgress(QString,PackageKit::Transaction::Status,uint)),SLOT(t_onItemProgress(QString,PackageKit::Transaction::Status,uint)));
     connect(transaction,SIGNAL(repoDetail(QString,QString,bool)),SLOT(t_onRepoDetail(QString,QString,bool)));
     connect(transaction,SIGNAL(details(QString,QString,PackageKit::Transaction::Group,QString,QString,qulonglong)),SLOT(t_onDetails(QString,QString,PackageKit::Transaction::Group,QString,QString,qulonglong)));
+    //connect(transaction,SIGNAL(transaction))
 
     return transaction;
 }
@@ -283,7 +284,15 @@ void PackageKitProxy::d_onTransactionListChanged(const QStringList& transactionL
             //qDebug() << "Known transaction" << transName;
         }
     }
-    emit transactionListChanged(transactionList);
+    QVariantList tlist;
+    foreach (TransactionProxy* transaction, m_transactions) {
+        QVariantMap props;
+        props["name"] = transaction->name();
+        props["data"] = transaction->data();
+        props["role"] = ENUM_TO_STRING(Role,transaction->role());
+        tlist.append(props);
+    }
+    emit transactionListChanged(tlist);
 }
 
 void PackageKitProxy::d_onUpdatesChanged()

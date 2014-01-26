@@ -117,10 +117,34 @@ PageWrapper {
         anchors.centerIn: parent
         color: myTheme.primaryColor
         font.pixelSize: myTheme.fontSizeMedium
-        text: searchResult.busy? qsTr("Searching...") : qsTr("No results found");
+        text: searchResult.busy? qsTr("Searching...") : (__keys.length) ? qsTr("No results found") : qsTr("Enter keywords to search");
         width: parent.width
         horizontalAlignment: Text.AlignHCenter
         wrapMode: Text.WordWrap
         visible: appsModel.count == 0
     }
+
+
+    /*Column {
+        width: parent.width
+        spacing: myTheme.paddingMedium
+        anchors {
+            bottom: searchResult.bottom
+            bottomMargin: myTheme.paddingLarge
+        }
+        visible: appsModel.count == 0 // && !Qt.inputMethod.visible
+
+        SectionHeader{
+            text: qsTr("Browse applications")
+        }
+        NextBox {
+            text: qsTr("by category")
+            onAreaClicked: pageStack.push(Qt.resolvedUrl("Categories.qml"))
+        }
+        NextBox {
+            text: qsTr("by publisher")
+            onAreaClicked: pageStack.push(Qt.resolvedUrl("Publishers.qml"))
+        }
+    }
+    */
 }

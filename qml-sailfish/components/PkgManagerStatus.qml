@@ -21,9 +21,9 @@ Column {
                 if (transactionModel.count && !showPending)
                     return;
                 transactionModel.append({
-                    "name": transaction,
-                    "action": "pending",
-                    "application": "",
+                    "name": transaction.name,
+                    "action": transaction.role,
+                    "application": transaction.data,
                     "progress": 0,
                 });
                 //make call to get application info
@@ -61,7 +61,7 @@ Column {
             }
         }
         onTransactionRepoDetail: {
-            //console.log(repoid, repodesc, repoenabled);
+            console.log(repoid, repodesc, repoenabled);
             for(var i = 0; i<transactionModel.count; i++) {
                 var transaction = transactionModel.get(i);
                 if (transaction.name === trname) {

@@ -62,6 +62,36 @@ PageWrapper {
                 application: appDetails.application
                 categoryStyle: "full"
             }
+            Row {
+                anchors.horizontalCenter: parent.horizontalCenter
+                spacing: myTheme.paddingLarge * 2
+                Row {
+                    spacing: myTheme.paddingMedium
+                    Image {
+                        anchors.verticalCenter: parent.verticalCenter
+                        source: "image://theme/icon-s-like"
+                    }
+                    Text {
+                        anchors.verticalCenter: parent.verticalCenter
+                        color: myTheme.primaryColor
+                        font.pixelSize: myTheme.fontSizeSmall
+                        text: appDetails.application.rating.count
+                    }
+                }
+                Row {
+                    spacing: myTheme.paddingMedium
+                    Image {
+                        anchors.verticalCenter: parent.verticalCenter
+                        source: "image://theme/icon-s-cloud-download"
+                    }
+                    Text {
+                        anchors.verticalCenter: parent.verticalCenter
+                        color: myTheme.primaryColor
+                        font.pixelSize: myTheme.fontSizeSmall
+                        text: appDetails.application.downloads ? appDetails.application.downloads : ""
+                    }
+                }
+            }
 
             AppManageBox {
                 id: manageBox
