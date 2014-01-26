@@ -98,14 +98,23 @@ PageWrapper {
         }
     }
 
-    content: SilicaListView {
-        id: appsListView
+    content: SilicaFlickable {
+        id: appsFlickable
         anchors.fill: parent
-        model: appsModel
-        delegate: appDelegate
         clip: true
-        spacing: myTheme.paddingSmall
         pressDelay: 0
+        contentHeight: contentColumn.height
+
+        Column {
+            id: contentColumn
+            width: parent.width
+            spacing: myTheme.paddingSmall
+            Repeater {
+                model: appsModel
+                delegate: appDelegate
+            }
+        }
+        ScrollDecorator{ flickable: appsFlickable }
     }
 
     Component {

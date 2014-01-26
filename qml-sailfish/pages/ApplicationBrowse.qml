@@ -38,46 +38,56 @@ PageWrapper {
         id: appsModel
     }
 
-    content: SilicaListView {
-        model: appsModel
-        delegate: appDelegate
-        //highlightFollowsCurrentItem: true
+    content: SilicaFlickable {
+        id: appsFlickable
         clip: true
-        cacheBuffer: 400
+        anchors.fill: parent
+        contentHeight: contentColumn.height
 
-        header: Label {
-            color: myTheme.primaryColor
-            font.pixelSize: myTheme.fontSizeSmall
-            text: qsTr("Page %1").arg(appList.page)
-        }
-
-        footer: Item {
+        Column {
+            id: contentColumn
             width: parent.width
-            height: pagerRow.height + 30
 
-            Row {
-                id: pagerRow
-                anchors.centerIn: parent
-                Button {
-                    //anchors.horizontalCenter: parent.horizontalCenter
-                    text: qsTr("Prev page")
-                    visible: appList.page > 0
-                    onClicked: {
-                        appList.page--;
-                        appList.update();
+            Label {
+                color: myTheme.primaryColor
+                font.pixelSize: myTheme.fontSizeSmall
+                text: qsTr("Page %1").arg(appList.page)
+            }
+
+            Repeater {
+                model: appsModel
+                delegate: appDelegate
+            }
+
+            Item {
+                width: parent.width
+                height: pagerRow.height + 30
+
+                Row {
+                    id: pagerRow
+                    anchors.centerIn: parent
+                    Button {
+                        //anchors.horizontalCenter: parent.horizontalCenter
+                        text: qsTr("Prev page")
+                        visible: appList.page > 0
+                        onClicked: {
+                            appList.page--;
+                            appList.update();
+                        }
                     }
-                }
-                Button {
-                    //anchors.horizontalCenter: parent.horizontalCenter
-                    text: qsTr("Next page")
-                    visible: appsModel.count == appList.pageSize && options.type != "user" //FIX: remove when api will be changed
-                    onClicked: {
-                        appList.page++;
-                        appList.update();
+                    Button {
+                        //anchors.horizontalCenter: parent.horizontalCenter
+                        text: qsTr("Next page")
+                        visible: appsModel.count == appList.pageSize && options.type != "user" //FIX: remove when api will be changed
+                        onClicked: {
+                            appList.page++;
+                            appList.update();
+                        }
                     }
                 }
             }
         }
+        ScrollDecorator{ flickable: appsFlickable }
     }
 
     Component {
