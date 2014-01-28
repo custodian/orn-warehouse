@@ -1,18 +1,16 @@
 import QtQuick 2.0
+import Sailfish.Silica 1.0
+import "../js/api.js" as Api
 
-Item {
-//Rectangle {
+BackgroundItem {
     id: appItem
-
-    signal areaClicked()
-    signal areaPressAndHold()
 
     property variant application: {}
     property bool highlight: false
     property string categoryStyle: "small" //full
 
     width: parent.width
-    height: 10 + Math.max(statusArea.height,appImage.height)
+    height: Math.max(statusArea.height, appImage.height) + 2 * myTheme.paddingMedium
 
     onApplicationChanged: {
         var url = "../images/default_package.png"
@@ -29,8 +27,7 @@ Item {
         anchors {
             left: parent.left
             leftMargin: myTheme.paddingLarge
-            top: parent.top
-            topMargin: myTheme.paddingLarge
+            verticalCenter: parent.verticalCenter
         }
         masked: false//true
     }
@@ -43,8 +40,7 @@ Item {
             leftMargin: myTheme.paddingLarge
             right: parent.right
             rightMargin: myTheme.paddingLarge
-            top: parent.top
-            topMargin: myTheme.paddingSmall
+            verticalCenter: parent.verticalCenter
         }
 
         Text {
@@ -63,7 +59,7 @@ Item {
             color: myTheme.primaryColor
             font.pixelSize: myTheme.fontSizeSmall
             width: parent.width
-            text: categotyParser.parse(application.category, appItem.categoryStyle)
+            text: Api.categories.parse(application.category, appItem.categoryStyle)
             wrapMode: Text.Wrap
         }
 
@@ -81,17 +77,6 @@ Item {
                 }
                 text: application.user ? qsTr("by %1").arg(application.user.name) : ""
             }
-        }
-    }
-
-    MouseArea {
-        id: mouseArea
-        anchors.fill: parent
-        onClicked: {
-            appItem.areaClicked();
-        }
-        onPressAndHold: {
-            appItem.areaPressAndHold();
         }
     }
 }
