@@ -72,13 +72,6 @@ ApplicationWindow
         pkgManagerProxy.getUpdatesList();
     }
 
-    QtObject {
-        id: categotyParser
-        function parse(category, style) {
-            return Api.categories.parse(category, style);
-        }
-    }
-
     ThemeLoader {
         id: myTheme
     }

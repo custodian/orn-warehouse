@@ -107,7 +107,7 @@ PageWrapper {
             id: appbox
             application: model.application
 
-            onAreaClicked: {
+            onClicked: {
                 searchResult.application( model.application );
             }
         }
