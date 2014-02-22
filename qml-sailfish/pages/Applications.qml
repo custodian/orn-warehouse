@@ -36,6 +36,14 @@ PageWrapper {
         page.update();
     }
 
+    Timer{
+        // since onCompleted does not work to push a page we wait some more before create Categories page
+        running: true
+        repeat: false
+        interval: 500
+        onTriggered: pageStack.pushAttached(Qt.resolvedUrl("Categories.qml"))
+    }
+
     onHeaderClicked: {
         loadedContent.scrollToTop();
     }
@@ -84,10 +92,6 @@ PageWrapper {
                 }
             }
             MenuItem {
-                text: "Browse by categories"
-                onClicked: pageStack.push(Qt.resolvedUrl("Categories.qml"))
-            }
-            MenuItem {
                 text: "Search app"
                 onClicked: pageStack.push(Qt.resolvedUrl("Search.qml"))
             }
@@ -129,4 +133,5 @@ PageWrapper {
             }
         }
     }
+
 }
