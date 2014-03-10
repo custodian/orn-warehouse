@@ -62,7 +62,7 @@
     <message>
         <location filename="../qml/pages/Application.qml" line="31"/>
         <source>Apps by: %1</source>
-        <translation>Apps di: %1</translation>
+        <translation>App di: %1</translation>
     </message>
     <message>
         <location filename="../qml/pages/Application.qml" line="82"/>
@@ -82,7 +82,7 @@
     <message>
         <location filename="../qml/pages/Application.qml" line="119"/>
         <source>Screenshots</source>
-        <translation>Screenshots</translation>
+        <translation>Screenshot</translation>
     </message>
     <message>
         <location filename="../qml/pages/Application.qml" line="128"/>
@@ -92,7 +92,7 @@
     <message>
         <location filename="../qml/pages/Application.qml" line="131"/>
         <source>More apps by %1</source>
-        <translation>Altre apps di %1</translation>
+        <translation>Altre app di %1</translation>
     </message>
     <message>
         <location filename="../qml/pages/Application.qml" line="138"/>
@@ -162,7 +162,7 @@
     <message>
         <location filename="../qml/pages/CommentsRate.qml" line="18"/>
         <source>Comments and Reviews</source>
-        <translation>Commenti e Recensioni</translation>
+        <translation>Commenti e recensioni</translation>
     </message>
     <message>
         <location filename="../qml/pages/CommentsRate.qml" line="63"/>
@@ -291,7 +291,7 @@
     <message>
         <location filename="../qml/components/RatingBox.qml" line="31"/>
         <source>not rated yet</source>
-        <translation>non valutato</translation>
+        <translation>non ancora valutato</translation>
     </message>
 </context>
 <context>
@@ -343,7 +343,7 @@
     <message>
         <location filename="../qml/pages/Settings.qml" line="13"/>
         <source>updating...</source>
-        <translation>Aggiornamento...</translation>
+        <translation>aggiornamento...</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="22"/>
@@ -353,7 +353,7 @@
     <message>
         <location filename="../qml/pages/Settings.qml" line="56"/>
         <source>If any problems, tweet @basil_s</source>
-        <translation>In caso di problemi, @basil_s su Twitter</translation>
+        <translation>In caso di problemi, twitta a @basil_s</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="57"/>
@@ -374,7 +374,7 @@
         <location filename="../qml/pages/Settings.qml" line="69"/>
         <location filename="../qml/pages/Settings.qml" line="121"/>
         <source>Reset settings</source>
-        <translation>Reset impostazioni</translation>
+        <translation>Azzera impostazioni</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="70"/>
@@ -384,7 +384,7 @@
     <message>
         <location filename="../qml/pages/Settings.qml" line="71"/>
         <source>Yes, clear the data</source>
-        <translation>Si, cancella i dati</translation>
+        <translation>Sì, cancella i dati</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="72"/>
@@ -414,7 +414,7 @@
     <message>
         <location filename="../qml/pages/Settings.qml" line="199"/>
         <source>Stable</source>
-        <translation>Stabili</translation>
+        <translation>Stabile</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="204"/>
@@ -444,7 +444,7 @@
     <message>
         <location filename="../qml/pages/Settings.qml" line="250"/>
         <source>Cached</source>
-        <translation>In cache</translation>
+        <translation>Dalla cache</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="256"/>
@@ -479,17 +479,17 @@
     <message>
         <location filename="../qml/pages/Settings.qml" line="306"/>
         <source>Reset authentication</source>
-        <translation>Reset autenticazione</translation>
+        <translation>Azzera autenticazione</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="348"/>
         <source>Test stuff</source>
-        <translation>Materiale in test</translation>
+        <translation>Roba sperimentale</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="352"/>
         <source>Enable test repos</source>
-        <translation>Attiva test repo</translation>
+        <translation>Attiva repo sperimentali</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="360"/>
@@ -575,7 +575,7 @@
     <message>
         <location filename="../qml/pages/Welcome.qml" line="62"/>
         <source>Login</source>
-        <translation>Login</translation>
+        <translation>Accedi</translation>
     </message>
     <message>
         <location filename="../qml/pages/Welcome.qml" line="71"/>

@@ -18,7 +18,10 @@ PageStackWindow {
     property string platform: getCurrentPlatform()
     function getCurrentPlatform() {
         return "Harmattan";
-        //return "SailfishOS";
+    }
+    function openLink(link) {
+        stack.currentPage.show_error_base(qsTr("Opening external URL"));
+        Qt.openUrlExternally(link);
     }
     onPlatformChanged: {
         Api.api.platform = platform;
@@ -34,6 +37,18 @@ PageStackWindow {
                 pkgManagerProxy.installSourcePolicy();
             }
         });
+        //Enable self update channel
+        /*
+        pkgManagerProxy.isRepositoryEnabled("basil",
+            function(result) {
+                if (result) {
+                    console.log("Self-update channel is enabled");
+                } else {
+                    pkgManagerProxy.enableRepository("basil");
+                }
+            }
+        );
+        */
     }
 
     onWindowActiveChanged: {

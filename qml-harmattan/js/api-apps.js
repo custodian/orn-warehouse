@@ -16,10 +16,12 @@ apps.loadRecent = function(page) {
 }
 apps.onLoadRecent = function(call, response) {
     call.page.appsModel.clear();
-    response.forEach(function(application) {
-        //console.log("LASTAPP: " + JSON.stringify(application));
-        call.page.appsModel.append({"application":application});
-    });
+    if (response) {
+        response.forEach(function(application) {
+            //console.log("LASTAPP: " + JSON.stringify(application));
+            call.page.appsModel.append({"application":application});
+        });
+    }
     call.page.waiting_hide();
 };
 

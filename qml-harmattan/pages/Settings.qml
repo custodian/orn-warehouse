@@ -52,7 +52,7 @@ PageWrapper {
         icon: "../images/openrepos_beta.png"//"image://theme/icon-m-user-guide"
         titleText: "Warehouse"
         message: ("%1\n%2\n\n%6: %7\n%8: %9\n\n%10")
-        .arg("2013 Basil Semuonov")
+        .arg("2014 Basil Semuonov")
         .arg(qsTr("If any problems, tweet @basil_s"))
         .arg(qsTr("Version"))
         .arg(BuildInfo.version)

@@ -203,7 +203,7 @@
     <message>
         <location filename="../qml/pages/Me.qml" line="73"/>
         <source>Fetch repository info</source>
-        <translation>Récupération des informations du dépôts</translation>
+        <translation>Récupération des informations du dépôt</translation>
     </message>
     <message>
         <location filename="../qml/pages/Me.qml" line="84"/>
@@ -267,7 +267,7 @@
     <message>
         <location filename="../qml/components/PkgManagerStatus.qml" line="60"/>
         <source>Uninstalling application</source>
-        <translation>&quot;Désinstallation de l&apos;application</translation>
+        <translation>Désinstallation de l&apos;application</translation>
     </message>
     <message>
         <location filename="../qml/components/PkgManagerStatus.qml" line="64"/>
@@ -277,7 +277,7 @@
     <message>
         <location filename="../qml/components/PkgManagerStatus.qml" line="68"/>
         <source>Fetching repositories</source>
-        <translation>Intérogation des dépôts</translation>
+        <translation>Interrogation des dépôts</translation>
     </message>
     <message>
         <location filename="../qml/components/PkgManagerStatus.qml" line="23"/>

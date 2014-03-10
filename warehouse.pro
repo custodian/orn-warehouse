@@ -64,25 +64,24 @@ OTHER_FILES += \
 OTHER_FILES += \
     warehouse_maemo.desktop \
     warehouse_meego.desktop \
-    qml/*
+    qml-harmattan/*
 
 #translations settings
 lupdate_only {
-    SOURCES = qml/main.qml \
-        qml/components/*.qml \
-        qml/pages/*.qml \
-        qml/js/*.js
+    SOURCES = qml-harmattan/main.qml \
+        qml-harmattan/components/*.qml \
+        qml-harmattan/pages/*.qml \
+        qml-harmattan/js/*.js
 }
-
 
 ####################DEPLOYMENT SETTINGS###################
 include(src/qmlapplicationviewer/qmlapplicationviewer.pri)
 
 maemo5 {
-    qmlresources.source = $$PWD/qml
+    qmlresources.source = $$PWD/qml-harmattan
     qmli18n.source = $$PWD/i18n/*.qm
 } else {
-    qmlresources.source = qml
+    qmlresources.source = qml-harmattan
     qmli18n.source = i18n/*.qm
 }
 qmlresources.target = .

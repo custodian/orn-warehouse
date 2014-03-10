@@ -14,7 +14,9 @@ PageWrapper {
     width: parent.width
     height: parent.height
     color: mytheme.colors.backgroundMain
-
+    //: Header for Applications page
+    //% "Applications"
+    //headerText: qsTrId("applications-page-header")
     headerText: qsTr("Applications")
     //headerIcon: "../icons/icon-header-checkinhistory.png"
 
@@ -51,7 +53,7 @@ PageWrapper {
         clip: true
         cacheBuffer: 400
 
-        header: Rectangle {
+        /*header: Rectangle {
             height: headerColumn.height + 15
             width: parent.width
             color: mytheme.colors.backgroundSplash
@@ -80,7 +82,7 @@ PageWrapper {
                     font.pixelSize: mytheme.font.sizeHelp
                 }
             }
-        }
+        }*/
     }
 
     Component {

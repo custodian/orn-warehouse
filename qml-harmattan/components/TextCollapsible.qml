@@ -12,6 +12,9 @@ Text {
     property bool __overflow: false
     property bool __collapsed: false
 
+    onLinkActivated: {
+        appWindow.openLink(link);
+    }
     function updateHeight() {
         if (__overflow) {
             if (__collapsed) {

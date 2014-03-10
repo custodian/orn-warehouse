@@ -8,6 +8,10 @@
 
 #include "apptranslator.h"
 
+#ifndef Q_OS_SAILFISH
+#include "qmlapplicationviewer.h"
+#endif
+
 AppTranslator::AppTranslator(QCoreApplication *app)
 {
     m_app = app;

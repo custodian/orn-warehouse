@@ -570,7 +570,7 @@
     <message>
         <location filename="../qml/pages/Welcome.qml" line="55"/>
         <source>Please, login with OpenRepos!</source>
-        <translation>Prosím prihláste sa pomocou OpenRepos!</translation>
+        <translation>Prosím, prihláste sa pomocou OpenRepos!</translation>
     </message>
     <message>
         <location filename="../qml/pages/Welcome.qml" line="62"/>

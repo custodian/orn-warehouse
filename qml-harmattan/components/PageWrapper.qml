@@ -57,12 +57,12 @@ Page {
 
 
     function show_error(msg) {
+        waiting_hide();
+        console.log("Error: "+ msg);
         show_error_base(msg);
     }
 
     function show_error_base(msg){
-        waiting_hide();
-        console.log("Error: "+ msg);
         infoBanner.text = msg;
         infoBanner.show();
         /*
@@ -73,6 +73,8 @@ Page {
     }
 
     function show_info(msg) {
+        //infoBanner.text = msg;
+        //infoBanner.show();
         notificationDialog.message = msg
         notificationDialog.state = "shown";
     }

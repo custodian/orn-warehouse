@@ -1,5 +1,5 @@
 /*
- * Foursquare API bindings
+ * Warehouse API bindings
  */
 
 .pragma library
