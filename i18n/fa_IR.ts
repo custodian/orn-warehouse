@@ -1,55 +1,55 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="ar" version="2.0">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="fa_IR" version="2.0">
 <context>
     <name>AppManageBox</name>
     <message>
         <location filename="../qml/components/AppManageBox.qml" line="50"/>
         <source>Version: %1</source>
-        <translation>النسخه: %1</translation>
+        <translation>نسخه: %1</translation>
     </message>
     <message>
         <location filename="../qml/components/AppManageBox.qml" line="58"/>
         <source>Download size: %1 Kb</source>
-        <translation>حجم التنزيل: 1%</translation>
+        <translation>حجم برنامه: %1 کیلوبایت</translation>
     </message>
     <message>
         <location filename="../qml/components/AppManageBox.qml" line="66"/>
         <source>Installed from OVI-Store</source>
-        <translation>مُحمل من المتجر</translation>
+        <translation>نصب شده از فروشگاه نوکیا</translation>
     </message>
     <message>
         <location filename="../qml/components/AppManageBox.qml" line="74"/>
         <source>Installed from Local File</source>
-        <translation>مُثبت من ملف محلي</translation>
+        <translation>نصب شده از طریق فایل محلی</translation>
     </message>
     <message>
         <location filename="../qml/components/AppManageBox.qml" line="80"/>
         <source>Fetch repository info</source>
-        <translation>جلب معلومات المستودع</translation>
+        <translation>جمع آوری اطلاعات مخزن</translation>
     </message>
     <message>
         <location filename="../qml/components/AppManageBox.qml" line="88"/>
         <source>Enable repository</source>
-        <translation>تمكين المستودع</translation>
+        <translation>فعال کردن مخزن</translation>
     </message>
     <message>
         <location filename="../qml/components/AppManageBox.qml" line="106"/>
         <source>Install</source>
-        <translation>تثبيت</translation>
+        <translation>نصب</translation>
     </message>
     <message>
         <location filename="../qml/components/AppManageBox.qml" line="116"/>
         <source>Re-Install</source>
-        <translation>إعادة التحميل</translation>
+        <translation>نصب دوباره</translation>
     </message>
     <message>
         <location filename="../qml/components/AppManageBox.qml" line="129"/>
         <source>Upgrade</source>
-        <translation>ترقيه</translation>
+        <translation>ارتقا</translation>
     </message>
     <message>
         <location filename="../qml/components/AppManageBox.qml" line="139"/>
         <source>Uninstall</source>
-        <translation>إلغاء التثبيت</translation>
+        <translation>حذف</translation>
     </message>
 </context>
 <context>
@@ -57,47 +57,47 @@
     <message>
         <location filename="../qml/pages/Application.qml" line="19"/>
         <source>Application details</source>
-        <translation>تفاصيل التطبيق</translation>
+        <translation>اطلاعات برنامه</translation>
     </message>
     <message>
         <location filename="../qml/pages/Application.qml" line="31"/>
         <source>Apps by: %1</source>
-        <translation>تطبيقات من: %1</translation>
+        <translation>برنامه ها توسط: %1</translation>
     </message>
     <message>
         <location filename="../qml/pages/Application.qml" line="82"/>
         <source>Description</source>
-        <translation>الوصف</translation>
+        <translation>توضیحات</translation>
     </message>
     <message>
         <location filename="../qml/pages/Application.qml" line="100"/>
         <source>Comments &amp; reviews</source>
-        <translation>المُراجعات والتعليقات</translation>
+        <translation>نطرات و بررسی‌ها</translation>
     </message>
     <message>
         <location filename="../qml/pages/Application.qml" line="103"/>
         <source>Comments (%1)</source>
-        <translation>التعليقات (%1)</translation>
+        <translation>نظرات (%1)</translation>
     </message>
     <message>
         <location filename="../qml/pages/Application.qml" line="119"/>
         <source>Screenshots</source>
-        <translation>صور التطبيق</translation>
+        <translation>تصاویر</translation>
     </message>
     <message>
         <location filename="../qml/pages/Application.qml" line="128"/>
         <source>Publisher</source>
-        <translation>الناشر</translation>
+        <translation>ناشر</translation>
     </message>
     <message>
         <location filename="../qml/pages/Application.qml" line="131"/>
         <source>More apps by %1</source>
-        <translation>مزيد من التطبيقات من %1</translation>
+        <translation>برنامه های بیشتر توسط %1</translation>
     </message>
     <message>
         <location filename="../qml/pages/Application.qml" line="138"/>
         <source>Releated</source>
-        <translation>مُتعلقه</translation>
+        <translation>بزنامه های مربوط</translation>
     </message>
 </context>
 <context>
@@ -105,7 +105,7 @@
     <message>
         <location filename="../qml/components/ApplicationBox.qml" line="77"/>
         <source>by %1</source>
-        <translation>بواسطه %1</translation>
+        <translation>توسط %1</translation>
     </message>
 </context>
 <context>
@@ -113,22 +113,22 @@
     <message>
         <location filename="../qml/pages/ApplicationBrowse.qml" line="21"/>
         <source>Browse applications</source>
-        <translation>تصفح التطبيقات</translation>
+        <translation>مرور برنامه‌‌ها</translation>
     </message>
     <message>
         <location filename="../qml/pages/ApplicationBrowse.qml" line="75"/>
         <source>Page %1</source>
-        <translation>الصفحه %1</translation>
+        <translation>صفحه %1</translation>
     </message>
     <message>
         <location filename="../qml/pages/ApplicationBrowse.qml" line="91"/>
         <source>Prev page</source>
-        <translation>الصفحه السابقة</translation>
+        <translation>صفحه قبل</translation>
     </message>
     <message>
         <location filename="../qml/pages/ApplicationBrowse.qml" line="100"/>
         <source>Next page</source>
-        <translation>الصفحه التاليه</translation>
+        <translation>صفحه بعد</translation>
     </message>
 </context>
 <context>
@@ -136,12 +136,12 @@
     <message>
         <location filename="../qml/pages/Apps.qml" line="18"/>
         <source>Applications</source>
-        <translation>التطبيقات</translation>
+        <translation>برنامه ها</translation>
     </message>
     <message>
         <location filename="../qml/pages/Apps.qml" line="79"/>
         <source>Recently updated apps</source>
-        <translation>التطبيقات المُحدثة مؤخرا</translation>
+        <translation>برنامه های تازه بروزشده</translation>
     </message>
 </context>
 <context>
@@ -149,12 +149,12 @@
     <message>
         <location filename="../qml/pages/Categories.qml" line="18"/>
         <source>Categories</source>
-        <translation>الأقسام</translation>
+        <translation>دسته بندی‌ها</translation>
     </message>
     <message>
         <location filename="../qml/pages/Categories.qml" line="30"/>
         <source>Category: %1</source>
-        <translation>الأقسام: %1</translation>
+        <translation>دسته: %1</translation>
     </message>
 </context>
 <context>
@@ -162,22 +162,22 @@
     <message>
         <location filename="../qml/pages/CommentsRate.qml" line="18"/>
         <source>Comments and Reviews</source>
-        <translation>المُراجعات والتعليقات</translation>
+        <translation>نظرات و بررسی‌ها</translation>
     </message>
     <message>
         <location filename="../qml/pages/CommentsRate.qml" line="63"/>
         <source>Rating</source>
-        <translation>التقييم</translation>
+        <translation>امتیاز</translation>
     </message>
     <message>
         <location filename="../qml/pages/CommentsRate.qml" line="73"/>
         <source>Rate application</source>
-        <translation>تقييم التطبيق</translation>
+        <translation>امتیاز دهی به برنامه</translation>
     </message>
     <message>
         <location filename="../qml/pages/CommentsRate.qml" line="77"/>
         <source>Comments</source>
-        <translation>التعليقات</translation>
+        <translation>نظرات</translation>
     </message>
 </context>
 <context>
@@ -185,7 +185,7 @@
     <message>
         <location filename="../qml/pages/InstalledApps.qml" line="15"/>
         <source>Installed applications</source>
-        <translation>التطبيقات المُثبته</translation>
+        <translation>برنامه های نصب شده</translation>
     </message>
 </context>
 <context>
@@ -193,32 +193,32 @@
     <message>
         <location filename="../qml/pages/Me.qml" line="16"/>
         <source>Your profile</source>
-        <translation>ملفك الشخصي</translation>
+        <translation>پروفایل شما</translation>
     </message>
     <message>
         <location filename="../qml/pages/Me.qml" line="69"/>
         <source>Current operations</source>
-        <translation>العمليات الحاليه</translation>
+        <translation>عملیات فعلی</translation>
     </message>
     <message>
         <location filename="../qml/pages/Me.qml" line="73"/>
         <source>Fetch repository info</source>
-        <translation>إحضار معلومات المستودع</translation>
+        <translation>جمع آوری اطلاعات مخزن</translation>
     </message>
     <message>
         <location filename="../qml/pages/Me.qml" line="84"/>
         <source>Installed applications</source>
-        <translation>التطبيقات المُثبته</translation>
+        <translation>برنامه های نصب شده</translation>
     </message>
     <message>
         <location filename="../qml/pages/Me.qml" line="88"/>
         <source>View full list</source>
-        <translation>عرض كامل القائمه</translation>
+        <translation>نمایش لیست کامل</translation>
     </message>
     <message>
         <location filename="../qml/pages/Me.qml" line="94"/>
         <source>Installed via Warehouse</source>
-        <translation>مُثبت عبر Warehouse</translation>
+        <translation>نصب شده از طریق Warehouse</translation>
     </message>
 </context>
 <context>
@@ -226,7 +226,7 @@
     <message>
         <location filename="../qml/components/PackageBox.qml" line="76"/>
         <source>Version %1</source>
-        <translation>النسخه %1</translation>
+        <translation>نسخه %1</translation>
     </message>
 </context>
 <context>
@@ -234,12 +234,12 @@
     <message>
         <location filename="../qml/components/PageWrapper.qml" line="102"/>
         <source>Check updates</source>
-        <translation>تحقق من التحديثات</translation>
+        <translation>بررسی بروزرسانی</translation>
     </message>
     <message>
         <location filename="../qml/components/PageWrapper.qml" line="108"/>
         <source>Settings</source>
-        <translation>الإعدادات</translation>
+        <translation>تنظیمات</translation>
     </message>
     <message>
         <location filename="../qml/components/PageWrapper.qml" line="114"/>
@@ -252,38 +252,38 @@
     <message>
         <location filename="../qml/components/PkgManagerStatus.qml" line="16"/>
         <source>Current operation</source>
-        <translation>العمليه الحاليه</translation>
+        <translation>عملیت فعلی</translation>
     </message>
     <message>
         <location filename="../qml/components/PkgManagerStatus.qml" line="52"/>
         <source>Installing application</source>
-        <translation>جاري تحميل التطبيق</translation>
+        <translation>در حال نصب برنامه</translation>
     </message>
     <message>
         <location filename="../qml/components/PkgManagerStatus.qml" line="56"/>
         <source>Upgrading application</source>
-        <translation>جاري ترقيه التطبيق</translation>
+        <translation>در حال ارتقا برنامه</translation>
     </message>
     <message>
         <location filename="../qml/components/PkgManagerStatus.qml" line="60"/>
         <source>Uninstalling application</source>
-        <translation>جاري حذف التطبيق</translation>
+        <translation>در حال حذف برنامه</translation>
     </message>
     <message>
         <location filename="../qml/components/PkgManagerStatus.qml" line="64"/>
         <source>Downloading application</source>
-        <translation>جاري تحميل التطبيق</translation>
+        <translation>در حال دریافت برنامه</translation>
     </message>
     <message>
         <location filename="../qml/components/PkgManagerStatus.qml" line="68"/>
         <source>Fetching repositories</source>
-        <translation>جلب المستودعات</translation>
+        <translation>در حال دریافت محازن</translation>
     </message>
     <message>
         <location filename="../qml/components/PkgManagerStatus.qml" line="23"/>
         <location filename="../qml/components/PkgManagerStatus.qml" line="74"/>
         <source>Working</source>
-        <translation>جاري العمل</translation>
+        <translation>مشغول به کار</translation>
     </message>
 </context>
 <context>
@@ -291,7 +291,7 @@
     <message>
         <location filename="../qml/components/RatingBox.qml" line="31"/>
         <source>not rated yet</source>
-        <translation>لايوجد تقييم</translation>
+        <translation>امتیاز دهی نشده</translation>
     </message>
 </context>
 <context>
@@ -299,27 +299,27 @@
     <message>
         <location filename="../qml/pages/Search.qml" line="22"/>
         <source>Search</source>
-        <translation>بحث</translation>
+        <translation>جستجو</translation>
     </message>
     <message>
         <location filename="../qml/pages/Search.qml" line="106"/>
         <source>Prev page</source>
-        <translation>الصفحه السابقه</translation>
+        <translation>صفحه قبل</translation>
     </message>
     <message>
         <location filename="../qml/pages/Search.qml" line="115"/>
         <source>Next page</source>
-        <translation>الصفحه التاليه</translation>
+        <translation>صفحه بعد</translation>
     </message>
     <message>
         <location filename="../qml/pages/Search.qml" line="142"/>
         <source>Searching...</source>
-        <translation>جاري البحث...</translation>
+        <translation>در حال جستجو...</translation>
     </message>
     <message>
         <location filename="../qml/pages/Search.qml" line="142"/>
         <source>No results found</source>
-        <translation>لم يتم العثور على أي نتائج</translation>
+        <translation>نتیجه‌ای یافت نشد</translation>
     </message>
 </context>
 <context>
@@ -327,7 +327,7 @@
     <message>
         <location filename="../qml/components/SearchBox.qml" line="37"/>
         <source>Search</source>
-        <translation>بحث</translation>
+        <translation>جستجو</translation>
     </message>
 </context>
 <context>
@@ -335,7 +335,7 @@
     <message>
         <location filename="../qml/components/SettingSlider.qml" line="50"/>
         <source>Off</source>
-        <translation>إيقاف</translation>
+        <translation>خاموش</translation>
     </message>
 </context>
 <context>
@@ -343,198 +343,198 @@
     <message>
         <location filename="../qml/pages/Settings.qml" line="13"/>
         <source>updating...</source>
-        <translation>تحديث...</translation>
+        <translation>در حال بروزرسانی...</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="22"/>
         <source>SETTINGS</source>
-        <translation>الإعدادات</translation>
+        <translation>تنظیمات</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="56"/>
         <source>If any problems, tweet @basil_s</source>
-        <translation>إذا واجهتك أي مشاكل, راسل  @basil_s عبر توتر</translation>
+        <translation>در‌صورت وجود مشکل با توییتر @basil_s در‌میان گذارید</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="57"/>
         <source>Version</source>
-        <translation>النسخه: %1</translation>
+        <translation>نسخه</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="59"/>
         <source>Build</source>
-        <translation>النسخه</translation>
+        <translation>ساخت</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="63"/>
         <source>Close</source>
-        <translation>إغلاق</translation>
+        <translation>بستن</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="69"/>
         <location filename="../qml/pages/Settings.qml" line="121"/>
         <source>Reset settings</source>
-        <translation>إعادة ضبط الإعدادات</translation>
+        <translation>بازنشانی تنظیمات</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="70"/>
         <source>This action will erase all data including auth token, application settings and cache.</source>
-        <translation>سوف يقوم هذا الإجراء بمسح كافة البيانات بما في ذلك رمز التوثيق ,إعدادات التطبيق وذاكرة التخزين المؤقته.</translation>
+        <translation>این عمل تمامی اطلاعات از جمله رمز احراز هویت، اطلاعات برنامه و cache را پاک می‌کند.</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="71"/>
         <source>Yes, clear the data</source>
-        <translation>نعم, مسح جميع البيانات</translation>
+        <translation>بله، اطلاعات را پاک کن</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="72"/>
         <source>No, thanks</source>
-        <translation>لا, شكرا</translation>
+        <translation>نه، متشکرم</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="80"/>
         <source>Language</source>
-        <translation>اللغه</translation>
+        <translation>زبان</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="115"/>
         <source>Check updates</source>
-        <translation>بحث عن التحديثات</translation>
+        <translation>بررسی بروزرسانی</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="168"/>
         <source>UPDATES CHECK</source>
-        <translation>طريقه بحث التحديثات</translation>
+        <translation>بررسی بروزرسانی</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="193"/>
         <source>None</source>
-        <translation>لاشيء</translation>
+        <translation>هیچ کدام</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="199"/>
         <source>Stable</source>
-        <translation>مُستقر</translation>
+        <translation>پایدار</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="204"/>
         <source>Beta</source>
-        <translation>تجريبي</translation>
+        <translation>بتا</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="210"/>
         <source>Alpha</source>
-        <translation>ألفا</translation>
+        <translation>آلفا</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="215"/>
         <source>LANGUAGE</source>
-        <translation>اللغه</translation>
+        <translation>زبان</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="226"/>
         <source>IMAGE LOADING</source>
-        <translation>تحميل الصور</translation>
+        <translation>در حال بارگذاری تصویر</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="245"/>
         <source>All</source>
-        <translation>الكُل</translation>
+        <translation>همه</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="250"/>
         <source>Cached</source>
-        <translation>مُخزن مؤقتا</translation>
+        <translation>ذخیره‌ شده</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="256"/>
         <source>APPLICATION CACHE</source>
-        <translation>ذاكرة التطبيق المؤقته</translation>
+        <translation>ذخیره گاه برنامه</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="274"/>
         <source>Size: %1</source>
-        <translation>الحجم: %1</translation>
+        <translation>حجم: %1</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="284"/>
         <source>Clear</source>
-        <translation>تنظيف</translation>
+        <translation>پاک کردن</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="294"/>
         <source>UI</source>
-        <translation>واجهة المستخدم</translation>
+        <translation>رابط کاربری</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="297"/>
         <source>Reload UI</source>
-        <translation>إعادة تحميل واجهة المستخدم</translation>
+        <translation>بارگذاری دوباره رابط کاربری</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="303"/>
         <source>AUTHENTICATION</source>
-        <translation>التوثيق</translation>
+        <translation>تأییدیه</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="306"/>
         <source>Reset authentication</source>
-        <translation>إعادة تعيين التوثيق</translation>
+        <translation>بازنشانی تأییدیه</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="348"/>
         <source>Test stuff</source>
-        <translation>أدوات التجربه</translation>
+        <translation>آزمایش</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="352"/>
         <source>Enable test repos</source>
-        <translation>تمكين المستودعات التجريبيه</translation>
+        <translation>فعال کردن مخازن آزمایشی</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="360"/>
         <source>Enabled repositories</source>
-        <translation>المستودعات المُمكنه</translation>
+        <translation>مخازن فعال شده</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="382"/>
         <source>DEBUG</source>
-        <translation>تصحيح</translation>
+        <translation>اشکال زدایی</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="385"/>
         <source>Enable debug</source>
-        <translation>تمكين التصحيح </translation>
+        <translation>فعال کردن اشکال زدایی</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="399"/>
         <source>Options will be available soon</source>
-        <translation>الخيارات ستكون مُتاحه قريبا</translation>
+        <translation>گزینه‌های بیشتر به زودی در دسترس قرار می‌گیرد</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="413"/>
         <source>General</source>
-        <translation>عام</translation>
+        <translation>عمومی</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="414"/>
         <source>Repository</source>
-        <translation>المستودع</translation>
+        <translation>مخزن</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="447"/>
         <source>Refresh</source>
-        <translation>تحديث</translation>
+        <translation>بازنشانی</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="460"/>
         <source>Disable</source>
-        <translation>تعطيل</translation>
+        <translation>غیرفعال کردن</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="415"/>
         <source>Debug</source>
-        <translation>تصحيح</translation>
+        <translation>اشکال زدایی</translation>
     </message>
 </context>
 <context>
@@ -542,22 +542,22 @@
     <message>
         <location filename="../qml/components/UpdateDialog.qml" line="15"/>
         <source>New update available</source>
-        <translation>يوجد تحديث جديد</translation>
+        <translation>بروزرسانی جدید موجود است</translation>
     </message>
     <message>
         <location filename="../qml/components/UpdateDialog.qml" line="16"/>
         <source>Version: %1&lt;br&gt;Type: %2&lt;br&gt;Build: %3&lt;br&gt;&lt;br&gt;Changelog: &lt;br&gt;%4</source>
-        <translation>الإصدار: %1&lt;br&gt;النوع: %2&lt;br&gt;النسخه: %3&lt;br&gt;&lt;br&gt;سجل التغيير: &lt;br&gt;%4</translation>
+        <translation>نسخه: %1&lt;br&gt;نوع: %2&lt;br&gt;ساخت: %3&lt;br&gt;&lt;br&gt;تغییرات: &lt;br&gt;%4</translation>
     </message>
     <message>
         <location filename="../qml/components/UpdateDialog.qml" line="22"/>
         <source>Update!</source>
-        <translation>تحديث!</translation>
+        <translation>بروزرسانی!</translation>
     </message>
     <message>
         <location filename="../qml/components/UpdateDialog.qml" line="23"/>
         <source>No, thanks</source>
-        <translation>لا, شكرا</translation>
+        <translation>نه، متشکرم</translation>
     </message>
 </context>
 <context>
@@ -565,22 +565,22 @@
     <message>
         <location filename="../qml/pages/Welcome.qml" line="38"/>
         <source>Welcome!</source>
-        <translation>مرحباً!</translation>
+        <translation>خوش آمدید!</translation>
     </message>
     <message>
         <location filename="../qml/pages/Welcome.qml" line="55"/>
         <source>Please, login with OpenRepos!</source>
-        <translation>رجاءً, قم بتسجيل الدخول بواسطة OpenRepos!</translation>
+        <translation>لطفا وارد حساب خود شوید!</translation>
     </message>
     <message>
         <location filename="../qml/pages/Welcome.qml" line="62"/>
         <source>Login</source>
-        <translation>تسجيل الدخول</translation>
+        <translation>ورود</translation>
     </message>
     <message>
         <location filename="../qml/pages/Welcome.qml" line="71"/>
         <source>Later</source>
-        <translation>لاحقاً</translation>
+        <translation>بعداً</translation>
     </message>
 </context>
 <context>
@@ -588,7 +588,7 @@
     <message>
         <location filename="../qml/pages/temp.qml" line="16"/>
         <source>Me or Developers</source>
-        <translation>أنا أو المطورين</translation>
+        <translation>من یا توسعه دهندگان</translation>
     </message>
 </context>
 </TS>

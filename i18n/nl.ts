@@ -34,7 +34,7 @@
     <message>
         <location filename="../qml/components/AppManageBox.qml" line="106"/>
         <source>Install</source>
-        <translation>Installeer</translation>
+        <translation>Installeren</translation>
     </message>
     <message>
         <location filename="../qml/components/AppManageBox.qml" line="116"/>
@@ -193,7 +193,7 @@
     <message>
         <location filename="../qml/pages/Me.qml" line="16"/>
         <source>Your profile</source>
-        <translation>Uw profiel</translation>
+        <translation>Jouw profiel</translation>
     </message>
     <message>
         <location filename="../qml/pages/Me.qml" line="69"/>
@@ -267,7 +267,7 @@
     <message>
         <location filename="../qml/components/PkgManagerStatus.qml" line="60"/>
         <source>Uninstalling application</source>
-        <translation>Applicatie wordt verwijderen</translation>
+        <translation>Applicatie wordt verwijderd</translation>
     </message>
     <message>
         <location filename="../qml/components/PkgManagerStatus.qml" line="64"/>
@@ -379,7 +379,7 @@
     <message>
         <location filename="../qml/pages/Settings.qml" line="70"/>
         <source>This action will erase all data including auth token, application settings and cache.</source>
-        <translation>Deze actie verwijderd alle data inclusief auth token, applicatie-instellingen en cache.</translation>
+        <translation>Deze actie verwijdert alle data inclusief auth token, applicatie-instellingen en cache.</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="71"/>
@@ -389,7 +389,7 @@
     <message>
         <location filename="../qml/pages/Settings.qml" line="72"/>
         <source>No, thanks</source>
-        <translation>Nee dank je</translation>
+        <translation>Nee, dank je</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="80"/>
@@ -399,12 +399,12 @@
     <message>
         <location filename="../qml/pages/Settings.qml" line="115"/>
         <source>Check updates</source>
-        <translation>Controleer updates</translation>
+        <translation>Controleer op updates</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="168"/>
         <source>UPDATES CHECK</source>
-        <translation>BIJWERKINGEN CONTROLE</translation>
+        <translation>CHECK OP UPDATES</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="193"/>
@@ -439,7 +439,7 @@
     <message>
         <location filename="../qml/pages/Settings.qml" line="245"/>
         <source>All</source>
-        <translation>Allen</translation>
+        <translation>Alle</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="250"/>
@@ -459,7 +459,7 @@
     <message>
         <location filename="../qml/pages/Settings.qml" line="284"/>
         <source>Clear</source>
-        <translation>Wis</translation>
+        <translation>Wissen</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="294"/>
@@ -494,7 +494,7 @@
     <message>
         <location filename="../qml/pages/Settings.qml" line="360"/>
         <source>Enabled repositories</source>
-        <translation>Inschakelen softwarebronnen</translation>
+        <translation>Ingeschakelde softwarebronnen</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="382"/>
@@ -524,7 +524,7 @@
     <message>
         <location filename="../qml/pages/Settings.qml" line="447"/>
         <source>Refresh</source>
-        <translation>Herlaad</translation>
+        <translation>Herladen</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="460"/>
@@ -557,7 +557,7 @@
     <message>
         <location filename="../qml/components/UpdateDialog.qml" line="23"/>
         <source>No, thanks</source>
-        <translation>Nee dank je</translation>
+        <translation>Nee, dank je</translation>
     </message>
 </context>
 <context>
@@ -570,7 +570,7 @@
     <message>
         <location filename="../qml/pages/Welcome.qml" line="55"/>
         <source>Please, login with OpenRepos!</source>
-        <translation>Graag inloggen met OpenRepos!</translation>
+        <translation>Graag inloggen bij OpenRepos!</translation>
     </message>
     <message>
         <location filename="../qml/pages/Welcome.qml" line="62"/>

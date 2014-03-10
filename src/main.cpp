@@ -92,7 +92,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     viewer->viewport()->setAttribute(Qt::WA_NoSystemBackground);
 
     viewer->setMainQmlFile(QLatin1String("qml-harmattan/main-harmattan.qml"));
-    QObject *rootObject = qobject_cast<QObject*>(viewer.rootObject());
+    QObject *rootObject = qobject_cast<QObject*>(viewer->rootObject());
     Q_UNUSED(rootObject)
     //rootObject->connect(cache,SIGNAL(cacheUpdated(QVariant,QVariant,QVariant)),SLOT(onCacheUpdated(QVariant,QVariant,QVariant)));
     //rootObject->connect(appTranslator,SIGNAL(languageChanged(QVariant)),SLOT(onLanguageChanged(QVariant)));
@@ -100,7 +100,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
 
 #if defined(Q_OS_HARMATTAN) || defined(Q_OS_MAEMO)
-    DBusService dbus(app,&viewer);
+    DBusService dbus(app,viewer);
     Q_UNUSED(dbus);
 #endif
 

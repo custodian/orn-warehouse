@@ -47,6 +47,9 @@ Column {
         anchors.horizontalCenter: parent.horizontalCenter
         color: mytheme.colors.textColorShout
         font.pixelSize: mytheme.font.sizeHelp
+        //: Version information about the package
+        //% "Version: %1"
+        //text: qsTrId("appmanagebox-version-info").arg(appstatus.Version)
         text: qsTr("Version: %1").arg(appstatus.Version)
         wrapMode: Text.Wrap
         visible: !isStateUnknown && !opInProgress

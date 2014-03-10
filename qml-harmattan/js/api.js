@@ -1,5 +1,5 @@
 /*
- * Foursquare API bindings
+ * Warehouse API bindings
  */
 .pragma library
 
@@ -28,13 +28,13 @@ Qt.include("api-core.js")
 Qt.include("api-apps.js")
 Qt.include("api-categories.js")
 Qt.include("api-search.js")
+
+Qt.include("utils.js")
 /*
 Qt.include("api-users.js")
 
 Qt.include("api-comments.js")
 
-
-Qt.include("utils.js")
 Qt.include("debug.js")
 */
 

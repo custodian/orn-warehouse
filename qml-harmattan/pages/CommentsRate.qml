@@ -115,7 +115,7 @@ PageWrapper {
                     font.pixelSize: mytheme.font.sizeSigns
                     font.bold: true
                     width: parent.width
-                    text: model.user.name + " @ " + model.created
+                    text: model.user.name + " @ " + Api.makeTime(model.created)
                     wrapMode: Text.Wrap
                 }
 
@@ -125,6 +125,7 @@ PageWrapper {
                     width: parent.width
                     text: model.text
                     wrapMode: Text.Wrap
+                    onLinkActivated: appWindow.openLink(link)
                 }
             }
         }

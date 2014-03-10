@@ -37,7 +37,7 @@ PageWrapper {
         page.update();
     }
 
-    function apploaded() {
+    function appLoaded() {
         if (application.packages.harmattan !== undefined) {
             manageBox.repositoryName = application.user.name;
             manageBox.apppackage = application.packages.harmattan;
