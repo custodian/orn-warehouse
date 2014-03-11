@@ -14,7 +14,7 @@ Name:       harbour-warehouse
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    Warehouse application
 Version:    0.2
-Release:    12
+Release:    13
 Group:      Qt/Qt
 License:    GPLv3
 URL:        https://openrepos.net/
@@ -23,6 +23,7 @@ Source100:  harbour-warehouse.yaml
 Requires:   PackageKit-Qt5 >= 0.8.8
 Requires:   PackageKit >= 0.8.9
 Requires:   sailfishsilica-qt5 >= 0.10.9
+BuildRequires:  pkgconfig(packagekit-qt5)
 BuildRequires:  pkgconfig(sailfishapp) >= 0.0.10
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Qml)
