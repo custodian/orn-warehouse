@@ -12,22 +12,22 @@ Description: |
 Configure: none
 Builder: qtc5
 PkgConfigBR:
-- sailfishapp >= 0.0.10
-- Qt5Core
-- Qt5Qml
 - Qt5Quick
+- Qt5Qml
+- Qt5Core
+- sailfishapp >= 0.0.10
 Requires:
-- PackageKit-Qt5 >= 0.8.8
-- PackageKit >= 0.8.9
 - sailfishsilica-qt5 >= 0.10.9
+- PackageKit >= 0.8.9
+- PackageKit-Qt5 >= 0.8.8
 Files:
-- /etc/zypp/repos.d
-- /usr/share/icons/hicolor/86x86/apps
-- /usr/share/applications
-- /usr/share/harbour-warehouse
-- /usr/bin
-- '%{_datadir}/icons/hicolor/86x86/apps/%{name}.png'
-- '%{_datadir}/applications/%{name}.desktop'
-- '%{_datadir}/%{name}/qml-sailfish'
 - '%{_bindir}'
+- '%{_datadir}/%{name}/qml-sailfish'
+- '%{_datadir}/applications/%{name}.desktop'
+- '%{_datadir}/icons/hicolor/86x86/apps/%{name}.png'
+- /usr/bin
+- /usr/share/harbour-warehouse
+- /usr/share/applications
+- /usr/share/icons/hicolor/86x86/apps
+- /etc/zypp/repos.d
 PkgBR: []

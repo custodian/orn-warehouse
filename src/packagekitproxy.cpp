@@ -186,6 +186,7 @@ void PackageKitProxy::enableRepository(QString reponame)
     ssuur.start("ssu", args);
     ssuur.waitForFinished();
 */
+    //Implement as https://github.com/nemomobile-packages/PackageKit/pull/30
     refreshRepositoryInfo();
     emit repoListChanged();
 }

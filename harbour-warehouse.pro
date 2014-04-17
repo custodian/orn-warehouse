@@ -61,7 +61,9 @@ OTHER_FILES += \
 
 OTHER_FILES += \
     harbour-warehouse.desktop \
-    qml-sailfish/*
+    qml-sailfish/components/*.qml \
+    qml-sailfish/pages/*.qml \
+    qml-sailfish/js/*.js
 
 ############## translations settings ##################
 lupdate_only {
