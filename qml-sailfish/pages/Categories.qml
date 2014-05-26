@@ -10,6 +10,11 @@ PageWrapper {
     signal browse(string catid, string catname)
 
     property variant categories: []
+    onStatusChanged: {
+        if (catList.status == PageStatus.Activating) {
+            catList.update();
+        }
+    }
 
     width: parent.width
     height: parent.height

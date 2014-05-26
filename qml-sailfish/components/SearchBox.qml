@@ -9,7 +9,7 @@ TextField {
 
     implicitWidth: _editor.implicitWidth + Theme.paddingSmall
                    + Theme.itemSizeSmall*2  // width of two icons
-    implicitHeight: Theme.itemSizeMedium
+    height: Math.max(Theme.itemSizeMedium, _editor.height + Theme.paddingMedium + Theme.paddingSmall)
 
     focusOutBehavior: FocusBehavior.ClearPageFocus
     font {
@@ -19,7 +19,8 @@ TextField {
 
     textLeftMargin: Theme.itemSizeSmall + Theme.paddingMedium
     textRightMargin: Theme.itemSizeSmall + Theme.paddingMedium
-    textTopMargin: implicitHeight/2 - _editor.implicitHeight/2
+    textTopMargin: height/2 - _editor.implicitHeight/2
+    labelVisible: false
 
     //: Placeholder text of SearchField
     //% "Search"

@@ -110,7 +110,8 @@ Column {
                 font.pixelSize: myTheme.fontSizeSmall
                 text: operationText(model.action)
                 visible: text.length > 0
-            }
+            }            
+
             Text {
                 anchors.horizontalCenter: parent.horizontalCenter
                 color: myTheme.primaryColor
@@ -118,6 +119,7 @@ Column {
                 text: model.application
                 visible: text.length > 0
             }
+
             ProgressBar {
                 anchors.horizontalCenter: parent.horizontalCenter
                 width: parent.width/3*2

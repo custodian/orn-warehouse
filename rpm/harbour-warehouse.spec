@@ -14,20 +14,20 @@ Name:       harbour-warehouse
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    Warehouse application
 Version:    0.2
-Release:    13
+Release:    16
 Group:      Qt/Qt
 License:    GPLv3
 URL:        https://openrepos.net/
 Source0:    %{name}-%{version}.tar.bz2
 Source100:  harbour-warehouse.yaml
-Requires:   PackageKit-Qt5 >= 0.8.8
-Requires:   PackageKit >= 0.8.9
 Requires:   sailfishsilica-qt5 >= 0.10.9
+Requires:   PackageKit >= 0.8.9
+Requires:   PackageKit-Qt5 >= 0.8.8
 BuildRequires:  pkgconfig(packagekit-qt5)
-BuildRequires:  pkgconfig(sailfishapp) >= 0.0.10
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
+BuildRequires:  pkgconfig(Qt5Qml)
+BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  pkgconfig(sailfishapp) >= 0.0.10
 BuildRequires:  desktop-file-utils
 
 %description
@@ -66,17 +66,14 @@ desktop-file-install --delete-original       \
 
 %files
 %defattr(-,root,root,-)
-/etc/zypp/repos.d
-/usr/share/icons/hicolor/86x86/apps
-/usr/share/applications
-/usr/share/harbour-warehouse
-/usr/bin
-%{_datadir}/icons/hicolor/86x86/apps/%{name}.png
-%{_datadir}/applications/%{name}.desktop
-%{_datadir}/%{name}/qml-sailfish
 %{_bindir}
+%{_datadir}/%{name}/qml-sailfish
+%{_datadir}/applications/%{name}.desktop
+%{_datadir}/icons/hicolor/86x86/apps/%{name}.png
+%{_datadir}/harbour-warehouse
+%{_sysconfdir}/zypp/repos.d
 # >> files
-%defattr(-,nemo,privileged,-)
-%dir /etc/zypp/repos.d
-/etc/zypp/repos.d/openrepos.enabled
+#%defattr(-,nemo,privileged,-)
+%dir %{_sysconfdir}/zypp/repos.d
+%{_sysconfdir}/zypp/repos.d/openrepos.enabled
 # << files

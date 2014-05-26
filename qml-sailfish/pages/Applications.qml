@@ -35,14 +35,21 @@ PageWrapper {
         })
         page.update();
     }
+    onStatusChanged: {
+        if (status == PageStatus.Active) {
+            if (pageStack._currentContainer.attachedContainer == null) {
+                pageStack.pushAttached(Qt.resolvedUrl("Categories.qml"))
+            }
+        }
+    }
 
-    Timer{
+    /*Timer{
         // since onCompleted does not work to push a page we wait some more before create Categories page
         running: true
         repeat: false
         interval: 500
         onTriggered: pageStack.pushAttached(Qt.resolvedUrl("Categories.qml"))
-    }
+    }*/
 
     onHeaderClicked: {
         loadedContent.scrollToTop();
