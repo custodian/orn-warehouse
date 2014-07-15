@@ -1,0 +1,15 @@
+# Rename this file as harbour-basilmaps.changes to include changelog
+# entries in your RPM file.
+#
+# Add new changelog entries following the format below.
+# Add newest entries to the top of the list.
+# Separate entries from eachother with a blank line.
+
+# * date Author's Name <author's email> version-release
+# - Summary of changes
+
+* Tue Jul 15 2014 Basil Semuonov <basil.semuonov@gmail.com> 0.3-18
+- Basic polkit auth policy added
+- Application changelog shown
+- Fast single-repo refresh
+- Fast repository disabling

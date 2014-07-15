@@ -34,7 +34,10 @@ icon.path = $$INSTALL_ROOT/usr/share/icons/hicolor/86x86/apps
 zypp.files = rpm/openrepos.enabled
 zypp.path = $$INSTALL_ROOT/etc/zypp/repos.d
 
-INSTALLS = zypp target qml desktop icon #dbus
+polkit.files = rpm/50-net.openrepos.warehouse-packagekit.pkla
+polkit.path = $$INSTALL_ROOT/var/lib/polkit-1/localauthority/50-local.d
+
+INSTALLS = zypp target qml desktop icon polkit #dbus
 
 INCLUDEPATH += $PWD/src
 
@@ -57,6 +60,7 @@ SOURCES += src/main.cpp \
 OTHER_FILES += \
     rpm/harbour-warehouse.spec \
     rpm/harbour-warehouse.yaml \
+    rpm/harbour-warehouse.changes \
     rpm/openrepos.enabled
 
 OTHER_FILES += \

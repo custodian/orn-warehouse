@@ -29,6 +29,7 @@ public:
     Q_INVOKABLE QString getRepoList();
     Q_INVOKABLE QString getUpdatesList();
 
+    Q_INVOKABLE QString refreshSingleRepositoryInfo(QString reponame);
     Q_INVOKABLE QString refreshRepositoryInfo();
     Q_INVOKABLE void enableRepository(QString reponame);
     Q_INVOKABLE void disableRepository(QString reponame);

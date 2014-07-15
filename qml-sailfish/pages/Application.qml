@@ -127,6 +127,28 @@ PageWrapper {
             }
 
             SectionHeader {
+                text: qsTr("Changelog")
+                visible: textChangelog.text.length
+            }
+            TextCollapsible {
+                id: textChangelog
+                anchors {
+                    left: parent.left
+                    leftMargin: 10
+                    right: parent.right
+                    rightMargin: 10
+                }
+                color: myTheme.primaryColor
+
+                font.pixelSize: myTheme.fontSizeSmall
+                horizontalAlignment: Text.AlignHCente
+                wrapMode: Text.WordWrap
+
+                text: application.changelog !== undefined ? application.changelog+ "\n": ""
+                visible: text.length
+            }
+
+            SectionHeader {
                 text: qsTr("Comments & reviews")
             }
             NextBox {

@@ -13,8 +13,8 @@ Name:       harbour-warehouse
 %{!?qtc_make:%define qtc_make make}
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    Warehouse application
-Version:    0.2
-Release:    16
+Version:    0.3
+Release:    18
 Group:      Qt/Qt
 License:    GPLv3
 URL:        https://openrepos.net/
@@ -72,6 +72,7 @@ desktop-file-install --delete-original       \
 %{_datadir}/icons/hicolor/86x86/apps/%{name}.png
 %{_datadir}/harbour-warehouse
 %{_sysconfdir}/zypp/repos.d
+%{_sharedstatedir}/polkit-1/localauthority/50-local.d/50-net.openrepos.warehouse-packagekit.pkla
 # >> files
 #%defattr(-,nemo,privileged,-)
 %dir %{_sysconfdir}/zypp/repos.d

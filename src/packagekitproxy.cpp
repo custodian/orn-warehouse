@@ -159,6 +159,15 @@ QString PackageKitProxy::getUpdatesList()
     return transaction->name();
 }
 
+QString PackageKitProxy::refreshSingleRepositoryInfo(QString reponame)
+{
+    TransactionProxy *transaction = createTransaction();
+    QString repoid = QString("openrepos-%1").arg(reponame);
+    //INFO: https://github.com/nemomobile-packages/PackageKit/pull/30
+    transaction->repoSetData(repoid,"refresh-now", "false");
+    return transaction->name();
+}
+
 QString PackageKitProxy::refreshRepositoryInfo()
 {
     TransactionProxy *transaction = createTransaction();
@@ -187,7 +196,8 @@ void PackageKitProxy::enableRepository(QString reponame)
     ssuur.waitForFinished();
 */
     //Implement as https://github.com/nemomobile-packages/PackageKit/pull/30
-    refreshRepositoryInfo();
+    //refreshRepositoryInfo();
+    refreshSingleRepositoryInfo(reponame);
     emit repoListChanged();
 }
 
@@ -210,7 +220,7 @@ void PackageKitProxy::disableRepository(QString reponame)
     ssuur.start("ssu", args);
     ssuur.waitForFinished();
 */
-    refreshRepositoryInfo();
+    //TODO: needed? refreshRepositoryInfo();
     emit repoListChanged();
 }
 
