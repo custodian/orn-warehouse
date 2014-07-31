@@ -73,6 +73,36 @@ PageWrapper {
                 application: appDetails.application
                 categorystyle: "full"
             }
+            Row {
+                anchors.horizontalCenter: parent.horizontalCenter
+                spacing: mytheme.paddingLarge * 2
+                Row {
+                    spacing: mytheme.paddingMedium
+                    Image {
+                        anchors.verticalCenter: parent.verticalCenter
+                        source: "image://theme/icon-s-common-like"
+                    }
+                    Text {
+                        anchors.verticalCenter: parent.verticalCenter
+                        //color: mytheme.primaryColor
+                        font.pixelSize: mytheme.font.sizeHelp
+                        text: appDetails.application.rating.count
+                    }
+                }
+                Row {
+                    spacing: mytheme.paddingMedium
+                    Image {
+                        anchors.verticalCenter: parent.verticalCenter
+                        source: "image://theme/icon-s-transfer-download"
+                    }
+                    Text {
+                        anchors.verticalCenter: parent.verticalCenter
+                        //color: myTheme.primaryColor
+                        font.pixelSize: mytheme.font.sizeHelp
+                        text: appDetails.application.downloads ? appDetails.application.downloads : ""
+                    }
+                }
+            }
 
             AppManageBox {
                 id: manageBox
@@ -90,10 +120,29 @@ PageWrapper {
                 }
 
                 font.pixelSize: mytheme.font.sizeHelp
-                horizontalAlignment: Text.AlignHCente
                 wrapMode: Text.WordWrap
 
                 text: application.body !== undefined ? application.body + "<br>" : ""
+            }
+
+            SectionHeader {
+                text: qsTr("Changelog")
+                visible: textChangelog.text.length
+            }
+            TextCollapsible {
+                id: textChangelog
+                anchors {
+                    left: parent.left
+                    leftMargin: 10
+                    right: parent.right
+                    rightMargin: 10
+                }
+
+                font.pixelSize: mytheme.font.sizeHelp
+                wrapMode: Text.WordWrap
+
+                text: application.changelog !== undefined ? application.changelog+ "\n": ""
+                visible: text.length
             }
 
             SectionHeader {

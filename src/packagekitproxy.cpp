@@ -179,6 +179,12 @@ void PackageKitProxy::enableRepository(QString reponame)
 {
     QString repoid = QString("openrepos-%1").arg(reponame);
 
+/*
+    //Use libSSU for repository enable/disable
+    TransactionProxy *transaction = createTransaction();
+    transaction->repoEnable(repoid, true);
+*/
+
     QStringList args;
     args.push_back("ar");
     args.push_back(repoid);
@@ -187,16 +193,7 @@ void PackageKitProxy::enableRepository(QString reponame)
     ssuar.start("ssu",args);
     ssuar.waitForFinished();
 
-/*
-    args.clear();
-
-    QProcess ssuur;
-    args.push_back("ur");
-    ssuur.start("ssu", args);
-    ssuur.waitForFinished();
-*/
     //Implement as https://github.com/nemomobile-packages/PackageKit/pull/30
-    //refreshRepositoryInfo();
     refreshSingleRepositoryInfo(reponame);
     emit repoListChanged();
 }
@@ -205,6 +202,11 @@ void PackageKitProxy::disableRepository(QString reponame)
 {
     QString repoid = QString("openrepos-%1").arg(reponame);
 
+/*
+    //Use libSSU for repository enable/disable
+    TransactionProxy *transaction = createTransaction();
+    transaction->repoEnable(repoid, false);
+*/
     QStringList args;
     args.push_back("rr");
     args.push_back(repoid);
@@ -212,15 +214,6 @@ void PackageKitProxy::disableRepository(QString reponame)
     ssurr.start("ssu",args);
     ssurr.waitForFinished();
 
-/*
-    args.clear();
-
-    QProcess ssuur;
-    args.push_back("ur");
-    ssuur.start("ssu", args);
-    ssuur.waitForFinished();
-*/
-    //TODO: needed? refreshRepositoryInfo();
     emit repoListChanged();
 }
 
@@ -233,6 +226,7 @@ QString PackageKitProxy::searchName(QString packagename)
 
 QString PackageKitProxy::getInstalledApps()
 {
+    //TODO: get packages from zypper (like zypper does: zypper ap -i | grep openrepos)
     TransactionProxy *transaction = createTransaction();
     transaction->getPackages(TransactionProxy::FilterInstalled);
     return transaction->name();

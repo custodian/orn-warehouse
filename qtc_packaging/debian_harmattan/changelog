@@ -1,7 +1,7 @@
 warehouse (0.1.9) stable; urgency=low
-  * Login page/account support
+  * Application changelogs, rates, downloads
 
- -- Basil Semuonov <basil.semuonov@gmail.com>  Mon, 10 Mar 2014 22:03:34 +0400
+ -- Basil Semuonov <basil.semuonov@gmail.com>  Tue, 29 Jul 2014 12:12:21 +0400
 
 warehouse (0.1.8) stable; urgency=low
   * Layout update

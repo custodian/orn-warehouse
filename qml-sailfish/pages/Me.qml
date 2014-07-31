@@ -136,14 +136,16 @@ PageWrapper {
                     font.pixelSize: myTheme.fontSizeMedium
                     text: model.name
                     Button {
-                        text: qsTr("Disable")
+                        text: model.repoenabled ? qsTr("Disable") : qsTr("Enable")
                         anchors {
                             right: parent.right
                             verticalCenter: parent.verticalCenter
                         }
                         onClicked: {
                             //remorse.execute(/*reposLabel, */qsTr("Removing"), function() {
-                                pkgManagerProxy.disableRepository(model.name)
+                            model.repoenabled
+                                ? pkgManagerProxy.disableRepository(model.name)
+                                : pkgManagerProxy.enableRepository(model.name)
                             //});
                         }
                     }

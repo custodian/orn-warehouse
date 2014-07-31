@@ -9,6 +9,8 @@
 #include <Daemon>
 #include <Transaction>
 
+//TODO: #include "ssudeviceinfo.h" to get repos info / enabled / disabled
+
 class TransactionProxy: public PackageKit::Transaction {
     Q_OBJECT
 public:

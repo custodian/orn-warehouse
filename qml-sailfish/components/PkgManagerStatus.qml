@@ -61,7 +61,6 @@ Column {
             }
         }
         onTransactionRepoDetail: {
-            console.log(repoid, repodesc, repoenabled);
             for(var i = 0; i<transactionModel.count; i++) {
                 var transaction = transactionModel.get(i);
                 if (transaction.name === trname) {

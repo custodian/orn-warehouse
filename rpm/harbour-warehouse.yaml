@@ -29,4 +29,5 @@ Files:
 - '%{_datadir}/harbour-warehouse'
 - '%{_sysconfdir}/zypp/repos.d'
 - '%{_sharedstatedir}/polkit-1/localauthority/50-local.d/50-net.openrepos.warehouse-packagekit.pkla'
-PkgBR: []
+PkgBR:
+- ssu-devel

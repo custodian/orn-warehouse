@@ -1,3 +1,3 @@
-var build = '201403102157';
-var version = "0.1.8";
-var changelog = " - Layout update  - Open external links ";
+var build = '201407291212';
+var version = "0.1.9";
+var changelog = " - Application changelogs, rates, downloads ";

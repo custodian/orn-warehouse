@@ -35,8 +35,8 @@ Item {
             //cache: photoCache
             smooth: photoSmooth
             fillMode: photoAspect
-            width: profileImage.width //- 2*photoBorder + 1 //DBG
-            height: profileImage.height //- 2*photoBorder + 1 //DBG
+            width: profileImage.width
+            height: profileImage.height
             sourceSize.width: width // photoSourceSize
             //sourceSize.height: height //photoSourceSize
             clip: true

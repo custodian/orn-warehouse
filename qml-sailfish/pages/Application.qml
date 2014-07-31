@@ -120,7 +120,6 @@ PageWrapper {
                 color: myTheme.primaryColor
 
                 font.pixelSize: myTheme.fontSizeSmall
-                horizontalAlignment: Text.AlignHCente
                 wrapMode: Text.WordWrap
 
                 text: application.body !== undefined ? application.body + "<br>" : ""
@@ -141,7 +140,6 @@ PageWrapper {
                 color: myTheme.primaryColor
 
                 font.pixelSize: myTheme.fontSizeSmall
-                horizontalAlignment: Text.AlignHCente
                 wrapMode: Text.WordWrap
 
                 text: application.changelog !== undefined ? application.changelog+ "\n": ""
