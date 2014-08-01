@@ -19,8 +19,11 @@ packagesExist(sailfishapp) {
 }
 
 ####################DEPLOYMENT SETTINGS###################
-qml.files = qml-sailfish
-qml.path = $$INSTALL_ROOT/usr/share/harbour-warehouse
+qml.files = qml/sailfish/*
+qml.path = $$INSTALL_ROOT/usr/share/harbour-warehouse/qml
+
+js.files = qml/js
+js.path = $$INSTALL_ROOT/usr/share/harbour-warehouse/qml
 
 desktop.files = harbour-warehouse.desktop
 desktop.path = $$INSTALL_ROOT/usr/share/applications
@@ -37,7 +40,7 @@ zypp.path = $$INSTALL_ROOT/etc/zypp/repos.d
 polkit.files = rpm/50-net.openrepos.warehouse-packagekit.pkla
 polkit.path = $$INSTALL_ROOT/var/lib/polkit-1/localauthority/50-local.d
 
-INSTALLS = zypp target qml desktop icon polkit #dbus
+INSTALLS = zypp target qml js desktop icon polkit #dbus
 
 INCLUDEPATH += $PWD/src
 
@@ -65,14 +68,15 @@ OTHER_FILES += \
 
 OTHER_FILES += \
     harbour-warehouse.desktop \
-    qml-sailfish/components/*.qml \
-    qml-sailfish/pages/*.qml \
-    qml-sailfish/js/*.js
+    qml/sailfish/main-sailfish.qml \
+    qml/sailfish/components/*.qml \
+    qml/sailfish/pages/*.qml \
+    qml/js/*.js
 
 ############## translations settings ##################
 lupdate_only {
-    SOURCES = qml-sailfish/main-sailfish.qml \
-        qml-sailfish/components/*.qml \
-        qml-sailfish/pages/*.qml \
-        qml-sailfish/js/*.js
+    SOURCES = qml/sailfish/main-sailfish.qml \
+        qml/sailfish/components/*.qml \
+        qml/sailfish/pages/*.qml \
+        qml/js/*.js
 }

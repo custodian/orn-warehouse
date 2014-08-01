@@ -87,7 +87,7 @@ PageWrapper {
                 }
             }
         }
-        ScrollDecorator{ flickable: appsFlickable }
+        //ScrollDecorator{ flickable: appsFlickable }
     }
 
     Component {

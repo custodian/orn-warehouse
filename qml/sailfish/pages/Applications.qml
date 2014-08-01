@@ -125,7 +125,7 @@ PageWrapper {
                 delegate: appDelegate
             }
         }
-        ScrollDecorator{ flickable: appsFlickable }
+        //ScrollDecorator{ flickable: appsFlickable }
     }
 
     Component {

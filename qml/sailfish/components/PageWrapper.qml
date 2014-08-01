@@ -53,6 +53,7 @@ Page {
                 id: contentLoader
                 anchors.fill: parent
             }
+            //ScrollDecorator{ flickable: contentLoader.item }
         }
     }
 

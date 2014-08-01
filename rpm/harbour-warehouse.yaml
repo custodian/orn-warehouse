@@ -1,7 +1,7 @@
 Name: harbour-warehouse
 Summary: Warehouse application
 Version: 0.3
-Release: 18
+Release: 20
 Group: Qt/Qt
 URL: https://openrepos.net/
 License: GPLv3
@@ -23,11 +23,13 @@ Requires:
 - PackageKit-Qt5 >= 0.8.8
 Files:
 - '%{_bindir}'
-- '%{_datadir}/%{name}/qml-sailfish'
+- '%{_datadir}/%{name}/qml'
 - '%{_datadir}/applications/%{name}.desktop'
 - '%{_datadir}/icons/hicolor/86x86/apps/%{name}.png'
-- '%{_datadir}/harbour-warehouse'
+- '%{_datadir}/%{name}'
 - '%{_sysconfdir}/zypp/repos.d'
 - '%{_sharedstatedir}/polkit-1/localauthority/50-local.d/50-net.openrepos.warehouse-packagekit.pkla'
 PkgBR:
 - ssu-devel
+Obsoletes:
+- harbour-warehouse-installer

@@ -83,7 +83,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 #endif
 
 #if defined(Q_OS_SAILFISH)
-    viewer->setSource(SailfishApp::pathTo("qml-sailfish/main-sailfish.qml"));
+    viewer->setSource(SailfishApp::pathTo("qml/main-sailfish.qml"));
     QObject::connect(viewer->engine(), SIGNAL(quit()), QCoreApplication::instance(), SLOT(quit()));
 #else
     viewer->setAttribute(Qt::WA_OpaquePaintEvent);

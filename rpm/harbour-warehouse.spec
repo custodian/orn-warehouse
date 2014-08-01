@@ -14,7 +14,7 @@ Name:       harbour-warehouse
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    Warehouse application
 Version:    0.3
-Release:    18
+Release:    20
 Group:      Qt/Qt
 License:    GPLv3
 URL:        https://openrepos.net/
@@ -30,6 +30,7 @@ BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(sailfishapp) >= 0.0.10
 BuildRequires:  ssu-devel
 BuildRequires:  desktop-file-utils
+Obsoletes:   harbour-warehouse-installer
 
 %description
 Warehouse is a native client for OpenRepos.net
@@ -68,10 +69,10 @@ desktop-file-install --delete-original       \
 %files
 %defattr(-,root,root,-)
 %{_bindir}
-%{_datadir}/%{name}/qml-sailfish
+%{_datadir}/%{name}/qml
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/86x86/apps/%{name}.png
-%{_datadir}/harbour-warehouse
+%{_datadir}/%{name}
 %{_sysconfdir}/zypp/repos.d
 %{_sharedstatedir}/polkit-1/localauthority/50-local.d/50-net.openrepos.warehouse-packagekit.pkla
 # >> files
