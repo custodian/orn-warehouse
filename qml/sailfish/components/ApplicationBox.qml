@@ -11,7 +11,7 @@ Item {
     property bool highlight: false
     property string categoryStyle: "small" //full
 
-    width: parent.width
+    width: parent ? parent.width : undefined
     height: 10 + Math.max(statusArea.height,appImage.height)
 
     onApplicationChanged: {

@@ -171,6 +171,7 @@ QString PackageKitProxy::refreshSingleRepositoryInfo(QString reponame)
 QString PackageKitProxy::refreshRepositoryInfo()
 {
     TransactionProxy *transaction = createTransaction();
+    //TODO: Fetch all enabled openrepos-repos repositories instead
     transaction->refreshCache(false);
     return transaction->name();
 }
@@ -226,7 +227,7 @@ QString PackageKitProxy::searchName(QString packagename)
 
 QString PackageKitProxy::getInstalledApps()
 {
-    //TODO: get packages from zypper (like zypper does: zypper ap -i | grep openrepos)
+    //TODO: get packages from zypper (like zypper does: zypper pa -i | grep openrepos)
     TransactionProxy *transaction = createTransaction();
     transaction->getPackages(TransactionProxy::FilterInstalled);
     return transaction->name();

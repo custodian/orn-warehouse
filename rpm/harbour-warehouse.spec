@@ -14,7 +14,7 @@ Name:       harbour-warehouse
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    Warehouse application
 Version:    0.3
-Release:    20
+Release:    21
 Group:      Qt/Qt
 License:    GPLv3
 URL:        https://openrepos.net/

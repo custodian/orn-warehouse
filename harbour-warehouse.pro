@@ -80,3 +80,6 @@ lupdate_only {
         qml/sailfish/pages/*.qml \
         qml/js/*.js
 }
+
+#for qtcreator
+INCLUDEPATH += $$[QT_HOST_PREFIX]/include/PackageKit

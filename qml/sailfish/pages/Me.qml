@@ -117,9 +117,8 @@ PageWrapper {
                 anchors {
                     left: parent.left
                     right: parent.right
-                    margins: myTheme.paddingMedium
                 }
-                spacing: myTheme.paddingLarge
+                //spacing: myTheme.paddingLarge
                 Repeater {
                     model: reposModel
                     delegate: reposDelegate
@@ -129,29 +128,65 @@ PageWrapper {
             Component {
                 id: reposDelegate
 
-                Text {
-                    id: reposLabel
-                    width: repeaterColumn.width
-                    color: myTheme.primaryColor
-                    font.pixelSize: myTheme.fontSizeMedium
-                    text: model.name
-                    Button {
-                        text: model.repoenabled ? qsTr("Disable") : qsTr("Enable")
-                        anchors {
-                            right: parent.right
-                            verticalCenter: parent.verticalCenter
+                ListItem {
+                    id: listItem
+                    menu: contextMenu
+                    contentHeight: Theme.itemSizeSmall // two line delegate
+                    ListView.onRemove: animateRemoval(listItem)
+
+                    function remove() {
+                        remorseAction("Deleting", function() {
+                            //view.model.remove(index) }
+                            pkgManagerProxy.disableRepository(model.name);
+                        });
+                    }
+                    function refresh() {
+                        pkgManagerProxy.refreshSingleRepositoryInfo(model.name);
+                    }
+
+                    Label {
+                        id: reposLabel
+                        anchors.centerIn: parent
+                        //width: repeaterColumn.width
+                        color: myTheme.primaryColor
+                        //font.pixelSize: myTheme.fontSizeMedium
+                        text: model.name
+                        /*Button {
+                            text: model.repoenabled ? qsTr("Disable") : qsTr("Enable")
+                            anchors {
+                                right: parent.right
+                                verticalCenter: parent.verticalCenter
+                            }
+                            onClicked: {
+                                //remorse.execute(//reposLabel,
+                                qsTr("Removing"), function() {
+                                model.repoenabled
+                                    ? pkgManagerProxy.disableRepository(model.name)
+                                    : pkgManagerProxy.enableRepository(model.name)
+                                //});
+                            }
                         }
-                        onClicked: {
-                            //remorse.execute(/*reposLabel, */qsTr("Removing"), function() {
-                            model.repoenabled
-                                ? pkgManagerProxy.disableRepository(model.name)
-                                : pkgManagerProxy.enableRepository(model.name)
-                            //});
+                        */
+                    }
+
+                    Component {
+                        id: contextMenu
+                        ContextMenu {
+                            MenuItem {
+                                text: qsTr("Refresh")
+                                onClicked: refresh()
+                            }
+                            MenuItem {
+                                text: qsTr("Disable")
+                                onClicked: remove()
+                            }
                         }
                     }
                 }
             }
         }
+
+        VerticalScrollDecorator { flickable: flickableArea}
     }
 
     RemorsePopup {
