@@ -51,7 +51,7 @@ PageWrapper {
             Label {
                 color: myTheme.primaryColor
                 font.pixelSize: myTheme.fontSizeSmall
-                text: qsTr("Page %1").arg(appList.page)
+                text: qsTr("Page #%1").arg(appList.page)
             }
 
             Repeater {

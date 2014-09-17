@@ -11,6 +11,8 @@ PageWrapper {
     signal search(string keys)
     signal update()
 
+    signal activateSearchField()
+
     property int page: 0
     property int pageSize: 10
     property string __keys: ""
@@ -50,6 +52,10 @@ PageWrapper {
         update();
     }
 
+    Component.onCompleted: {
+        activateSearchField();
+    }
+
     ListModel {
         id: appsModel
     }
@@ -69,6 +75,12 @@ PageWrapper {
             }
             onTrashClicked: {
                 searchResult.update();
+            }
+            Connections {
+                target: searchResult
+                onActivateSearchField: {
+                    searchBox.forceActiveFocus()
+                }
             }
         }
 
@@ -98,6 +110,17 @@ PageWrapper {
                 }
             }
         }
+
+        Text {
+            anchors.centerIn: parent
+            color: myTheme.primaryColor
+            font.pixelSize: myTheme.fontSizeMedium
+            text: searchResult.busy? qsTr("Searching...") : (__keys.length) ? qsTr("No results found") : qsTr("Search for some apps");
+            width: parent.width
+            horizontalAlignment: Text.AlignHCenter
+            wrapMode: Text.WordWrap
+            visible: appsModel.count == 0
+        }
     }
 
     Component {
@@ -112,18 +135,6 @@ PageWrapper {
             }
         }
     }
-
-    Text {
-        anchors.centerIn: parent
-        color: myTheme.primaryColor
-        font.pixelSize: myTheme.fontSizeMedium
-        text: searchResult.busy? qsTr("Searching...") : (__keys.length) ? qsTr("No results found") : qsTr("Enter keywords to search");
-        width: parent.width
-        horizontalAlignment: Text.AlignHCenter
-        wrapMode: Text.WordWrap
-        visible: appsModel.count == 0
-    }
-
 
     /*Column {
         width: parent.width

@@ -8,6 +8,9 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* Wed Sep 17 2014 Basil Semuonov <basil.semuonov@gmail.com> 0.3-22
+- Search field autofocus
+
 * Fri Sep 12 2014 Basil Semuonov <basil.semuonov@gmail.com> 0.3-21
 - Single repository refresh option added at profile page
 
