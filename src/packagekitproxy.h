@@ -18,8 +18,12 @@ public:
     TransactionProxy(QString path, QObject *parent = 0);
 
     QString name();
+    QString extraData();
+    void setExtraData(const QString& id);
 
     bool own;
+private:
+    QString extraData_;
 };
 
 class PackageKitProxy: public QObject
@@ -76,7 +80,7 @@ public slots:
     void t_onDetails(QString packageid,QString license,PackageKit::Transaction::Group group,QString detail,QString url,qulonglong size);
 
 private:
-    TransactionProxy* createTransaction(QString name = "", bool own = true);
+    TransactionProxy* createTransaction(QString name = QString(), bool own = true);
     void saveTransaction(TransactionProxy *transaction, bool own = false);
     void deleteTransaction(TransactionProxy *transaction);
     QVariantMap packageObject(QString packageid);

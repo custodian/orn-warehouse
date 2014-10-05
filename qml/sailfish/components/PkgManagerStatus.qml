@@ -64,6 +64,7 @@ Column {
             for(var i = 0; i<transactionModel.count; i++) {
                 var transaction = transactionModel.get(i);
                 if (transaction.name === trname) {
+                    transaction.application = repoid;
                     /*transaction.progress = trprogress;
                     transaction.application = "%1 v%2".arg(pkgobject.name).arg(pkgobject.version);
                     transactionModel.set(i, transaction);*/

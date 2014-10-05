@@ -82,4 +82,4 @@ lupdate_only {
 }
 
 #for qtcreator
-INCLUDEPATH += $$[QT_HOST_PREFIX]/include/PackageKit
+INCLUDEPATH += $$[QT_HOST_PREFIX]/include/PackageKit/packagekit-qt5

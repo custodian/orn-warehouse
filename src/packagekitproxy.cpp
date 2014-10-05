@@ -36,6 +36,16 @@ QString TransactionProxy::name()
     return this->tid().path();
 }
 
+QString TransactionProxy::extraData()
+{
+    return extraData_;
+}
+
+void TransactionProxy::setExtraData(const QString& data)
+{
+    extraData_ = data;
+}
+
 PackageKitProxy::PackageKitProxy(QObject *parent):
     QObject(parent)
 {
@@ -163,6 +173,7 @@ QString PackageKitProxy::refreshSingleRepositoryInfo(QString reponame)
 {
     TransactionProxy *transaction = createTransaction();
     QString repoid = QString("openrepos-%1").arg(reponame);
+    transaction->setExtraData(repoid);
     //INFO: https://github.com/nemomobile-packages/PackageKit/pull/30
     transaction->repoSetData(repoid,"refresh-now", "false");
     return transaction->name();
@@ -221,6 +232,7 @@ void PackageKitProxy::disableRepository(QString reponame)
 QString PackageKitProxy::searchName(QString packagename)
 {
     TransactionProxy *transaction = createTransaction();
+    transaction->setExtraData(packagename);
     transaction->searchNames(packagename, TransactionProxy::FilterBasename);
     return transaction->name();
 }
@@ -236,6 +248,7 @@ QString PackageKitProxy::getInstalledApps()
 QString PackageKitProxy::packageDetails(QString packageid)
 {
     TransactionProxy *transaction = createTransaction();
+    transaction->setExtraData(packageid);
     transaction->getDetails(packageid);
     return transaction->name();
 }
@@ -249,6 +262,7 @@ QString PackageKitProxy::installFile(QString filename)
 QString PackageKitProxy::installPackage(QString packageid)
 {
     TransactionProxy *transaction = createTransaction();
+    transaction->setExtraData(packageid);
     transaction->installPackage(packageid);
     return transaction->name();
 }
@@ -256,6 +270,7 @@ QString PackageKitProxy::installPackage(QString packageid)
 QString PackageKitProxy::updatePackage(QString packageid)
 {
     TransactionProxy *transaction = createTransaction();
+    transaction->setExtraData(packageid);
     transaction->updatePackage(packageid);
     return transaction->name();
 }
@@ -263,6 +278,7 @@ QString PackageKitProxy::updatePackage(QString packageid)
 QString PackageKitProxy::removePackage(QString packageid)
 {
     TransactionProxy *transaction = createTransaction();
+    transaction->setExtraData(packageid);
     transaction->removePackage(packageid, false, false);
     return transaction->name();
 }
@@ -291,10 +307,14 @@ void PackageKitProxy::d_onTransactionListChanged(const QStringList& transactionL
         }
     }
     QVariantList tlist;
-    foreach (TransactionProxy* transaction, m_transactions) {
+    foreach(TransactionProxy* transaction, m_transactions) {
         QVariantMap props;
         props["name"] = transaction->name();
-        props["data"] = transaction->data();
+        QString data = transaction->data();
+        if (!data.length()) {
+            data = transaction->extraData();
+        }
+        props["data"] = data;
         props["role"] = ENUM_TO_STRING(Role,transaction->role());
         tlist.append(props);
     }

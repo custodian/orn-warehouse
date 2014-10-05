@@ -65,7 +65,6 @@ PageWrapper {
                     });
                 }
                 makeUpdateTransaction = "";
-
                 updatedApplication = "";
                 availableUpdates.update();
                 break;
