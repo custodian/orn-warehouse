@@ -15,6 +15,7 @@ Column {
     property string repositoryTransaction: ""
 
     property bool isRepositoryEnabled: false
+    property bool isRepositoryOutdated: false
     property bool isPackagePlanned: false
 
     property bool isStateKnown: false
@@ -150,7 +151,7 @@ Column {
     }
 
     onAppPackageChanged: {
-        //console.log("APP PACKAGE:", JSON.stringify(appPackage));
+        console.log("APP PACKAGE:", JSON.stringify(appPackage));
         if (appPackage !== undefined) {
             updateAppStatus();
         }
@@ -160,6 +161,7 @@ Column {
         appInstalled = undefined;
         appAvailable = undefined;
         isUpdateAvailable = false;
+        isRepositoryOutdated = false;
         isInstalledFromOther = false;
         isInstalledFromThis = false;
         isStateKnown = false;
@@ -225,6 +227,12 @@ Column {
                 if (!isInstalled && appAvailable !== undefined) {
                     downloadSizeTransaction = pkgManagerProxy.packageDetails(appAvailable.packageid);
                 }
+                /*
+                //Not all packages send version
+                if (appInstalled === undefined || version_compare(appPackage.version, appInstalled.version, '>')) {
+                    isRepositoryOutdated = true;
+                }
+                */
                 isStateKnown = true;
                 packageStateTransaction = "";
                 break;
@@ -261,7 +269,6 @@ Column {
             wrapMode: Text.Wrap
             visible: isInstalled
         }
-
         Text {
             anchors.horizontalCenter: parent.horizontalCenter
             color: myTheme.primaryColor
@@ -282,8 +289,10 @@ Column {
             anchors.horizontalCenter: parent.horizontalCenter
             text: qsTr("Enable Repository")
             onClicked: {
-                isStateKnown = false;
-                pkgManagerProxy.enableRepository(repositoryName);
+                remorse.execute(qsTr("Enabling repository %1").arg(appPackage.name), function(){
+                    isStateKnown = false;
+                    pkgManagerProxy.enableRepository(repositoryName);
+                });
             }
             visible: !isRepositoryEnabled && isStateKnown
         }
@@ -291,6 +300,17 @@ Column {
             width: parent.width
 
             visible: isStateKnown && !isInProgress
+
+            Button {
+                anchors.horizontalCenter: parent.horizontalCenter
+                text: qsTr("Check for updates")
+                onClicked: {
+                    remorse.execute(qsTr("Checking for updates %1").arg(appPackage.name), function(){
+                        pkgManagerProxy.refreshSingleRepositoryInfo(repositoryName);
+                    });
+                }
+                visible: isRepositoryEnabled && !isUpdateAvailable /*&& isRepositoryOutdated*/
+            }
 
             Button {
                 anchors.horizontalCenter: parent.horizontalCenter
