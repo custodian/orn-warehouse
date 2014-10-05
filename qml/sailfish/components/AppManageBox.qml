@@ -28,6 +28,7 @@ Column {
     property bool isInstalledFromThis: false
     property bool isInstalled: isInstalledFromThis || isInstalledFromOther
     property bool isUpdateAvailable: false
+    property bool isAppAvailable: appAvailable !== undefined
 
     property variant appInstalled
     property variant appAvailable
@@ -198,7 +199,7 @@ Column {
                     if (pkgobject.data === "openrepos-"+repositoryName) {
                         switch(pkgstatus) {
                         case "available":
-                            if (appAvailable === undefined || version_compare(appAvailable.version, pkgobject.version, '<')) {
+                            if (!isAppAvailable || version_compare(appAvailable.version, pkgobject.version, '<')) {
                                 appAvailable = pkgobject;
                             }
                             break;
@@ -219,12 +220,12 @@ Column {
         onTransactionFinished: {
             switch(trname) {
             case packageStateTransaction:
-                if (isInstalled && appAvailable !== undefined) {
+                if (isInstalled && isAppAvailable) {
                     if (version_compare(appAvailable.version, appInstalled.version, '>')) {
                         isUpdateAvailable = true;
                     }
                 }
-                if (!isInstalled && appAvailable !== undefined) {
+                if (!isInstalled && isAppAvailable) {
                     downloadSizeTransaction = pkgManagerProxy.packageDetails(appAvailable.packageid);
                 }
                 /*
@@ -273,9 +274,9 @@ Column {
             anchors.horizontalCenter: parent.horizontalCenter
             color: myTheme.primaryColor
             font.pixelSize: myTheme.fontSizeSmall
-            text: qsTr("Available: %1").arg(appAvailable ? appAvailable.version : "")
+            text: qsTr("Available: %1").arg(isAppAvailable ? appAvailable.version : "")
             wrapMode: Text.Wrap
-            visible: isUpdateAvailable
+            visible: isUpdateAvailable || isAppAvailable
         }
         Text {
             anchors.horizontalCenter: parent.horizontalCenter
@@ -320,7 +321,7 @@ Column {
                         packageActionTransaction = pkgManagerProxy.installPackage(appAvailable.packageid);
                     });
                 }
-                visible: isRepositoryEnabled && !isInstalled
+                visible: isRepositoryEnabled && !isInstalled && isAppAvailable
             }
             /*Button {
                 anchors.horizontalCenter: parent.horizontalCenter

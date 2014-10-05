@@ -135,7 +135,7 @@ PageWrapper {
                     ListView.onRemove: animateRemoval(listItem)
 
                     function remove() {
-                        remorseAction("Deleting", function() {
+                        remorseAction("Disabling repository", function() {
                             //view.model.remove(index) }
                             pkgManagerProxy.disableRepository(model.name);
                         });

@@ -8,6 +8,10 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* Sun Oct 05 2014 Basil Semuonov <basil.semuonov@gmail.com> 0.3-26
+- Faster repository updates check: only openrepos
+- Application manage UI updates
+
 * Sun Oct 05 2014 Basil Semuonov <basil.semuonov@gmail.com> 0.3-25
 - Hide non-openrepos updates
 - Fix categories preload

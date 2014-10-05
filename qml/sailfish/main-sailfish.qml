@@ -14,6 +14,17 @@ ApplicationWindow
     property string getReposTransaction: ""
     property bool isUpdateChannelEnabled: false
 
+    property bool isCheckForUpdatesRunning: false
+    property string transactionCheckForUpdates: ""
+    property string transactionUpdateRepository: ""
+
+    function checkForUpdates() {
+        isCheckForUpdatesRunning = true;
+        //TODO: check only for own repositories
+        //pkgManagerProxy.refreshRepositoryInfo();
+        transactionCheckForUpdates = pkgManagerProxy.getRepoList();
+    }
+
     function getCurrentPlatform() {
         return "SailfishOS";
     }
@@ -106,20 +117,37 @@ ApplicationWindow
         }
 
         onTransactionRepoDetail: {
-            if (trname == getReposTransaction) {
+            switch(trname) {
+            case getReposTransaction:
                 if (repoid == "openrepos-basil") {
                     isUpdateChannelEnabled = true;
                 }
+                break;
+            case transactionCheckForUpdates:
+                if (repoid.indexOf("openrepos-")!== -1) {
+                    transactionUpdateRepository = pkgManagerProxy.refreshSingleRepositoryInfo(repoid.replace("openrepos-",""));
+                }
+                break;
             }
         }
 
         onTransactionFinished: {
-            if (trname == getReposTransaction) {
+            switch(trname) {
+            case getReposTransaction:
                 if (!isUpdateChannelEnabled) {
                     remorse.execute("Enabling self-update channel", function() {
                         pkgManagerProxy.enableRepository("basil");
                     });
                 }
+                getReposTransaction = "";
+                break;
+            case transactionCheckForUpdates:
+                transactionCheckForUpdates = "";
+                break;
+            case transactionUpdateRepository:
+                isCheckForUpdatesRunning = false;
+                transactionUpdateRepository = "";
+                break;
             }
         }
 

@@ -20,8 +20,6 @@ PageWrapper {
 
     property alias appsModel: appsModel
 
-    property string refreshCacheTransaction: ""
-
     function load() {
         Api.api.platform = appWindow.getCurrentPlatform();
 
@@ -61,33 +59,18 @@ PageWrapper {
         id: appsModel
     }
 
-    Connections {
-        target: pkgManagerProxy
-        onTransactionFinished: {
-            if (trname == refreshCacheTransaction) {
-                refreshCacheTransaction = "";
-            }
-        }
-        onTransactionListChanged: {
-            transactionList.forEach(function(transaction) {
-                if (transaction.role == "refresh-cache") {
-                    refreshCacheTransaction = transaction.name;
-                }
-            });
-        }
-    }
-
     tools: Component {
         PullDownMenu {
+            busy: isCheckForUpdatesRunning
             MenuItem {
-                text: "My profile"
+                text: qsTr("My profile")
                 onClicked: pageStack.push(Qt.resolvedUrl("Me.qml"))
             }
             MenuItem {
-                text: "Check updates"
-                enabled: !refreshCacheTransaction.length
+                text: enabled ? qsTr("Check updates") : qsTr("Checking for updates")
+                enabled: !isCheckForUpdatesRunning
                 onClicked: {
-                    pkgManagerProxy.refreshRepositoryInfo();
+                    checkForUpdates();
                 }
                 BusyIndicator {
                     anchors{

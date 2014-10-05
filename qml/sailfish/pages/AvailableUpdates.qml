@@ -9,6 +9,12 @@ PageWrapper {
     property string getUpdatesTransaction: ""
     property string makeUpdateTransaction: ""
     property string updatedApplication: ""
+    property bool isCheckForUpdatesRunning: appWindow.isCheckForUpdatesRunning
+    onIsCheckForUpdatesRunningChanged: {
+        if (!isCheckForUpdatesRunning) {
+            availableUpdates.update();
+        }
+    }
 
     width: parent.width
     height: parent.height
@@ -79,8 +85,9 @@ PageWrapper {
             Button {
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("Check for updates")
+                enabled: !appWindow.isCheckForUpdatesRunning
                 onClicked: {
-                    pkgManagerProxy.refreshRepositoryInfo();
+                    appWindow.checkForUpdates();
                     updatesView.scrollToTop();
                 }
             }
