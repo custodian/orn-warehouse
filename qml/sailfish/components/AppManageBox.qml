@@ -296,39 +296,39 @@ Column {
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("Install")
                 onClicked: {
-                    //remorse.execute(qsTr("Installing %1").arg(appPackage.name), function(){
+                    remorse.execute(qsTr("Installing %1").arg(appPackage.name), function(){
                         packageActionTransaction = pkgManagerProxy.installPackage(appAvailable.packageid);
-                    //});
+                    });
                 }
                 visible: isRepositoryEnabled && !isInstalled
             }
-            Button {
+            /*Button {
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("Re-Install")
                 onClicked: {
-                    //remorse.execute(qsTr("Re-Installing %1").arg(appPackage.name), function(){
+                    remorse.execute(qsTr("Re-Installing %1").arg(appPackage.name), function(){
                         packageActionTransaction = pkgManagerProxy.installPackage(appAvailable.packageid);
-                    //});
+                    });
                 }
                 visible: isInstalledFromOther && isUpdateAvailable
-            }
+            }*/
             Button {
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("Upgrade")
                 onClicked: {
-                    //remorse.execute(qsTr("Upgrade %1").arg(appPackage.name), function(){
+                    remorse.execute(qsTr("Upgrade %1").arg(appPackage.name), function(){
                         packageActionTransaction = pkgManagerProxy.updatePackage(appAvailable.packageid);
-                    //});
+                    });
                 }
-                visible: isInstalledFromThis && isUpdateAvailable
+                visible: /*isInstalledFromThis && */isUpdateAvailable
             }
             Button {
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("Uninstall")
                 onClicked: {
-                    //remorse.execute(qsTr("Uninstall %1").arg(appPackage.name), function(){
+                    remorse.execute(qsTr("Uninstall %1").arg(appPackage.name), function(){
                         packageActionTransaction = pkgManagerProxy.removePackage(appInstalled.packageid);
-                    //});
+                    });
                 }
                 visible: isInstalled
             }

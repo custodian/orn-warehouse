@@ -33,7 +33,9 @@ PageWrapper {
         page.update.connect(function(){
             Api.apps.loadRecent(page);
         })
-        page.update();
+        Api.categories.preload(function(){
+            page.update();
+        });
     }
     onStatusChanged: {
         if (status == PageStatus.Active) {
