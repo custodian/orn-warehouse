@@ -38,7 +38,11 @@ PageWrapper {
 
         onTransactionPackage: {
             if (trname == getUpdatesTransaction) {
-                updateModel.append({"application":pkgobject});
+                var repository = pkgobject.data;
+                //Skip non openrepos updates
+                if (repository && repository.indexOf("openrepos") != -1) {
+                    updateModel.append({"application":pkgobject});
+                }
             }
         }
 
