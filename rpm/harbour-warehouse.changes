@@ -8,6 +8,11 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* Sun Oct 05 2014 Basil Semuonov <basil.semuonov@gmail.com> 0.3-24
+- Hide non-openrepos updates
+- Fix categories preload
+- Check for updates at application page
+
 * Wed Sep 17 2014 Basil Semuonov <basil.semuonov@gmail.com> 0.3-22
 - Search field autofocus
 
