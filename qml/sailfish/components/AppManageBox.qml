@@ -21,7 +21,7 @@ Column {
     property bool isStateKnown: false
     property string packageStateTransaction: ""
 
-    property bool isInProgress: packageActionTransaction !== ""
+    property bool isInProgress: packageActionTransaction !== "" || repositoryTransaction !== ""
     property string packageActionTransaction: ""
 
     property bool isInstalledFromOther: false
@@ -151,7 +151,7 @@ Column {
     }
 
     onAppPackageChanged: {
-        console.log("APP PACKAGE:", JSON.stringify(appPackage));
+        //console.log("APP PACKAGE:", JSON.stringify(appPackage));
         if (appPackage !== undefined) {
             updateAppStatus();
         }
@@ -306,7 +306,7 @@ Column {
                 text: qsTr("Check for updates")
                 onClicked: {
                     remorse.execute(qsTr("Checking for updates %1").arg(appPackage.name), function(){
-                        pkgManagerProxy.refreshSingleRepositoryInfo(repositoryName);
+                        repositoryTransaction = pkgManagerProxy.refreshSingleRepositoryInfo(repositoryName);
                     });
                 }
                 visible: isRepositoryEnabled && !isUpdateAvailable /*&& isRepositoryOutdated*/

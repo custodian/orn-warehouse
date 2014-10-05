@@ -269,7 +269,7 @@ QString PackageKitProxy::removePackage(QString packageid)
 
 void PackageKitProxy::d_onRepoListChanged()
 {
-    qDebug() << "d_onRepoListChanged";
+    //qDebug() << "d_onRepoListChanged";
     emit repoListChanged();
 }
 
@@ -303,13 +303,13 @@ void PackageKitProxy::d_onTransactionListChanged(const QStringList& transactionL
 
 void PackageKitProxy::d_onUpdatesChanged()
 {
-    qDebug() << "d_onUpdatesChanged";
+    //qDebug() << "d_onUpdatesChanged";
     emit updatesChanged();
 }
 
 void PackageKitProxy::d_onDaemonQuit()
 {
-    qDebug() << "d_onDaemonQuit";
+    //qDebug() << "d_onDaemonQuit";
     emit daemonQuit();
 }
 
@@ -376,7 +376,7 @@ void PackageKitProxy::t_onDetails(QString packageid,QString license,PackageKit::
     if (tran) {
         QString trName = tran->name();
         QString sgroup = ENUM_TO_STRING(Group, group);
-        qDebug() << "t_onDetails" << trName << "packageid" << packageid << "license" << license << "group" << sgroup << "detail" << detail << "url" << url << "size" << size;
+        //qDebug() << "t_onDetails" << trName << "packageid" << packageid << "license" << license << "group" << sgroup << "detail" << detail << "url" << url << "size" << size;
         emit transactionDetails(trName, packageObject(packageid), license, sgroup, detail, url, size);
     }
 }
