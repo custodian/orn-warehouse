@@ -21,7 +21,7 @@ Column {
     property bool isStateKnown: false
     property string packageStateTransaction: ""
 
-    property bool isInProgress: packageActionTransaction !== "" || repositoryTransaction !== ""
+    property bool isInProgress: packageActionTransaction !== "" || repositoryTransaction !== "" || appWindow.isCheckForUpdatesRunning
     property string packageActionTransaction: ""
 
     property bool isInstalledFromOther: false
@@ -251,7 +251,9 @@ Column {
         }
 
         onRepoListChanged: {
-            updateAppStatus();
+            if (!isInProgress) {
+                updateAppStatus();
+            }
         }
     }
 
@@ -276,7 +278,7 @@ Column {
             font.pixelSize: myTheme.fontSizeSmall
             text: qsTr("Available: %1").arg(isAppAvailable ? appAvailable.version : "")
             wrapMode: Text.Wrap
-            visible: isUpdateAvailable || isAppAvailable
+            visible: isUpdateAvailable || (!isInstalled && isAppAvailable)
         }
         Text {
             anchors.horizontalCenter: parent.horizontalCenter

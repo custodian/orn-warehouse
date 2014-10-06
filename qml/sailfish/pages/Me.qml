@@ -13,6 +13,7 @@ PageWrapper {
     property variant selectedApp: undefined
 
     property string getReposTransaction: ""
+    property bool isCheckForUpdatesRunning: appWindow.isCheckForUpdatesRunning
 
     width: parent.width
     height: parent.height
@@ -35,7 +36,9 @@ PageWrapper {
     Connections {
         target: pkgManagerProxy
         onRepoListChanged: {
-            root.update();
+            if (!root.isCheckForUpdatesRunning) {
+                root.update();
+            }
         }
         onTransactionRepoDetail: {
             if (trname == getReposTransaction) {
@@ -81,7 +84,6 @@ PageWrapper {
             Button {
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("Show updates")
-                enabled: !pkgStatus.transactionCount
                 onClicked: {
                     stack.push("AvailableUpdates.qml");
                 }

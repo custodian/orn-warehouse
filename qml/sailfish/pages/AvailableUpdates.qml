@@ -84,8 +84,9 @@ PageWrapper {
             Button {
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("Check for updates")
-                enabled: !appWindow.isCheckForUpdatesRunning
+                enabled: !isCheckForUpdatesRunning
                 onClicked: {
+                    updateModel.clear();
                     appWindow.checkForUpdates();
                     updatesView.scrollToTop();
                 }
@@ -106,6 +107,7 @@ PageWrapper {
             }
             SectionHeader {
                 text: qsTr("Available updates")
+                visible: updateModel.count
             }
         }
     }

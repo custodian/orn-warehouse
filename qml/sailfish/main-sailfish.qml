@@ -14,6 +14,7 @@ ApplicationWindow
     property string getReposTransaction: ""
     property bool isUpdateChannelEnabled: false
 
+    property var reposList: []
     property bool isCheckForUpdatesRunning: false
     property string transactionCheckForUpdates: ""
     property string transactionUpdateRepository: ""
@@ -22,6 +23,7 @@ ApplicationWindow
         isCheckForUpdatesRunning = true;
         //TODO: check only for own repositories
         //pkgManagerProxy.refreshRepositoryInfo();
+        reposList = [];
         transactionCheckForUpdates = pkgManagerProxy.getRepoList();
     }
 
@@ -109,10 +111,12 @@ ApplicationWindow
 
         onUpdatesChanged: {
             //Make notification about updates available
-            if (pageStack.currentPage.getUpdatesTransaction !== undefined) {
-                pageStack.currentPage.update();
-            } else {
-                updateProceed.execute("Updates available", function() {});
+            if (!isUpdateChannelEnabled || reposList.length == 0) {
+                if (pageStack.currentPage.getUpdatesTransaction !== undefined) {
+                    pageStack.currentPage.update();
+                } else {
+                    updateProceed.execute("Updates available", function() {});
+                }
             }
         }
 
@@ -125,7 +129,7 @@ ApplicationWindow
                 break;
             case transactionCheckForUpdates:
                 if (repoid.indexOf("openrepos-")!== -1) {
-                    transactionUpdateRepository = pkgManagerProxy.refreshSingleRepositoryInfo(repoid.replace("openrepos-",""));
+                    reposList.push(repoid);
                 }
                 break;
             }
@@ -142,11 +146,18 @@ ApplicationWindow
                 getReposTransaction = "";
                 break;
             case transactionCheckForUpdates:
+                var repoid1 = reposList.pop();
+                transactionUpdateRepository = pkgManagerProxy.refreshSingleRepositoryInfo(repoid1.replace("openrepos-",""));
                 transactionCheckForUpdates = "";
                 break;
             case transactionUpdateRepository:
-                isCheckForUpdatesRunning = false;
-                transactionUpdateRepository = "";
+                if (reposList.length) {
+                    var repoid2 = reposList.pop();
+                    transactionUpdateRepository = pkgManagerProxy.refreshSingleRepositoryInfo(repoid2.replace("openrepos-",""));
+                } else {
+                    isCheckForUpdatesRunning = false;
+                    transactionUpdateRepository = "";
+                }
                 break;
             }
         }

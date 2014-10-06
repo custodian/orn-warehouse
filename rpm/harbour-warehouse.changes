@@ -8,6 +8,9 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* Tue Oct 07 2014 Basil Semuonov <basil.semuonov@gmail.com> 0.3-28
+- Performance regression fix
+
 * Mon Oct 06 2014 Basil Semuonov <basil.semuonov@gmail.com> 0.3-27
 - Extra transaction info added
 

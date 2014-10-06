@@ -175,14 +175,13 @@ QString PackageKitProxy::refreshSingleRepositoryInfo(QString reponame)
     QString repoid = QString("openrepos-%1").arg(reponame);
     transaction->setExtraData(repoid);
     //INFO: https://github.com/nemomobile-packages/PackageKit/pull/30
-    transaction->repoSetData(repoid,"refresh-now", "false");
+    transaction->repoSetData(repoid, "refresh-now", "false");
     return transaction->name();
 }
 
 QString PackageKitProxy::refreshRepositoryInfo()
 {
     TransactionProxy *transaction = createTransaction();
-    //TODO: Fetch all enabled openrepos-repos repositories instead
     transaction->refreshCache(false);
     return transaction->name();
 }
