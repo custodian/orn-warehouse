@@ -8,6 +8,9 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* Fri Oct 24 2014 Basil Semuonov <basil.semuonov@gmail.com> 0.3-29
+- Qt 5.2 js fix
+
 * Tue Oct 07 2014 Basil Semuonov <basil.semuonov@gmail.com> 0.3-28
 - Performance regression fix
 
