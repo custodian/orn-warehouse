@@ -37,19 +37,21 @@ ApplicationWindow
         }
     }
     cover: CoverBackground {
-        Column {
-            anchors.centerIn: parent
-            width: parent.width
-            spacing: Theme.paddingMedium
 
             Image {
+		id: coverImage
+                source: "../qml/images/cover.png"
                 anchors.horizontalCenter: parent.horizontalCenter
-                source: "/usr/share/icons/hicolor/86x86/apps/harbour-warehouse.png"
+                height: sourceSize.height * width / sourceSize.width
+                opacity: 0.3
             }
+
             Label {
                 anchors.horizontalCenter: parent.horizontalCenter
+		anchors.top: coverImage.bottom
                 text: "Warehouse"
-            }
+                font.bold: true
+	   }
         }
 
         CoverActionList {
