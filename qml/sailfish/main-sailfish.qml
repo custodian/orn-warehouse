@@ -43,7 +43,7 @@ ApplicationWindow
                 source: "../qml/images/cover.png"
                 anchors.horizontalCenter: parent.horizontalCenter
                 height: sourceSize.height * width / sourceSize.width
-                opacity: 0.3
+                opacity: 0.4
             }
 
             Label {
