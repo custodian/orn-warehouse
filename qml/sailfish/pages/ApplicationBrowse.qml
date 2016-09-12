@@ -14,9 +14,6 @@ PageWrapper {
     property int pageSize: 20
     property alias appsModel: appsModel
 
-    width: parent.width
-    height: parent.height
-
     headerText: qsTr("Browse applications")
 
     onHeaderClicked: {

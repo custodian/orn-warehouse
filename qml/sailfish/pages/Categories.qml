@@ -16,9 +16,6 @@ PageWrapper {
         }
     }
 
-    width: parent.width
-    height: parent.height
-
     headerText: qsTr("Categories")
 
     onHeaderClicked: {

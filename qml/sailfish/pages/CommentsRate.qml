@@ -10,9 +10,6 @@ PageWrapper {
     property variant application
     property alias commentsModel: commentsModel
 
-    width: parent.width
-    height: parent.height
-
     headerText: qsTr("Comments and Reviews")
 
     function load() {

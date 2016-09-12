@@ -10,9 +10,6 @@ PageWrapper {
 
     property string getAppsTransaction: ""
 
-    width: parent.width
-    height: parent.height
-
     headerText: qsTr("Installed applications")
 
     onHeaderClicked: {

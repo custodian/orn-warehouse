@@ -19,6 +19,9 @@ ApplicationWindow
     property string transactionCheckForUpdates: ""
     property string transactionUpdateRepository: ""
 
+    allowedOrientations: defaultAllowedOrientations
+    _defaultPageOrientations: Orientation.All
+
     function checkForUpdates() {
         isCheckForUpdatesRunning = true;
         //TODO: check only for own repositories

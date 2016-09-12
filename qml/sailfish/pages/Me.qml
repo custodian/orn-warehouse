@@ -15,9 +15,6 @@ PageWrapper {
     property string getReposTransaction: ""
     property bool isCheckForUpdatesRunning: appWindow.isCheckForUpdatesRunning
 
-    width: parent.width
-    height: parent.height
-
     headerText: qsTr("Your profile")
 
     function load() {
