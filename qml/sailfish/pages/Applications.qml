@@ -111,6 +111,7 @@ PageWrapper {
             }
         }
         //ScrollDecorator{ flickable: appsFlickable }
+        VerticalScrollDecorator {}
     }
 
     Component {

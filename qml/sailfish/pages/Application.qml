@@ -190,5 +190,6 @@ PageWrapper {
                 font.pixelSize: myTheme.fontSizeSmall
             }
         }
+        VerticalScrollDecorator {}
     }
 }
