@@ -18,9 +18,6 @@ PageWrapper {
     property string __keys: ""
     property alias appsModel: appsModel
 
-    width: parent.width
-    height: parent.height
-
     headerText: qsTr("Search apps")
 
     onHeaderClicked: {

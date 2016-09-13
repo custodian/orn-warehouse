@@ -14,9 +14,6 @@ PageWrapper {
 
     signal appFullLoaded()
 
-    width: parent.width
-    height: parent.height
-
     headerText: qsTr("Application details")
 
     function load() {
@@ -193,5 +190,6 @@ PageWrapper {
                 font.pixelSize: myTheme.fontSizeSmall
             }
         }
+        VerticalScrollDecorator {}
     }
 }

@@ -14,9 +14,6 @@ PageWrapper {
     property int pageSize: 20
     property alias appsModel: appsModel
 
-    width: parent.width
-    height: parent.height
-
     headerText: qsTr("Browse applications")
 
     onHeaderClicked: {
@@ -66,6 +63,7 @@ PageWrapper {
                 Row {
                     id: pagerRow
                     anchors.centerIn: parent
+                    spacing: 4
                     Button {
                         //anchors.horizontalCenter: parent.horizontalCenter
                         text: qsTr("Prev page")
@@ -73,6 +71,7 @@ PageWrapper {
                         onClicked: {
                             appList.page--;
                             appList.update();
+                            appsFlickable.contentY = 0
                         }
                     }
                     Button {
@@ -82,12 +81,14 @@ PageWrapper {
                         onClicked: {
                             appList.page++;
                             appList.update();
+                            appsFlickable.contentY = 0
                         }
                     }
                 }
             }
         }
         //ScrollDecorator{ flickable: appsFlickable }
+        VerticalScrollDecorator {}
     }
 
     Component {
