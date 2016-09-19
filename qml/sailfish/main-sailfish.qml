@@ -99,16 +99,6 @@ ApplicationWindow
         id: myTheme
     }
 
-    RemorsePopup {
-        id: remorse
-    }
-//    ProceedPopup {
-//        id: updateProceed
-//        onCanceled: {
-//            pageStack.push("pages/AvailableUpdates.qml");
-//        }
-//    }
-
     PackageManagerProxy {
         id: pkgManagerProxy
 
@@ -118,7 +108,6 @@ ApplicationWindow
                 if (pageStack.currentPage.getUpdatesTransaction !== undefined) {
                     pageStack.currentPage.update();
                 } else {
-                    //updateProceed.execute("Updates available", function() {});
                     var obj = Qt.createComponent("components/ProceedPopup.qml").createObject(pageStack.currentPage)
                     obj.canceled.connect(function () {
                         pageStack.push("pages/AvailableUpdates.qml");
@@ -151,7 +140,14 @@ ApplicationWindow
             switch(trname) {
             case getReposTransaction:
                 if (!isUpdateChannelEnabled) {
-                    remorse.execute("Enabling self-update channel", function() {
+                    var obj = Qt.createQmlObject("import QtQuick 2.0; import Sailfish.Silica 1.0; RemorsePopup {}", pageStack.currentPage)
+                    obj.canceled.connect(function () {
+                        obj.destroy()
+                    })
+                    obj.triggered.connect(function () {
+                        obj.destroy()
+                    })
+                    obj.execute("Enabling self-update channel", function() {
                         pkgManagerProxy.enableRepository("basil");
                     });
                 }
