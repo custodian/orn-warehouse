@@ -11,8 +11,6 @@ PageWrapper {
     signal search(string keys)
     signal update()
 
-    signal activateSearchField()
-
     property int page: 0
     property int pageSize: 10
     property string __keys: ""
@@ -49,10 +47,6 @@ PageWrapper {
         update();
     }
 
-    Component.onCompleted: {
-        activateSearchField();
-    }
-
     ListModel {
         id: appsModel
     }
@@ -63,21 +57,19 @@ PageWrapper {
         clip: true
         cacheBuffer: 400
 
-        header: SearchBox {
+        header: SearchField {
             id: searchBox
             width: parent.width
-            placeholderText: "Enter keywords"
-            onSearchClicked: {
-                searchResult.search(searchBox.text);
-            }
-            onTrashClicked: {
-                searchResult.update();
-            }
-            Connections {
-                target: searchResult
-                onActivateSearchField: {
-                    searchBox.forceActiveFocus()
-                }
+            placeholderText: qsTr("Enter keywords")
+
+            onTextChanged: if (!text) searchResult.update()
+
+            EnterKey.enabled: text.length > 0
+            EnterKey.iconSource: "image://theme/icon-m-search"
+            EnterKey.onClicked: searchResult.search(text)
+
+            Component.onCompleted: {
+                forceActiveFocus()
             }
         }
 
